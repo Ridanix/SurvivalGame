@@ -7,10 +7,14 @@ public class Player_Controler : MonoBehaviour
     //MOVEMENT
     private Rigidbody rb;
     private float moveZ, moveX;
-    [SerializeField] float speed = 1.0f;
+    [SerializeField] float speed = 5.0f;
 
     //LOOK_AT_MOUSE
     [SerializeField] Camera player_camera;
+    //CAMERA ROTATION
+    [SerializeField] GameObject model;
+    [SerializeField] GameObject camera_;
+    private bool camera_rotation = false;
 
     public void Awake()
     {
@@ -24,6 +28,18 @@ public class Player_Controler : MonoBehaviour
         rb.velocity = new Vector3(moveX, 0, moveZ);
 
         Look_at_mouse();
+
+
+
+        if(Input.GetKey(KeyCode.Mouse2) == true)
+        {
+            camera_rotation = false;
+        }
+        else
+        {
+            camera_rotation = true;
+        }
+
     }
 
     public void Look_at_mouse()
@@ -35,7 +51,13 @@ public class Player_Controler : MonoBehaviour
         if (ground_plane.Raycast(mouse_Cam_ray, out ray_length))
         {
             Vector3 look_there = mouse_Cam_ray.GetPoint(ray_length);
-            Transform t = GameObject.Find("Model").transform;
+            Transform t;
+            if(camera_rotation)
+                t = model.transform;
+            else
+                t = camera_.transform;
+
+
             t.LookAt(new Vector3(look_there.x, t.position.y, look_there.z));
         }
     }
