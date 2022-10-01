@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Player_Controler : MonoBehaviour
+public class Player_Controler : NetworkBehaviour
 {
     //MOVEMENT
     private Rigidbody rb;
@@ -23,6 +24,8 @@ public class Player_Controler : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (!IsOwner) return;
+       
         moveX = Input.GetAxis("Horizontal") * speed;
         moveZ = Input.GetAxis("Vertical") * speed;
         rb.velocity = new Vector3(moveX, 0, moveZ);
