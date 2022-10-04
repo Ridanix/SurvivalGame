@@ -39,7 +39,7 @@ public class Player_Controler : MonoBehaviour
         {
             camera_rotation = true;
         }
-
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); //freeze aby nepadal do starn pøi nárazu
     }
 
     public void Look_at_mouse()
