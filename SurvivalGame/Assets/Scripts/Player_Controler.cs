@@ -5,60 +5,46 @@ using UnityEngine;
 public class Player_Controler : MonoBehaviour
 {
     //MOVEMENT
-    private Rigidbody rb;
-    private float moveZ, moveX;
+    [SerializeField] CharacterController controler;
     [SerializeField] float speed = 5.0f;
 
-    //LOOK_AT_MOUSE
+    //PLAYER ROTATION
+    public float player_rotation = 0.1f;
+    private float turn_smooth_velocity;
     [SerializeField] Camera player_camera;
+
     //CAMERA ROTATION
     [SerializeField] GameObject model;
     [SerializeField] GameObject camera_;
-    private bool camera_rotation = false;
-
-    public void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     public void FixedUpdate()
     {
-        moveX = Input.GetAxis("Horizontal") * speed;
-        moveZ = Input.GetAxis("Vertical") * speed;
-        rb.velocity = new Vector3(moveX, 0, moveZ);
-
-        Look_at_mouse();
-
-
-
-        if(Input.GetKey(KeyCode.Mouse2) == true)
+        //geting input
+        float moveX = Input.GetAxis("Horizontal") * speed;
+        float moveZ = Input.GetAxis("Vertical") * speed;
+        Vector3 direction = new Vector3(moveX, 0, moveZ).normalized;
+        
+        //If gets any input, moves and rotates
+        if(direction.magnitude >= 0.1f)
         {
-            camera_rotation = false;
+            //rotates
+            float target_angle = Mathf.Atan2(direction.x, direction.z)* Mathf.Rad2Deg + player_camera.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turn_smooth_velocity, player_rotation);
+            transform.rotation = Quaternion.Euler(0f,angle, 0f);
+
+            //moves
+            Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f)*Vector3.forward;
+            controler.Move(move_direction.normalized*speed*Time.deltaTime);
         }
-        else
+
+        //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
+        if(Input.GetKey(KeyCode.Mouse1)== true)
         {
-            camera_rotation = true;
+            camera_.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
-        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); //freeze aby nepadal do starn pøi nárazu
-    }
-
-    public void Look_at_mouse()
-    {
-        Ray mouse_Cam_ray = player_camera.ScreenPointToRay(Input.mousePosition);
-        Plane ground_plane = new Plane(Vector3.up, Vector3.zero);
-        float ray_length;
-
-        if (ground_plane.Raycast(mouse_Cam_ray, out ray_length))
-        {
-            Vector3 look_there = mouse_Cam_ray.GetPoint(ray_length);
-            Transform t;
-            if(camera_rotation)
-                t = model.transform;
-            else
-                t = camera_.transform;
 
 
-            t.LookAt(new Vector3(look_there.x, t.position.y, look_there.z));
-        }
+        //transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); //freeze aby nepadal do starn pri nárazu
+        //Vim proch nam to delalo problem, pote co jsem predelal movement uzh nam to nehrozi - smazat?
     }
 }
