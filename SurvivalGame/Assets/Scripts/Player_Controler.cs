@@ -17,6 +17,11 @@ public class Player_Controler : MonoBehaviour
     [SerializeField] GameObject model;
     [SerializeField] GameObject camera_;
 
+    //HEALTH
+    [SerializeField] float Maxhealth;
+    float health;
+
+    
     public void FixedUpdate()
     {
         //geting input
@@ -42,9 +47,13 @@ public class Player_Controler : MonoBehaviour
         {
             camera_.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
-
-
-        //transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); //freeze aby nepadal do starn pri nárazu
-        //Vim proch nam to delalo problem, pote co jsem predelal movement uzh nam to nehrozi - smazat?
+    }
+    public void TakeDamage(float amout)
+    {
+        health -= amout;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
