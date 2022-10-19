@@ -18,10 +18,10 @@ public class Player_Controler : MonoBehaviour
     [SerializeField] GameObject camera_;
 
     //HEALTH
-    [SerializeField] float Maxhealth;
-    float health;
+    //[SerializeField] float Maxhealth;
+    //float health;
+    [SerializeField] Player_Data player_data;
 
-    
     public void FixedUpdate()
     {
         //geting input
@@ -47,13 +47,18 @@ public class Player_Controler : MonoBehaviour
         {
             camera_.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
-    }
-    public void TakeDamage(float amout)
-    {
-        health -= amout;
-        if (health <= 0)
+
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Destroy(gameObject);
+            Player_Data.Change_health_value(-20);
         }
     }
+    //public void TakeDamage(float amout)
+    //{
+    //    health -= amout;
+    //    if (health <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

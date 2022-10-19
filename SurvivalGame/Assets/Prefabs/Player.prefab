@@ -52,6 +52,7 @@ MonoBehaviour:
   player_camera: {fileID: 5535588369407285606}
   model: {fileID: 161253107125550747}
   camera_: {fileID: 7199747644870168616}
+  Maxhealth: 0
 --- !u!1 &2406175716366646215
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5535588371233806437}
   - component: {fileID: 6297836381408633214}
+  - component: {fileID: 1272567868024724427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -337,6 +339,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1272567868024724427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535588371233806436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7631e2e5399a8e74c9c7ea9b0face418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6408757230256495451
 GameObject:
   m_ObjectHideFlags: 0

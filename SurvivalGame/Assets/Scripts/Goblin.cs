@@ -66,7 +66,7 @@ public class Goblin : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("hit");
-            playerControler.TakeDamage(10);
+            //playerControler.TakeDamage(10);
             //Destroy(gameObject);
         }
     }

@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: -1960701474773311008
     second: Armature|Goblin Running w Weapon
+  - first:
+      74: 2427222827118998718
+    second: Goblin Walking
   externalObjects: {}
   materials:
     materialImportMode: 2
