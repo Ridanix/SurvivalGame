@@ -5,29 +5,47 @@ using UnityEngine.UI;
 
 public class Player_Data : MonoBehaviour
 {
-    public static Slider health_fill;
-    public static GameObject health_bar;
-    public static float healh = 100f;
+    public Slider health_bar;
+    public float health = 100f;
+    public float maxhealth = 100f;
+    public Slider stamina_bar;
+    public float stamina = 100f;
+    public float maxstamina = 100f;
+
+    //Chosen Item
+    public Transform current_object;
+    public GameObject[] slots;
+    public GameObject chosen_item_frame;
 
     private void Awake()
     {
-        health_bar = GameObject.Find("Health_bar");
-        health_fill = health_bar.GetComponent<Slider>();
-        health_fill.maxValue = healh;
-        health_fill.value = health_fill.maxValue;
+        current_object = slots[0].transform;
     }
 
-    public static void Change_health_value(float points)
+    private void FixedUpdate()
     {
-        health_fill.value += points;
-        healh = health_fill.value;
+        health_bar.value = health;
+        health_bar.maxValue = maxhealth;
+        stamina_bar.value = stamina;
+        stamina_bar.maxValue = maxstamina;
+        Round();
+
+        chosen_item_frame.transform.position = current_object.transform.position;
     }
 
-    public static void Change_max_health(float points)
+    private void Round()
     {
-        health_fill.maxValue += points;
-        health_fill.value = health_fill.maxValue;
-        healh = health_fill.value;
+        if (stamina > maxstamina)
+            stamina = maxstamina;
+        else if (stamina < 0)
+            stamina = 0;
+        if (health > maxhealth)
+            health = maxhealth;
+        //else if (health < 0)
+            //Die From cringe
     }
+
+
+
 
 }
