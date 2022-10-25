@@ -37,7 +37,7 @@ public class Player_Controler : MonoBehaviour
 
             //moves
             Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f)*Vector3.forward;
-            controler.Move(move_direction.normalized*speed*Time.deltaTime);
+            controler.Move(move_direction.normalized*speed*Time.deltaTime*2);
 
             //bar reduce
             player_data.stamina -= 1f;
