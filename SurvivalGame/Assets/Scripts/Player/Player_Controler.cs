@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Player_Controler : MonoBehaviour
+public class Player_Controler : NetworkBehaviour
 {
     //MOVEMENT
     [SerializeField] CharacterController controler;
@@ -22,6 +23,8 @@ public class Player_Controler : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (!IsOwner) return;
+       
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
         float moveZ = Input.GetAxis("Vertical") * speed;
