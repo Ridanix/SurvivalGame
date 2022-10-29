@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.Networking;
 
 public class Player_Controller : NetworkBehaviour
 {
     //MOVEMENT
     [SerializeField] CharacterController controler;
     [SerializeField] float speed = 5.0f;
+    [SerializeField] private GameObject healingParticlePrefab;
 
     //PLAYER ROTATION
     public float player_rotation = 0.1f;
@@ -21,10 +23,19 @@ public class Player_Controller : NetworkBehaviour
     //HEALTH
     [SerializeField] Player_Data player_data;
 
+    private void Start()
+    {
+        player_camera.gameObject.SetActive(IsOwner);
+
+    }
+
     public void FixedUpdate()
     {
         if (!IsOwner) return;
-       
+
+
+        
+
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
         float moveZ = Input.GetAxis("Vertical") * speed;
@@ -58,11 +69,13 @@ public class Player_Controller : NetworkBehaviour
         {
             player_data.current_object = player_data.slots[0].transform;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             player_data.current_object = player_data.slots[1].transform;
-            player_data.health += 50;
+            
+            SpawnHealthParticleServerRpc();
+            UsedSmallPotionServerRpc();
         }
 
 
@@ -70,5 +83,28 @@ public class Player_Controller : NetworkBehaviour
         {
             player_data.health -= 20;
         }
+    }
+
+    [ServerRpc]
+    private void SpawnHealthParticleServerRpc()
+    {
+        SpawnHealthParticleClientRpc();
+    }
+
+    [ServerRpc]
+    private void UsedSmallPotionServerRpc()
+    {
+        UsedSmallPotionClientRpc();
+    }
+    [ClientRpc]
+    private void SpawnHealthParticleClientRpc()
+    {
+        Instantiate(healingParticlePrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+    }
+
+    [ClientRpc]
+    public void UsedSmallPotionClientRpc()
+    {
+        player_data.health += 50;
     }
 }
