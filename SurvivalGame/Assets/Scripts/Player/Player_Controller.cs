@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class Player_Controler : NetworkBehaviour
+public class Player_Controller : NetworkBehaviour
 {
     //MOVEMENT
     [SerializeField] CharacterController controler;

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
-public class Goblin : MonoBehaviour
+public class Goblin : NetworkBehaviour
 {
+    [SerializeField] Player_Data player_Data; //Player_Data script
     [SerializeField] Transform player; //Hlavní hráè
     [SerializeField] int range; //Range na hledání nepøátel
+    public GameObject serverPrefab;
 
     //Health
     [SerializeField] float maxHealth;
@@ -17,20 +20,20 @@ public class Goblin : MonoBehaviour
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
     float attackRange = 0.6f;
-    [SerializeField] LayerMask enemyLayers; 
+    [SerializeField] LayerMask enemyLayers;
 
     //Components
     Animator animator;
     NavMeshAgent nav;
 
-    public Player_Data player_Data;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        health = maxHealth;
+        health = maxHealth;       
     }
 
     // Update is called once per frame
@@ -62,11 +65,10 @@ public class Goblin : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("miss");
-        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("hit");
-            player_Data.TakeDamage(10f);
+            Debug.Log("hit");
+            //player_Data.TakeDamage(10f);
             //Destroy(gameObject);
         }
     }
