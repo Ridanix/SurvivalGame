@@ -10,6 +10,7 @@ public class Goblin : NetworkBehaviour
     [SerializeField] Transform player; //Hlavní hráè
     [SerializeField] int range; //Range na hledání nepøátel
     public GameObject serverPrefab;
+    public GameObject playerPf;
 
     //Health
     [SerializeField] float maxHealth;
@@ -22,41 +23,62 @@ public class Goblin : NetworkBehaviour
     float attackRange = 0.6f;
     [SerializeField] LayerMask enemyLayers;
 
+
     //Components
     Animator animator;
     NavMeshAgent nav;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        health = maxHealth;       
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
         if (Time.time - lastAttack < cooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position);
 
+        //Transform GetClosestPlayer(Transform[] player)
+        //{
+        //    Transform tMin = null;
+        //    float minDist = Mathf.Infinity;
+        //    Vector3 currentPos = transform.position;
+        //    foreach (Transform t in player)
+        //    {
+        //        float dist = Vector3.Distance(t.position, currentPos);
+        //        if (dist < minDist)
+        //        {
+        //            tMin = t;
+        //            minDist = dist;
+        //        }
+        //    }
+        //    return tMin;
+        //}
+
         if (distance < range && distance > nav.stoppingDistance)
         {
+
             nav.SetDestination(player.position);
             transform.LookAt(player);
             animator.SetBool("following", true);
         }
         else if (distance >= range)
         {
+
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance)
         {
             animator.SetBool("following", false);
-            Attack();          
+            Attack();
         }
 
         //Debug.Log(distance);
@@ -79,24 +101,42 @@ public class Goblin : NetworkBehaviour
 
     void Attack()
     {
-        transform.LookAt(player);
+        //transform.LookAt(player);
         animator.SetTrigger("attack");
         lastAttack = Time.time;
 
-        Collider[] hitEmemies = Physics.OverlapSphere(attackPoint.position,attackRange,enemyLayers);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
-        foreach(Collider enemy in hitEmemies)
+        foreach (Collider enemy in hitEnemies)
         {
-            //Debug.Log("trefa");
+
+
+            var playerHit = enemy.GetComponent<NetworkObject>();
+            if (playerHit != null)
+            {
+                Debug.Log("trefa");
+                GoblinGivesDamageServerRpc();
+            }
         }
     }
 
-    void TakeDamage(float amout)
+    void TakeDamage(float amount)
     {
-        health -= amout;
+        health -= amount;
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    [ServerRpc]
+    private void GoblinGivesDamageServerRpc()
+    {
+        PlayerReceivesDamageClientRpc();
+    }
+    [ClientRpc]
+    private void PlayerReceivesDamageClientRpc()
+    {
+        
     }
 }

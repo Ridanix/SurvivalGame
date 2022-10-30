@@ -10,6 +10,10 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField] CharacterController controler;
     [SerializeField] float speed = 5.0f;
     [SerializeField] private GameObject healingParticlePrefab;
+    [SerializeField] Transform attackPoint;
+    float attackRange = 0.6f;
+    [SerializeField] LayerMask enemyLayers;
+    GameObject goblinGameObject;
 
     //PLAYER ROTATION
     public float player_rotation = 0.1f;
@@ -19,6 +23,7 @@ public class Player_Controller : NetworkBehaviour
     //CAMERA ROTATION
     [SerializeField] GameObject model;
     [SerializeField] GameObject camera_;
+     
 
     //HEALTH
     [SerializeField] Player_Data player_data;
@@ -77,7 +82,19 @@ public class Player_Controller : NetworkBehaviour
             SpawnHealthParticleServerRpc();
             UsedSmallPotionServerRpc();
         }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
 
+            Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+            foreach (Collider enemy in hitEnemies)
+            {
+                Debug.Log("Hr·Ëtrefa");
+
+                KillGoblinTestServerRpc();
+                goblinGameObject = GameObject.Find("BasicGoblin");
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -96,6 +113,11 @@ public class Player_Controller : NetworkBehaviour
     {
         UsedSmallPotionClientRpc();
     }
+    [ServerRpc]
+    private void KillGoblinTestServerRpc()
+    {
+        Destroy(goblinGameObject);
+    }
     [ClientRpc]
     private void SpawnHealthParticleClientRpc()
     {
@@ -107,4 +129,5 @@ public class Player_Controller : NetworkBehaviour
     {
         player_data.health += 50;
     }
+
 }

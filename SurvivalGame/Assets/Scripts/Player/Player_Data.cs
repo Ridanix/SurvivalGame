@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class Player_Data : MonoBehaviour
+public class Player_Data : NetworkBehaviour
 {
     public Slider health_bar;
+    [SerializeField]
+    public NetworkVariable<float> networkPlayerHealth = new NetworkVariable<float>(100);
     public float health;
     public float maxHealth = 100f;
     public Slider stamina_bar;
     public float stamina;
     public float maxStamina = 100f;
+    public float healthSendTime = 0f;
 
     //Chosen Item
     public Transform current_object;
@@ -28,10 +32,18 @@ public class Player_Data : MonoBehaviour
 
     private void FixedUpdate()
     {
+        healthSendTime--;
         health_bar.value = health;
         stamina_bar.value = stamina;  
         Round();
         chosen_item_frame.transform.position = current_object.transform.position;
+
+        if (healthSendTime < 1f)
+        {
+            healthSendTime = 50;
+            SendClientHealthServerRpc();
+        }
+
     }
 
     private void Round()
@@ -50,7 +62,10 @@ public class Player_Data : MonoBehaviour
         health -= value;
     }
 
+    [ServerRpc]
+    private void SendClientHealthServerRpc()
+    {
 
-
+    }
 
 }

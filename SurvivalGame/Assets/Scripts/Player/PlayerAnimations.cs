@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerAnimations : MonoBehaviour
+public class PlayerAnimations : NetworkBehaviour
 {
     Animator animator;
     string currentState;
@@ -19,17 +20,20 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
         if (Time.time - lastAttack < cooldown) return; //èekání než dodìlá attack
         float MoveY = Input.GetAxisRaw("Horizontal");
         float MoveX = Input.GetAxisRaw("Vertical");
         if (Input.GetMouseButtonDown(0))
         {
+            
             ChangeAnimationState("LightAttack1");
             lastAttack = Time.time;
         }
         else if (MoveY != 0 || MoveX != 0)
         {
             ChangeAnimationState("Walking");
+            
         }
         else
         {
