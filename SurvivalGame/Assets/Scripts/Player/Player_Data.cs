@@ -4,22 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
 
-public class Player_Data : NetworkBehaviour
+public class Player_Data : EntityInventory
 {
     public Slider healthBar;
+    public Slider staminaBar;
     [SerializeField]
     public NetworkVariable<float> networkPlayerHealth = new NetworkVariable<float>(100);
-    public float health;
-    public float maxHealth = 100f;
-    public Slider staminaBar;
-    public float stamina;
-    public float maxStamina = 100f;
     public float healthSendTime = 0f;
-
-    //Chosen Item
-    public Transform currentObject;
-    public GameObject[] slots;
-    public GameObject chosenItemFrame;
 
     private void Awake()
     {
@@ -34,8 +25,8 @@ public class Player_Data : NetworkBehaviour
     {
         healthSendTime--;
         healthBar.value = health;
-        staminaBar.value = stamina;  
-        Round();
+        staminaBar.value = stamina;
+        CheckStats();
         chosenItemFrame.transform.position = currentObject.transform.position;
 
         if (healthSendTime < 1f)
@@ -45,24 +36,6 @@ public class Player_Data : NetworkBehaviour
         }
 
     }
-
-    private void Round()
-    {
-        if (stamina > maxStamina)
-            stamina = maxStamina;
-        else if (stamina < 0)
-            stamina = 0;
-        if (health > maxHealth)
-            health = maxHealth;
-        //else if (health < 0)
-            //Die From cringe
-    }
-
-    //Možný pozdìjší health
-    /*public void TakeDamage(float value)
-    {
-        health -= value;
-    }*/
 
     [ServerRpc]
     private void SendClientHealthServerRpc()
