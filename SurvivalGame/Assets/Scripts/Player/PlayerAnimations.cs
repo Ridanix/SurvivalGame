@@ -8,20 +8,22 @@ public class PlayerAnimations : NetworkBehaviour
     Animator animator;
     string currentState;
 
-    float cooldown = 0.567f; //délka animace attacku
+    [SerializeField] AnimationClip attackAnimation;
+    float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        attackCooldown = attackAnimation.length;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!IsOwner) return;
-        if (Time.time - lastAttack < cooldown) return; //èekání než dodìlá attack
+        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
         float MoveY = Input.GetAxisRaw("Horizontal");
         float MoveX = Input.GetAxisRaw("Vertical");
         if (Input.GetMouseButtonDown(0))

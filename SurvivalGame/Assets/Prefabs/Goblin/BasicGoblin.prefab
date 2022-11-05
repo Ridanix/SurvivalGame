@@ -2227,7 +2227,9 @@ MonoBehaviour:
   player: {fileID: 5535588371233806437, guid: 41118ebc5eb53ba40af53565629552eb, type: 3}
   range: 10
   serverPrefab: {fileID: 0}
+  playerPf: {fileID: 0}
   maxHealth: 100
+  attackAnimation: {fileID: 7400000, guid: fb6bc116bdb47e34a8157c8700eca5b4, type: 2}
   attackPoint: {fileID: 5933131139733642512}
   enemyLayers:
     serializedVersion: 2

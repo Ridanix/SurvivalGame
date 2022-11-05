@@ -17,7 +17,8 @@ public class Goblin : NetworkBehaviour
     float health;
 
     //Attack
-    float cooldown = 1.117f; //délka animace attacku
+    [SerializeField] AnimationClip attackAnimation;
+    float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
     float attackRange = 0.6f;
@@ -36,16 +37,19 @@ public class Goblin : NetworkBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         health = maxHealth;
+        attackCooldown = attackAnimation.length;
     }
 
     // Update is called once per frame
     void Update()
     {
         player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
-        if (Time.time - lastAttack < cooldown) return; //èekání než dodìlá attack
+        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position);
 
+
+        //Hledání hráèské postavy
         //Transform GetClosestPlayer(Transform[] player)
         //{
         //    Transform tMin = null;
@@ -120,14 +124,15 @@ public class Goblin : NetworkBehaviour
         }
     }
 
-    void TakeDamage(float amount)
+    //možný pozdìjší health
+    /*void TakeDamage(float amount)
     {
         health -= amount;
         if (health <= 0)
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
     [ServerRpc]
     private void GoblinGivesDamageServerRpc()

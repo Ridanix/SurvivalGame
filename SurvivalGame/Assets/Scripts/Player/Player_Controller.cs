@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class Player_Controller : NetworkBehaviour
 {
     //MOVEMENT
-    [SerializeField] CharacterController controler;
+    [SerializeField] CharacterController controller;
     [SerializeField] float speed = 5.0f;
     [SerializeField] private GameObject healingParticlePrefab;
     [SerializeField] Transform attackPoint;
@@ -16,30 +16,26 @@ public class Player_Controller : NetworkBehaviour
     GameObject goblinGameObject;
 
     //PLAYER ROTATION
-    public float player_rotation = 0.1f;
-    private float turn_smooth_velocity;
-    [SerializeField] Camera player_camera;
+    public float playerRotation = 0.1f;
+    private float turnSmoothVelocity;
+    [SerializeField] Camera playerCamera;
 
     //CAMERA ROTATION
-    [SerializeField] GameObject model;
-    [SerializeField] GameObject camera_;
+    [SerializeField] GameObject playerModel;
+    [SerializeField] GameObject mainCamera;
      
 
     //HEALTH
-    [SerializeField] Player_Data player_data;
+    [SerializeField] Player_Data playerData;
 
     private void Start()
     {
-        player_camera.gameObject.SetActive(IsOwner);
-
+        playerCamera.gameObject.SetActive(IsOwner);
     }
 
     public void FixedUpdate()
     {
         if (!IsOwner) return;
-
-
-        
 
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
@@ -50,34 +46,34 @@ public class Player_Controller : NetworkBehaviour
         if (direction.magnitude >= 0.1f)
         {
             //rotates
-            float target_angle = Mathf.Atan2(direction.x, direction.z)* Mathf.Rad2Deg + player_camera.transform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turn_smooth_velocity, player_rotation);
+            float target_angle = Mathf.Atan2(direction.x, direction.z)* Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turnSmoothVelocity, playerRotation);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //moves
             Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f)*Vector3.forward;
-            controler.Move(move_direction.normalized*speed*Time.deltaTime);
+            controller.Move(move_direction.normalized*speed*Time.deltaTime);
 
             //bar reduce
-            player_data.stamina -= 1f;
+            playerData.stamina -= 1f;
         }
         else
-            player_data.stamina += 1f;
+            playerData.stamina += 1f;
 
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
         if (Input.GetKey(KeyCode.Mouse1)== true)
         {
-            camera_.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
+            mainCamera.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            player_data.current_object = player_data.slots[0].transform;
+            playerData.currentObject = playerData.slots[0].transform;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            player_data.current_object = player_data.slots[1].transform;
+            playerData.currentObject = playerData.slots[1].transform;
             
             SpawnHealthParticleServerRpc();
             UsedSmallPotionServerRpc();
@@ -90,7 +86,6 @@ public class Player_Controller : NetworkBehaviour
             foreach (Collider enemy in hitEnemies)
             {
                 Debug.Log("Hr·Ëtrefa");
-
                 KillGoblinTestServerRpc();
                 goblinGameObject = GameObject.Find("BasicGoblin");
             }
@@ -98,7 +93,7 @@ public class Player_Controller : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player_data.health -= 20;
+            playerData.health -= 20;
         }
     }
 
@@ -127,7 +122,7 @@ public class Player_Controller : NetworkBehaviour
     [ClientRpc]
     public void UsedSmallPotionClientRpc()
     {
-        player_data.health += 50;
+        playerData.health += 50;
     }
 
 }

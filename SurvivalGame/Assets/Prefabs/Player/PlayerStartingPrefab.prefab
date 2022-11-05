@@ -45,17 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b60eed5c216a1d479f616e0e313f2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controler: {fileID: 6297836381408633214}
+  controller: {fileID: 6297836381408633214}
   speed: 5
   healingParticlePrefab: {fileID: 4364089344494313087, guid: 5c6ac07f78cc8004b83cec0392eb7cab, type: 3}
   attackPoint: {fileID: 1175249149392896218}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  player_rotation: 0.1
-  player_camera: {fileID: 5535588369407285606}
-  model: {fileID: 161253107125550747}
-  camera_: {fileID: 7199747644870168616}
+  playerRotation: 0.1
+  playerCamera: {fileID: 5535588369407285606}
+  playerModel: {fileID: 161253107125550747}
+  mainCamera: {fileID: 7199747644870168616}
   player_data: {fileID: 1272567868024724427}
 --- !u!1 &249020383620959072
 GameObject:
@@ -674,7 +674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535588369407285604}
   m_LocalRotation: {x: 0.39410225, y: -0, z: -0, w: 0.9190666}
-  m_LocalPosition: {x: 0, y: 0, z: -5.47}
+  m_LocalPosition: {x: 0, y: -0.9999523, z: -5.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -947,18 +947,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7631e2e5399a8e74c9c7ea9b0face418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health_bar: {fileID: 7617723081850392612}
+  healthBar: {fileID: 0}
+  networkPlayerHealth:
+    m_InternalValue: 100
   health: 100
   maxHealth: 100
-  stamina_bar: {fileID: 2608351570075415043}
+  staminaBar: {fileID: 0}
   stamina: 100
   maxStamina: 100
   healthSendTime: 0
-  current_object: {fileID: 0}
+  currentObject: {fileID: 0}
   slots:
   - {fileID: 402141937054737651}
   - {fileID: 6241242626702249696}
-  chosen_item_frame: {fileID: 5082468410583177034}
+  chosenItemFrame: {fileID: 0}
 --- !u!114 &4694431993060139844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7c9f6f83fc08f45be39bce3d7f5146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAnimation: {fileID: -2070121543212762094, guid: edf222f022b9fa5439bb34b587a50ed8, type: 3}
 --- !u!114 &2141034410851981568
 MonoBehaviour:
   m_ObjectHideFlags: 0
