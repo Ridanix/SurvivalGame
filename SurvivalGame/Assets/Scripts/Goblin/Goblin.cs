@@ -7,7 +7,7 @@ using Unity.Netcode;
 public class Goblin : NetworkBehaviour
 {
     [SerializeField] Player_Data player_Data; //Player_Data script
-    [SerializeField] Transform player; //Hlavní hráè
+    [SerializeField] Transform player; //Hlavní hráèská postava
     [SerializeField] int range; //Range na hledání nepøátel
     public GameObject serverPrefab;
     public GameObject playerPf;
@@ -84,24 +84,15 @@ public class Goblin : NetworkBehaviour
             animator.SetBool("following", false);
             Attack();
         }
-
-        //Debug.Log(distance);
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("miss");
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("hit");
-            //player_Data.TakeDamage(10f);
-            //Destroy(gameObject);
         }
     }
-    /*void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("nehit2");
-    }*/
 
     void Attack()
     {
