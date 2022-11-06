@@ -5,12 +5,11 @@ using UnityEngine.AI;
 using Unity.Netcode;
 
 public class Goblin : NetworkBehaviour
-{
-    [SerializeField] Player_Data player_Data; //Player_Data script
-    [SerializeField] Transform player; //Hlavní hráèská postava
-    [SerializeField] int range; //Range na hledání nepøátel
-    public GameObject serverPrefab;
-    public GameObject playerPf;
+{    
+    Transform player; //Hlavní hráèská postava
+    [SerializeField] int agroRange; //Range na hledání nepøátel
+    //public GameObject serverPrefab;
+    //public GameObject playerPf;
 
     //Health
     [SerializeField] float maxHealth;
@@ -24,12 +23,9 @@ public class Goblin : NetworkBehaviour
     float attackRange = 0.6f;
     [SerializeField] LayerMask enemyLayers;
 
-
     //Components
     Animator animator;
     NavMeshAgent nav;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +33,7 @@ public class Goblin : NetworkBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         health = maxHealth;
-        attackCooldown = attackAnimation.length;
+        attackCooldown = attackAnimation.length;       
     }
 
     // Update is called once per frame
@@ -46,8 +42,7 @@ public class Goblin : NetworkBehaviour
         player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
-        float distance = Vector3.Distance(transform.position, player.position);
-
+        float distance = Vector3.Distance(transform.position, player.position); 
 
         //Hledání hráèské postavy
         //Transform GetClosestPlayer(Transform[] player)
@@ -67,14 +62,14 @@ public class Goblin : NetworkBehaviour
         //    return tMin;
         //}
 
-        if (distance < range && distance > nav.stoppingDistance)
+        if (distance < agroRange && distance > nav.stoppingDistance)
         {
 
             nav.SetDestination(player.position);
             transform.LookAt(player);
             animator.SetBool("following", true);
         }
-        else if (distance >= range)
+        else if (distance >= agroRange)
         {
 
             animator.SetBool("following", false);
@@ -90,7 +85,7 @@ public class Goblin : NetworkBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("hit");
+            Debug.Log("hit"); //Test jestli to funguje
         }
     }
 
@@ -109,7 +104,7 @@ public class Goblin : NetworkBehaviour
             var playerHit = enemy.GetComponent<NetworkObject>();
             if (playerHit != null)
             {
-                Debug.Log("trefa");
+                Debug.Log("trefa"); //Test jestli to funguje
                 GoblinGivesDamageServerRpc();
             }
         }

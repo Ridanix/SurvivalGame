@@ -55,10 +55,11 @@ public class Player_Controller : NetworkBehaviour
             controller.Move(move_direction.normalized*speed*Time.deltaTime);
 
             //bar reduce
-            playerData.stamina -= 1f;
+            //playerData.stamina -= 1f; //-momentálnì nefunguje
         }
-        else
-            playerData.stamina += 1f;
+        /*else
+            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;*/ //-momentálnì nefunguje
+
 
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
         if (Input.GetKey(KeyCode.Mouse1)== true)
@@ -90,7 +91,7 @@ public class Player_Controller : NetworkBehaviour
                 goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerData.health -= 20;
