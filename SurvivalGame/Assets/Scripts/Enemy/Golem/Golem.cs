@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.Netcode;
 
-public class Goblin : NetworkBehaviour
-{    
+public class Golem : NetworkBehaviour
+{
     Transform player; //Hlavní hráèská postava
     [SerializeField] int agroRange; //Range na hledání nepøátel
     //public GameObject serverPrefab;
@@ -33,7 +33,7 @@ public class Goblin : NetworkBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         health = maxHealth;
-        attackCooldown = attackAnimation.length;       
+        attackCooldown = attackAnimation.length;
     }
 
     // Update is called once per frame
@@ -42,25 +42,8 @@ public class Goblin : NetworkBehaviour
         player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
-        float distance = Vector3.Distance(transform.position, player.position); 
+        float distance = Vector3.Distance(transform.position, player.position);
 
-        //Hledání hráèské postavy
-        //Transform GetClosestPlayer(Transform[] player)
-        //{
-        //    Transform tMin = null;
-        //    float minDist = Mathf.Infinity;
-        //    Vector3 currentPos = transform.position;
-        //    foreach (Transform t in player)
-        //    {
-        //        float dist = Vector3.Distance(t.position, currentPos);
-        //        if (dist < minDist)
-        //        {
-        //            tMin = t;
-        //            minDist = dist;
-        //        }
-        //    }
-        //    return tMin;
-        //}
 
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
@@ -85,13 +68,13 @@ public class Goblin : NetworkBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("hit"); //Test jestli to funguje
+            //Debug.Log("hit"); //Test jestli to funguje
         }
     }
 
     void Attack()
     {
-        //transform.LookAt(player);
+        transform.LookAt(player);
         animator.SetTrigger("attack");
         lastAttack = Time.time;
 
@@ -100,11 +83,10 @@ public class Goblin : NetworkBehaviour
         foreach (Collider enemy in hitEnemies)
         {
 
-
             var playerHit = enemy.GetComponent<NetworkObject>();
             if (playerHit != null)
             {
-                Debug.Log("trefa"); //Test jestli to funguje
+                //Debug.Log("trefa"); //Test jestli to funguje
                 GoblinGivesDamageServerRpc();
             }
         }
@@ -128,6 +110,6 @@ public class Goblin : NetworkBehaviour
     [ClientRpc]
     private void PlayerReceivesDamageClientRpc()
     {
-        
+
     }
 }
