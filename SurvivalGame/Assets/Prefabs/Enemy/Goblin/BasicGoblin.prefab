@@ -2125,12 +2125,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6186835567203346409}
   - component: {fileID: 5933131140774198826}
-  - component: {fileID: 5933131140774198824}
   - component: {fileID: 5933131140774198825}
+  - component: {fileID: 5933131140774198824}
+  - component: {fileID: 4412953454350572891}
   - component: {fileID: 5933131140774198827}
   - component: {fileID: 4667512359457107701}
   - component: {fileID: -2410263832744806847}
-  - component: {fileID: 4412953454350572891}
   m_Layer: 0
   m_Name: BasicGoblin
   m_TagString: Untagged
@@ -2147,7 +2147,7 @@ Transform:
   m_GameObject: {fileID: 6816161235945930067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 11}
-  m_LocalScale: {x: 1.060531, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2985001968935876471}
@@ -2167,29 +2167,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
-  m_Height: 1.5
+  m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!95 &5933131140774198824
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6816161235945930067}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 138917d2f58c548408707d4082bf3772, type: 3}
-  m_Controller: {fileID: 9100000, guid: cd4c1646df9c07249b8197c862e8e4e1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!195 &5933131140774198825
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2212,6 +2192,42 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &5933131140774198824
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816161235945930067}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 138917d2f58c548408707d4082bf3772, type: 3}
+  m_Controller: {fileID: 9100000, guid: cd4c1646df9c07249b8197c862e8e4e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &4412953454350572891
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816161235945930067}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &5933131140774198827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,22 +2289,6 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!54 &4412953454350572891
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6816161235945930067}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &6816437372889171503
 GameObject:
   m_ObjectHideFlags: 0
