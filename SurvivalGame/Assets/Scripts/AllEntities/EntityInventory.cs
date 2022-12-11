@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class EntityInventory : NetworkBehaviour
+public class EntityInventory : MonoBehaviour
 {
     //Player Stats
     public float health = 100f;

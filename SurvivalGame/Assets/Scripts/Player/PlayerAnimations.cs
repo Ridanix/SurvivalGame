@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class PlayerAnimations : NetworkBehaviour
+
+public class PlayerAnimations : MonoBehaviour
 {
     Animator animator;
     string currentState;
@@ -22,7 +22,7 @@ public class PlayerAnimations : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsOwner) return;
+        
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
         float MoveY = Input.GetAxisRaw("Horizontal");
         float MoveX = Input.GetAxisRaw("Vertical");

@@ -39,7 +39,7 @@ public class Golem : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
+        player = GameObject.Find("PlayerPrefab").transform;
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position);

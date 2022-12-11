@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.Netcode;
 
-public class Goblin : NetworkBehaviour
+
+public class Goblin : MonoBehaviour
 {    
     Transform player; //Hlavní hráèská postava
     [SerializeField] int agroRange; //Range na hledání nepøátel
@@ -39,7 +39,7 @@ public class Goblin : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("PlayerStartingPrefab(Clone)").transform;
+        player = GameObject.Find("PlayerPrefab").transform;
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position); 
@@ -100,12 +100,8 @@ public class Goblin : NetworkBehaviour
         foreach (Collider enemy in hitEnemies)
         {
 
-            var playerHit = enemy.GetComponent<NetworkObject>();
-            if (playerHit != null)
-            {
-                //Debug.Log("trefa"); //Test jestli to funguje
-                GoblinGivesDamageServerRpc();
-            }
+            
+           
         }
     }
 
@@ -119,14 +115,5 @@ public class Goblin : NetworkBehaviour
         }
     }*/
 
-    [ServerRpc]
-    private void GoblinGivesDamageServerRpc()
-    {
-        PlayerReceivesDamageClientRpc();
-    }
-    [ClientRpc]
-    private void PlayerReceivesDamageClientRpc()
-    {
-        
-    }
+  
 }

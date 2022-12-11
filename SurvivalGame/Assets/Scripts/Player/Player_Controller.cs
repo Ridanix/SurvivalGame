@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
-using UnityEngine.Networking;
 
-public class Player_Controller : NetworkBehaviour
+
+public class Player_Controller : MonoBehaviour
 {
     //MOVEMENT
     [SerializeField] CharacterController controller;
@@ -30,12 +29,12 @@ public class Player_Controller : NetworkBehaviour
 
     private void Start()
     {
-        playerCamera.gameObject.SetActive(IsOwner);
+        
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
-        if (!IsOwner) return;
+        
 
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
@@ -76,8 +75,9 @@ public class Player_Controller : NetworkBehaviour
         {
             playerData.currentObject = playerData.slots[1].transform;
             
-            SpawnHealthParticleServerRpc();
-            UsedSmallPotionServerRpc();
+            
+            playerData.health += 50;
+            Instantiate(healingParticlePrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -87,7 +87,7 @@ public class Player_Controller : NetworkBehaviour
             foreach (Collider enemy in hitEnemies)
             {
                 Debug.Log("Hr·Ëtrefa");
-                KillGoblinTestServerRpc();
+                
                 goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
@@ -98,32 +98,6 @@ public class Player_Controller : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
-    private void SpawnHealthParticleServerRpc()
-    {
-        SpawnHealthParticleClientRpc();
-    }
-
-    [ServerRpc]
-    private void UsedSmallPotionServerRpc()
-    {
-        UsedSmallPotionClientRpc();
-    }
-    [ServerRpc]
-    private void KillGoblinTestServerRpc()
-    {
-        Destroy(goblinGameObject);
-    }
-    [ClientRpc]
-    private void SpawnHealthParticleClientRpc()
-    {
-        Instantiate(healingParticlePrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
-    }
-
-    [ClientRpc]
-    public void UsedSmallPotionClientRpc()
-    {
-        playerData.health += 50;
-    }
+  
 
 }
