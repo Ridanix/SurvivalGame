@@ -11,6 +11,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private GameObject healingParticlePrefab;
     [SerializeField] Transform attackPoint;
     float attackRange = 0.6f;
+    public bool disabled = false;
     [SerializeField] LayerMask enemyLayers;
     GameObject goblinGameObject;
 
@@ -42,7 +43,7 @@ public class Player_Controller : MonoBehaviour
         Vector3 direction = new Vector3(moveX, 0, moveZ).normalized;
 
         //If gets any input, moves and rotates
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && disabled == false)
         {
             //rotates
             float target_angle = Mathf.Atan2(direction.x, direction.z)* Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
@@ -61,7 +62,7 @@ public class Player_Controller : MonoBehaviour
 
 
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
-        if (Input.GetKey(KeyCode.Mouse1)== true)
+        if (Input.GetKey(KeyCode.Mouse1)== true && disabled == false)
         {
             mainCamera.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
