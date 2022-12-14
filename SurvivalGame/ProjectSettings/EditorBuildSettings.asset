@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: be5a33f4ffa2bf44db5892cfaa2334c8
+  - enabled: 1
     path: Assets/Scenes/Fazolka.unity
     guid: 3dd7667c7bcbd0242a6360f2a981bcc2
   m_configObjects: {}

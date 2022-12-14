@@ -1,23 +1,47 @@
 fileFormatVersion: 2
-guid: e42ccb0a8c7da104f94155b34c94de16
+guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -4129939779339359293
-    second: GolemIdle
+      74: 6578231272443540608
+    second: Golem|GolemDeath
   - first:
-      74: -4738276853957992085
-    second: GolemSmash
+      74: 948807276998956238
+    second: Golem||GolemIdle
   - first:
-      74: 4052532112960687062
-    second: GolemWalking
+      74: 7247959309433570918
+    second: Golem|GolemSmash
   - first:
-      74: 7558710599263407589
-    second: GolemThrow
+      74: -8593065245080242498
+    second: Golem|GolemThrow
   - first:
-      74: 2320742130700960579
-    second: GolemDeath
+      74: 7790674636730228032
+    second: Golem|GolemWalking
+  - first:
+      74: -7510260710544092367
+    second: Golem|GolemGorillaWalking
+  - first:
+      74: -328825710913933514
+    second: Golem|GolemGorillaWalking.001
+  - first:
+      74: -6513736643567585694
+    second: Golem|Golem|GolemDeath
+  - first:
+      74: -1283627984242948234
+    second: Golem|Golem|GolemIdle
+  - first:
+      74: 4918632755915437525
+    second: Golem|Golem|GolemSmash
+  - first:
+      74: 553008189211895531
+    second: Golem|Golem|GolemThrow
+  - first:
+      74: -3224975234834452601
+    second: Golem|Golem|GolemWalking
+  - first:
+      74: 6200319545535767948
+    second: Golem|GolemIdle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -48,8 +72,37 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: GolemIdle
-      takeName: GolemIdle
+      name: Golem|GolemDeath
+      takeName: Golem|Golem.001|GolemDeath
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Golem|GolemIdle
+      takeName: Golem|Golem.001|GolemIdle
       internalID: 0
       firstFrame: 0
       lastFrame: 288
@@ -77,8 +130,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: GolemSmash
-      takeName: GolemSmash
+      name: Golem|GolemSmash
+      takeName: Golem|Golem.001|GolemSmash
       internalID: 0
       firstFrame: 0
       lastFrame: 109
@@ -106,37 +159,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: GolemWalking
-      takeName: GolemWalking
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 79
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: GolemThrow
-      takeName: GolemThrow
+      name: Golem|GolemThrow
+      takeName: Golem|Golem.001|GolemThrow
       internalID: 0
       firstFrame: 0
       lastFrame: 248
@@ -164,18 +188,47 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: GolemDeath
-      takeName: GolemDeath
+      name: Golem|GolemWalking
+      takeName: Golem|Golem.001|GolemWalking
       internalID: 0
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Golem|GolemGorillaWalking
+      takeName: Golem|GolemGorillaWalking
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

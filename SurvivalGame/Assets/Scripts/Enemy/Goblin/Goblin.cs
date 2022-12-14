@@ -7,13 +7,9 @@ using UnityEngine.AI;
 public class Goblin : MonoBehaviour
 {    
     Transform player; //Hlavní hráèská postava
-    [SerializeField] int agroRange; //Range na hledání nepøátel
+    [SerializeField] float agroRange; //Range na hledání nepøátel
     //public GameObject serverPrefab;
     //public GameObject playerPf;
-
-    //Health
-    [SerializeField] float maxHealth;
-    float health;
 
     //Attack
     [SerializeField] AnimationClip attackAnimation;
@@ -32,14 +28,14 @@ public class Goblin : MonoBehaviour
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        health = maxHealth;
-        attackCooldown = attackAnimation.length;       
+        
+        attackCooldown = attackAnimation.length;
+        player = GameObject.Find("PlayerPrefab").transform;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        player = GameObject.Find("PlayerPrefab").transform;
+    {        
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position); 
@@ -91,7 +87,7 @@ public class Goblin : MonoBehaviour
 
     void Attack()
     {
-        //transform.LookAt(player);
+        transform.LookAt(player);
         animator.SetTrigger("attack");
         lastAttack = Time.time;
 
@@ -105,15 +101,7 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    //možný pozdìjší health
-    /*void TakeDamage(float amount)
-    {
-        health -= amount;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }*/
+
 
   
 }

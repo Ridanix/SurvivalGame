@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -27,6 +27,9 @@ public class Player_Controller : MonoBehaviour
 
     //HEALTH
     [SerializeField] Player_Data playerData;
+
+    //ATTACK
+    [SerializeField] float attackDmg;
 
     private void Start()
     {
@@ -82,14 +85,22 @@ public class Player_Controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            /*Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit);
+            transform.LookAt(hit.point);
+            transform.Rotate(0,0,0);*/
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
             foreach (Collider enemy in hitEnemies)
             {
-                Debug.Log("Hráètrefa");
-                
-                goblinGameObject = GameObject.Find("BasicGoblin");
+                //Debug.Log("Hráètrefa");
+                if (hitEnemies.Length > 0)
+                {
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
+
+                }
+                //goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
         
@@ -97,6 +108,12 @@ public class Player_Controller : MonoBehaviour
         {
             playerData.health -= 20;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {          
+            SceneManager.LoadScene("MainMenu");
+        }
+
     }
 
   

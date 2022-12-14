@@ -48,7 +48,8 @@ MonoBehaviour:
   controller: {fileID: 6297836381408633214}
   speed: 5
   healingParticlePrefab: {fileID: 4364089344494313087, guid: 5c6ac07f78cc8004b83cec0392eb7cab, type: 3}
-  attackPoint: {fileID: 1175249149392896218}
+  attackPoint: {fileID: 5624429293542831671}
+  disabled: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -57,6 +58,7 @@ MonoBehaviour:
   playerModel: {fileID: 161253107125550747}
   mainCamera: {fileID: 7199747644870168616}
   playerData: {fileID: 1272567868024724427}
+  attackDmg: 20
 --- !u!1 &249020383620959072
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +224,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1241107333679493667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5624429293542831671}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5624429293542831671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241107333679493667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5535588371233806437}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2738759309017678988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1116,7 @@ Transform:
   - {fileID: 853321873333618579}
   - {fileID: 2668167583608692982}
   - {fileID: 8245343803377750745}
+  - {fileID: 5624429293542831671}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1974,11 +2008,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7343aac2e3243f4bb8ef0be4e43f7b7, type: 3}
---- !u!4 &1175249149392896218 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e7343aac2e3243f4bb8ef0be4e43f7b7, type: 3}
-  m_PrefabInstance: {fileID: 1713034316828223281}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8500077496318738180
 PrefabInstance:
   m_ObjectHideFlags: 0

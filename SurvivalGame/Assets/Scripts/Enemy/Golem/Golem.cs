@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.Netcode;
 
-public class Golem : NetworkBehaviour
+public class Golem : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
-    [SerializeField] int agroRange; //Range na hledání nepøátel
-    //public GameObject serverPrefab;
-    //public GameObject playerPf;
+    [SerializeField] float agroRange; //Range na hledání nepøátel
 
     //Health
     [SerializeField] float maxHealth;
@@ -83,12 +80,11 @@ public class Golem : NetworkBehaviour
         foreach (Collider enemy in hitEnemies)
         {
 
-            var playerHit = enemy.GetComponent<NetworkObject>();
+            /*var playerHit = enemy.GetComponent<NetworkObject>();
             if (playerHit != null)
             {
                 //Debug.Log("trefa"); //Test jestli to funguje
-                GoblinGivesDamageServerRpc();
-            }
+            }*/
         }
     }
 
@@ -101,15 +97,4 @@ public class Golem : NetworkBehaviour
             Destroy(gameObject);
         }
     }*/
-
-    [ServerRpc]
-    private void GoblinGivesDamageServerRpc()
-    {
-        PlayerReceivesDamageClientRpc();
-    }
-    [ClientRpc]
-    private void PlayerReceivesDamageClientRpc()
-    {
-
-    }
 }
