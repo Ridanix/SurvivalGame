@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class Player_Data : EntityInventory
 {
+    public PlayerHealthBar playerHealthBar;
     public Slider healthBar;
     public Slider staminaBar;
     [SerializeField]
+    
     
     
 
     private void Awake()
     {
         currentObject = slots[0].transform;
-        health = maxHealth;
+        health = 100;
         stamina = maxStamina;
         healthBar.maxValue = maxHealth;
         staminaBar.maxValue = maxStamina;
@@ -26,7 +28,7 @@ public class Player_Data : EntityInventory
        
         healthBar.value = health;
         staminaBar.value = stamina;
-        CheckStats();
+       
         chosenItemFrame.transform.position = currentObject.transform.position;
 
        

@@ -18,6 +18,7 @@ public class Golem : MonoBehaviour
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
     float attackRange = 0.6f;
+    float attackDamage = 20f;
     [SerializeField] LayerMask enemyLayers;
 
     //Components
@@ -77,14 +78,16 @@ public class Golem : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
-        foreach (Collider enemy in hitEnemies)
+        foreach (Collider player in hitEnemies)
         {
 
-            /*var playerHit = enemy.GetComponent<NetworkObject>();
-            if (playerHit != null)
+
+            if (hitEnemies.Length > 0)
             {
-                //Debug.Log("trefa"); //Test jestli to funguje
-            }*/
+                player.GetComponent<Player_Data>().TakeDamage(attackDamage);
+                Debug.Log("Trefa");
+
+            }
         }
     }
 

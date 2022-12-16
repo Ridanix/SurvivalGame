@@ -24,7 +24,7 @@ public class PlayerTeleport : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (playerTestTeleported == 0)
         {
-            gameObject.transform.position = new Vector3(0f, 1.5f, 0f);
+            gameObject.transform.position = new Vector3(0f, 1f, 0f);
             
         }
         if (playerTestTeleported == 1)

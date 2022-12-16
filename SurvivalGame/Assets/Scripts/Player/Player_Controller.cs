@@ -103,10 +103,11 @@ public class Player_Controller : MonoBehaviour
                 //goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerData.health -= 20;
+            playerData.health = playerData.health -  20;
+            Debug.Log("-HP");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
