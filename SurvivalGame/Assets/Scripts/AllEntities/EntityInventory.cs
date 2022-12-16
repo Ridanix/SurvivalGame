@@ -11,11 +11,6 @@ public class EntityInventory : MonoBehaviour
     public float stamina = 100f;
     public float maxStamina = 100f;
 
-    //Chosen Item
-    public Transform currentObject;
-    public GameObject[] slots;
-    public GameObject chosenItemFrame;
-
     public void CheckStats()
     {
         if (stamina > maxStamina)
@@ -28,9 +23,8 @@ public class EntityInventory : MonoBehaviour
         //Die From cringe
     }
 
-    //Možný pozdìjší health
-    /*public void TakeDamage(float value)
+    public void TakeDamage(float value)
     {
         health -= value;
-    }*/
+    }
 }

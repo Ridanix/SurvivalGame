@@ -379,6 +379,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 907416067568021858, guid: 41118ebc5eb53ba40af53565629552eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 941878349496388079, guid: 41118ebc5eb53ba40af53565629552eb, type: 3}
       propertyPath: m_Name
       value: InventoryEquipment2
@@ -2762,6 +2766,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318008504}
   m_CullTransparentMesh: 1
+--- !u!1 &456395604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 456395606}
+  - component: {fileID: 456395605}
+  m_Layer: 0
+  m_Name: ItemSprites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &456395605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456395604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b76088a662a7e6448b6f67470f1274e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfItemWorld: {fileID: 581526471}
+  gladiusSprite: {fileID: 21300000, guid: dccc2bd612c4e8a45ad86990908e1328, type: 3}
+  healthPotionSprite: {fileID: 21300000, guid: 11b9cb6ddb35ec14598be8f03601cdf7, type: 3}
+--- !u!4 &456395606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456395604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1265.0261, y: 607.3665, z: -0.1336759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &509597987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2905,6 +2956,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &581526471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ddabd8c874fb7f143b73d4840bc98bfe, type: 3}
+  m_PrefabInstance: {fileID: 88444511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &638505258
 GameObject:
   m_ObjectHideFlags: 0

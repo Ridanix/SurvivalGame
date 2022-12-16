@@ -31,15 +31,21 @@ public class Player_Controller : MonoBehaviour
     //ATTACK
     [SerializeField] float attackDmg;
 
-    private void Start()
+    //INVENTORY
+    private InventoryScript inventory;
+    [SerializeField] InventoryUIScript inventoryUI;
+
+    private void Awake()
     {
-        
+        inventory = new InventoryScript();
+        inventoryUI.SetInventory(inventory);
+
+        ItemWorld.SpawnItemWorld(new Vector3(20, -20), new ItemScript { itemType = ItemScript.ItemType.Gladius, amount = 1 });
+        ItemWorld.SpawnItemWorld(new Vector3(20, 20), new ItemScript { itemType = ItemScript.ItemType.HealthPotion, amount = 1 });
     }
 
     public void Update()
     {
-        
-
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
         float moveZ = Input.GetAxis("Vertical") * speed;
@@ -70,19 +76,6 @@ public class Player_Controller : MonoBehaviour
             mainCamera.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            playerData.currentObject = playerData.slots[0].transform;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            playerData.currentObject = playerData.slots[1].transform;
-            
-            
-            playerData.health += 50;
-            Instantiate(healingParticlePrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
-        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             /*Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
