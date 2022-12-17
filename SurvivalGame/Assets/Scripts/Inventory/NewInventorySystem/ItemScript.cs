@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class ItemScript
 {
     public enum ItemType
@@ -21,10 +23,23 @@ public class ItemScript
         switch (itemType)
         {
             default:
-            case ItemType.Gladius: return ItemSprites.Instance.gladiusSprite;
             case ItemType.HealthPotion: return ItemSprites.Instance.healthPotionSprite;
+            case ItemType.Gladius:      return ItemSprites.Instance.gladiusSprite;
+        }
+    }
+
+
+    public bool IsStackable()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.Gladius:
+            case ItemType.HealthPotion:
+                return true;
         }
 
     }
 
 }
+

@@ -15,4 +15,6 @@ public class ItemSprites : MonoBehaviour
 
     public Sprite gladiusSprite;
     public Sprite healthPotionSprite;
+
+
 }

@@ -39,9 +39,16 @@ public class Player_Controller : MonoBehaviour
     {
         inventory = new InventoryScript();
         inventoryUI.SetInventory(inventory);
+    }
 
-        ItemWorld.SpawnItemWorld(new Vector3(20, -20), new ItemScript { itemType = ItemScript.ItemType.Gladius, amount = 1 });
-        ItemWorld.SpawnItemWorld(new Vector3(20, 20), new ItemScript { itemType = ItemScript.ItemType.HealthPotion, amount = 1 });
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
     }
 
     public void Update()
