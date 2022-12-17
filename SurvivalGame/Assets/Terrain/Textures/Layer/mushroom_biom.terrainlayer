@@ -6,17 +6,17 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass
+  m_Name: mushroom_biom
   m_DiffuseTexture: {fileID: 2800000, guid: 9a0b2ff4ac367cb479855ace473f3fa5, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
-  m_Specular: {r: 0.08999477, g: 0.3301887, b: 0.060742266, a: 0}
+  m_Specular: {r: 0.4245283, g: 0.062077247, b: 0.36029494, a: 0}
   m_Metallic: 0
   m_Smoothness: 0
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_DiffuseRemapMax: {x: 0.16078432, y: 0.1764706, z: 0.011764707, w: 1}
+  m_DiffuseRemapMax: {x: 0.2830189, y: 0.057404775, z: 0.1984136, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}

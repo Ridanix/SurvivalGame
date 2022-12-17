@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5918594602399491679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4810449061543193955}
+  - component: {fileID: 657093453699013217}
+  m_Layer: 0
+  m_Name: rock_snow1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4810449061543193955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5918594602399491679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 408445446065866888}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &657093453699013217
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5918594602399491679}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.17161655, y: 0.36944318, z: -0.5604944}
+  m_Size: 7.7890863
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1576323798943020007}
+  m_Enabled: 1
+--- !u!1001 &153596849756614499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4810449061543193955}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 170.01808
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5362203
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7765492
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.21503901
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.25139084
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7dfe3e625db4f44ebd99797a5871d85, type: 2}
+    - target: {fileID: 919132149155446097, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+      propertyPath: m_Name
+      value: rock_snow1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+--- !u!4 &408445446065866888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+  m_PrefabInstance: {fileID: 153596849756614499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1576323798943020007 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 18060b1396ae5f041a6703d8a136bfe3, type: 3}
+  m_PrefabInstance: {fileID: 153596849756614499}
+  m_PrefabAsset: {fileID: 0}
