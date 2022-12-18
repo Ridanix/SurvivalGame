@@ -6,9 +6,9 @@ public class ItemWorldSpawner : MonoBehaviour
 {
     public ItemScript item;
 
-    private void Awake()
-    {
-        ItemWorld.SpawnItemWorld(transform.position, item);
-        Destroy(gameObject);
-    }
+    //private void Awake()
+    //{
+    //    ItemWorld.SpawnItemWorld(transform.position, item);
+    //    Destroy(gameObject);
+    //}
 }

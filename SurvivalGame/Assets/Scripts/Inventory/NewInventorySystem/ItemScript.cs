@@ -10,7 +10,8 @@ public class ItemScript
     {
         HealthPotion,
         Gladius,
-        Staf,
+        LumberAxe,
+        Staff,
         Bow,
         Coin
     }
@@ -24,7 +25,7 @@ public class ItemScript
         {
             default:
             case ItemType.HealthPotion: return ItemSprites.Instance.healthPotionSprite;
-            case ItemType.Gladius:      return ItemSprites.Instance.gladiusSprite;
+            case ItemType.Gladius: return ItemSprites.Instance.gladiusSprite;
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -32,27 +33,30 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float attackDmg;
 
     //INVENTORY
-    private InventoryScript inventory;
-    [SerializeField] InventoryUIScript inventoryUI;
+    //private InventoryScript inventory;
+    //[SerializeField] InventoryUIScript inventoryUI;
 
-    private void Awake()
+   
+    private void Start()
     {
-        inventory = new InventoryScript();
-        inventoryUI.SetInventory(inventory);
+        //inventory = new InventoryScript();
+        //inventoryUI.SetInventory(inventory);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
-        if(itemWorld != null)
-        {
-            inventory.AddItem(itemWorld.GetItem());
-            itemWorld.DestroySelf();
-        }
+        //ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+        //if(itemWorld != null)
+        //{
+        //    inventory.AddItem(itemWorld.GetItem());
+        //    itemWorld.DestroySelf();
+        //}
     }
 
     public void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+       
         //geting input
         float moveX = Input.GetAxis("Horizontal") * speed;
         float moveZ = Input.GetAxis("Vertical") * speed;
@@ -104,11 +108,7 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerData.health = playerData.health -  20;
-            Debug.Log("-HP");
-        }
+       
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {          
