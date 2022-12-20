@@ -8,6 +8,8 @@ public class InventoryUIScript : MonoBehaviour
     public GameObject inventoryUIGameObject;
     Inventory inventory;
     InventorySlotScript[] slots;
+    
+
     void Start()
     {
         inventory = Inventory.instance;

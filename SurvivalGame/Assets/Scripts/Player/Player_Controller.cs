@@ -55,11 +55,13 @@ public class Player_Controller : MonoBehaviour
 
     public void Update()
     {
+        playerData.CheckStats();
+
         if (EventSystem.current.IsPointerOverGameObject()) return;
-       
+        
         //geting input
-        float moveX = Input.GetAxis("Horizontal") * speed;
-        float moveZ = Input.GetAxis("Vertical") * speed;
+        float moveX = Input.GetAxisRaw("Horizontal") * speed;
+        float moveZ = Input.GetAxisRaw("Vertical") * speed;
         Vector3 direction = new Vector3(moveX, 0, moveZ).normalized;
 
         //If gets any input, moves and rotates
@@ -75,12 +77,13 @@ public class Player_Controller : MonoBehaviour
             controller.Move(move_direction.normalized*speed*Time.deltaTime);
 
             //bar reduce
-            //playerData.stamina -= 1f; //-momentálnì nefunguje
+            playerData.stamina -= 0.5f; //-momentálnì nefunguje
         }
-        /*else
-            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;*/ //-momentálnì nefunguje
-
-
+        else
+        {
+            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 0.5f;
+        }
+             
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
         if (Input.GetKey(KeyCode.Mouse1)== true && disabled == false)
         {
@@ -107,8 +110,6 @@ public class Player_Controller : MonoBehaviour
                 //goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
-
-       
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {          
