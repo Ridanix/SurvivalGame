@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallback != null) onItemChangedCallback.Invoke(); 
         return true;
     }
+
     public void RemoveItem(ScriptableItem item)
     {
         itemList.Remove(item);

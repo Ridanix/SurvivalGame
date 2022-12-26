@@ -15,4 +15,4 @@ public class ScriptableEquipment : ScriptableItem
         RemoveItemFromInventory();
     }
 }
-public enum EquipmentSlot { Head, Chest, Legs, Feet,  Weapon}
+public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}

@@ -10,7 +10,7 @@ public class EquipmentManager : MonoBehaviour
         instance = this;
     }
 
-    ScriptableEquipment[] currentEquipment;
+    public ScriptableEquipment[] currentEquipment;
 
     Inventory inventory;
 
@@ -59,6 +59,7 @@ public class EquipmentManager : MonoBehaviour
 
        
     }
+
     public void UnequipAllItems()
     {
         for (int i = 0; i < currentEquipment.Length; i++)
@@ -66,6 +67,7 @@ public class EquipmentManager : MonoBehaviour
             UnequipItem(i);
         }
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U)) UnequipAllItems();

@@ -8,6 +8,7 @@ public class InventorySlotScript : MonoBehaviour
     public Image icon;
     ScriptableItem item;
     public Button removeButton;
+    
     public void AddItem(ScriptableItem newItem)
     {
         item = newItem;
@@ -16,6 +17,7 @@ public class InventorySlotScript : MonoBehaviour
         icon.enabled = true;
         removeButton.interactable = true;
     }
+    
     public void ClearSlot()
     {
         item = null;
