@@ -62,6 +62,7 @@ public class Golem : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -84,7 +85,7 @@ public class Golem : MonoBehaviour
 
             if (hitEnemies.Length > 0)
             {
-                player.GetComponent<Player_Data>().TakeDamage(attackDamage);
+                player.GetComponent<Player_Data>().HealOrDamage(attackDamage*(-1));
                 Debug.Log("Trefa");
 
             }

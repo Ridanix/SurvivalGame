@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Player_Data : EntityInventory
 {
-    public PlayerHealthBar playerHealthBar;
-    public Slider healthBar;
-    public Slider staminaBar;
+    //public PlayerHealthBar playerHealthBar;
+    public Slider[] healthBars;
+    public Slider[] staminaBars;
     public GameObject spathaGameObject;
     public GameObject lumberAxeGameObject;
 
@@ -22,9 +22,9 @@ public class Player_Data : EntityInventory
     {
         health = 100;
         stamina = maxStamina;
-        healthBar.maxValue = maxHealth;
-        staminaBar.maxValue = maxStamina;
+        SetBars();
     }
+
     void OnEquipmentChanged(ScriptableEquipment newItem, ScriptableEquipment oldItem)
     {
         if (newItem != null)
@@ -53,10 +53,39 @@ public class Player_Data : EntityInventory
             lumberAxeGameObject.SetActive(false);
         }
     }
+
+    public void UpateBars()
+    {
+        foreach(Slider s in healthBars)
+        {
+            if (s != null)
+                s.value = health;
+        }
+        foreach (Slider s in staminaBars)
+        {
+            if (s != null)
+                s.value = stamina;
+        }
+    }
+
+    public void SetBars()
+    {
+        foreach (Slider s in healthBars)
+        {
+            if(s != null)
+                s.maxValue = maxHealth;
+        }
+        foreach (Slider s in staminaBars)
+        {
+            if (s != null)
+                s.maxValue = maxStamina;
+        }
+    }
+
     private void Update()
     {
-        healthBar.value = health;
-        staminaBar.value = stamina;
+        CheckStats();
+        UpateBars();
     }
 
 

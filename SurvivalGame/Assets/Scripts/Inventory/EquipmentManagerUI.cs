@@ -7,7 +7,7 @@ public class EquipmentManagerUI : MonoBehaviour
 {
     public List<Image> imagesToUpdate = new List<Image>();
     
-    public List<Image> placeholders = new List<Image>();
+    public List<Sprite> placeholders = new List<Sprite>();
 
 
     void Update()
@@ -15,22 +15,26 @@ public class EquipmentManagerUI : MonoBehaviour
         UpdateSprites();
     }
 
+    public void Awake()
+    {
+        for (int i = 0; i < System.Enum.GetNames(typeof(EquipmentSlot)).Length; i++)
+        {
+            imagesToUpdate[i].sprite = placeholders[i];
+        }
+    }
+
     public void UpdateSprites()
     {
         for (int i = 0; i < System.Enum.GetNames(typeof(EquipmentSlot)).Length; i++)
         {
-            if (EquipmentManager.instance.currentEquipment[i] == null)
+            if (EquipmentManager.instance.currentEquipment[i] != null)
             {
-                imagesToUpdate[i].sprite = null;
-                imagesToUpdate[i].gameObject.SetActive(false);
-                continue;
+                imagesToUpdate[i].sprite = EquipmentManager.instance.currentEquipment[i].icon;
             }
-            else
+            else if (EquipmentManager.instance.currentEquipment[i] == null)
             {
-                imagesToUpdate[i].gameObject.SetActive(true);
+                imagesToUpdate[i].sprite = placeholders[i];
             }
-            imagesToUpdate[i].sprite = EquipmentManager.instance.currentEquipment[i].icon;
-
         }
     }
 }

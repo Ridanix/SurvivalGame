@@ -55,7 +55,6 @@ public class Player_Controller : MonoBehaviour
 
     public void Update()
     {
-        playerData.CheckStats();
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
         
@@ -77,7 +76,7 @@ public class Player_Controller : MonoBehaviour
             controller.Move(move_direction.normalized*speed*Time.deltaTime);
 
             //bar reduce
-            playerData.stamina -= 0.5f; //-momentálnì nefunguje
+            playerData.stamina -= 0.5f;
         }
         else
         {

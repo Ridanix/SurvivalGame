@@ -23,8 +23,8 @@ public class EntityInventory : MonoBehaviour
         //Die From cringe
     }
 
-    public void TakeDamage(float value)
+    public void HealOrDamage(float value)
     {
-        health -= value;
+        health += value;
     }
 }
