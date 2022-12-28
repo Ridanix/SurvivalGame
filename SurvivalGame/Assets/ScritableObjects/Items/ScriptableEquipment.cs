@@ -6,6 +6,7 @@ using UnityEngine;
 public class ScriptableEquipment : ScriptableItem
 {
     public int damageModifier;
+    public EquipmentSlot equip;
 
     public override void UseItem()
     {
@@ -14,3 +15,4 @@ public class ScriptableEquipment : ScriptableItem
         RemoveItemFromInventory();
     }
 }
+public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}

@@ -9,6 +9,7 @@ public class EquipmentManagerUI : MonoBehaviour
     
     public List<Sprite> placeholders = new List<Sprite>();
 
+    public Image inHand;
 
     void Update()
     {
@@ -36,5 +37,10 @@ public class EquipmentManagerUI : MonoBehaviour
                 imagesToUpdate[i].sprite = placeholders[i];
             }
         }
+
+        if(EquipmentManager.instance.currentEquipment[4] != null)
+            inHand.sprite = EquipmentManager.instance.currentEquipment[4].icon;
+        else
+            inHand.sprite = placeholders[4];
     }
 }

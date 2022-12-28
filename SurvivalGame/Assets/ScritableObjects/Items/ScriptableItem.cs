@@ -8,7 +8,6 @@ public class ScriptableItem : ScriptableObject
     public string description;
     public string stats;
 
-    public EquipmentSlot equip;
     public Player_Data playerWhoUse;
 
     public virtual void UseItem()
@@ -22,4 +21,4 @@ public class ScriptableItem : ScriptableObject
     }
 
 }
-public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon, Artifact, HealthPotionSlot, ManaPotionSlot }
+

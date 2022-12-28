@@ -55,9 +55,15 @@ public class Player_Controller : MonoBehaviour
 
     public void Update()
     {
-
+        //???
         if (EventSystem.current.IsPointerOverGameObject()) return;
-        
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            playerData.HealOrDamage(-60);
+        }
+            
+
         //geting input
         float moveX = Input.GetAxisRaw("Horizontal") * speed;
         float moveZ = Input.GetAxisRaw("Vertical") * speed;

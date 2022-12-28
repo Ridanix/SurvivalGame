@@ -33,7 +33,8 @@ public class EntityInventory : MonoBehaviour
         }
         if (health > maxHealth)
             health = maxHealth;
-        //else if (health < 0)
+        else if (health < 0)
+            health = 0;
         //Die From cringe
     }
 

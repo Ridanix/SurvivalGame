@@ -9,6 +9,12 @@ public class ScriptablePotions : ScriptableItem
     public int healthModifier;
     public int manaModifier;
 
+    public override void UseItem()
+    {
+        base.UseItem();
+        DrinkPotion();
+    }
+
     public void DrinkPotion()
     {
         playerWhoUse.ManaManipulaton(manaModifier);
