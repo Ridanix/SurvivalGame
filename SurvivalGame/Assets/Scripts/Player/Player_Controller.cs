@@ -76,11 +76,11 @@ public class Player_Controller : MonoBehaviour
             controller.Move(move_direction.normalized*speed*Time.deltaTime);
 
             //bar reduce
-            playerData.stamina -= 0.5f;
+            playerData.stamina -= 1f;
         }
         else
         {
-            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 0.5f;
+            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;
         }
              
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part

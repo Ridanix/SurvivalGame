@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class Player_Data : EntityInventory
 {
     //public PlayerHealthBar playerHealthBar;
+    
+    //Stats References
     public Slider[] healthBars;
+    public TMP_Text[] healthTexts;
+
     public Slider[] staminaBars;
+    public TMP_Text[] staminaTexts;
+
+    public Slider[] manaBars;
+    public TMP_Text[] manaTexts;
+
+    //Items
     public GameObject spathaGameObject;
     public GameObject lumberAxeGameObject;
 
@@ -17,10 +27,9 @@ public class Player_Data : EntityInventory
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 
-    
     private void Awake()
     {
-        health = 100;
+        health = maxHealth;
         stamina = maxStamina;
         SetBars();
     }
@@ -56,15 +65,32 @@ public class Player_Data : EntityInventory
 
     public void UpateBars()
     {
-        foreach(Slider s in healthBars)
+        for (int s = 0; s < healthBars.Length; s++)
         {
-            if (s != null)
-                s.value = health;
+            if (healthBars[s] != null)
+            {
+                healthBars[s].value = health;
+                if (healthTexts[s] != null)
+                    healthTexts[s].text = $"{health}";
+            }
         }
-        foreach (Slider s in staminaBars)
+        for (int s = 0; s < staminaBars.Length; s++)
         {
-            if (s != null)
-                s.value = stamina;
+            if (staminaBars[s] != null)
+            {
+                staminaBars[s].value = stamina;
+                if (staminaTexts[s] != null)
+                    staminaTexts[s].text = $"{stamina}";
+            }
+        }
+        for (int s = 0; s < manaBars.Length; s++)
+        {
+            if (manaBars[s] != null)
+            {
+                manaBars[s].value = mana;
+                if (manaTexts[s] != null)
+                    manaTexts[s].text = $"{mana}";
+            }
         }
     }
 
@@ -79,6 +105,11 @@ public class Player_Data : EntityInventory
         {
             if (s != null)
                 s.maxValue = maxStamina;
+        }
+        foreach (Slider s in manaBars)
+        {
+            if (s != null)
+                s.maxValue = maxMana;
         }
     }
 

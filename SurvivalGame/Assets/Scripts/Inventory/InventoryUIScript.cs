@@ -9,14 +9,12 @@ public class InventoryUIScript : MonoBehaviour
     Inventory inventory;
     InventorySlotScript[] slots;
     
-
     void Start()
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
         slots = itemsParent.GetComponentsInChildren<InventorySlotScript>();
     }
-
 
     void Update()
     {
@@ -25,6 +23,7 @@ public class InventoryUIScript : MonoBehaviour
             inventoryUIGameObject.SetActive(!inventoryUIGameObject.activeSelf);
         }
     }
+    
     void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)

@@ -11,6 +11,7 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             PickUp();
+            item.playerWhoUse = pickUpCollision.gameObject.GetComponent<Player_Data>();
         }
     }
     void PickUp()

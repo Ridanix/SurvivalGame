@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InventorySlotScript : MonoBehaviour
 {
     public Image icon;
-    ScriptableItem item;
+    public ScriptableItem item;
     public Button removeButton;
     
     public void AddItem(ScriptableItem newItem)

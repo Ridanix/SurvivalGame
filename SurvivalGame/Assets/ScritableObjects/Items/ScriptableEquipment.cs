@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class ScriptableEquipment : ScriptableItem
 {
-    public EquipmentSlot equip;
     public int damageModifier;
 
     public override void UseItem()
@@ -15,4 +14,3 @@ public class ScriptableEquipment : ScriptableItem
         RemoveItemFromInventory();
     }
 }
-public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}
