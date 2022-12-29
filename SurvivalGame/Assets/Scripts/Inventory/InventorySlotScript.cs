@@ -8,7 +8,8 @@ public class InventorySlotScript : MonoBehaviour
     public Image icon;
     public ScriptableItem item;
     public Button removeButton;
-    
+    public Button toHotbarButton;
+
     public void AddItem(ScriptableItem newItem)
     {
         item = newItem;
@@ -16,6 +17,7 @@ public class InventorySlotScript : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
+        toHotbarButton.interactable = true;
     }
     
     public void ClearSlot()
@@ -24,6 +26,7 @@ public class InventorySlotScript : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
         removeButton.interactable = false;
+        toHotbarButton.interactable = false;
     }
 
     public void OnRemoveButton()
@@ -33,7 +36,12 @@ public class InventorySlotScript : MonoBehaviour
 
     public void UseItem()
     {
-        if (item != null) item.UseItem();
-        
+        if (item != null) item.UseItem("Inventory");
+    }
+
+    //NEW
+    public void OnSwitchButton()
+    {
+        Inventory.instance.InventoryToHotbar(item);
     }
 }

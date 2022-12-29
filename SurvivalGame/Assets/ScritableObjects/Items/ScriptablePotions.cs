@@ -9,9 +9,9 @@ public class ScriptablePotions : ScriptableItem
     public int healthModifier;
     public int manaModifier;
 
-    public override void UseItem()
+    public override void UseItem(string whereFromDoYouUseIt)
     {
-        base.UseItem();
+        base.UseItem(whereFromDoYouUseIt);
         DrinkPotion();
     }
 

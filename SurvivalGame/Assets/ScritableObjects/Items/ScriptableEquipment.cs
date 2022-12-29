@@ -8,10 +8,10 @@ public class ScriptableEquipment : ScriptableItem
     public int damageModifier;
     public EquipmentSlot equip;
 
-    public override void UseItem()
+    public override void UseItem(string whereFromDoYouUseIt)
     {
-        base.UseItem();
-        EquipmentManager.instance.EquipItem(this);
+        base.UseItem(whereFromDoYouUseIt);
+        EquipmentManager.instance.EquipItem(this, whereFromDoYouUseIt);
         RemoveItemFromInventory();
     }
 }

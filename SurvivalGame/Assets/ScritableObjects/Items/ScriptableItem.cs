@@ -10,9 +10,9 @@ public class ScriptableItem : ScriptableObject
 
     public Player_Data playerWhoUse;
 
-    public virtual void UseItem()
+    public virtual void UseItem(string whereFromDoYouUseIt)
     {
-        Debug.Log("You used " + name);
+        Debug.Log("You used " + name + "from: " + whereFromDoYouUseIt);
     }
 
     public void RemoveItemFromInventory()

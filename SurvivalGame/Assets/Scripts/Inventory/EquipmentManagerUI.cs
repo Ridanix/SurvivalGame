@@ -9,7 +9,7 @@ public class EquipmentManagerUI : MonoBehaviour
     
     public List<Sprite> placeholders = new List<Sprite>();
 
-    public Image inHand;
+    //public Image inHand;
 
     void Update()
     {
@@ -26,21 +26,21 @@ public class EquipmentManagerUI : MonoBehaviour
 
     public void UpdateSprites()
     {
-        for (int i = 0; i < System.Enum.GetNames(typeof(EquipmentSlot)).Length; i++)
-        {
-            if (EquipmentManager.instance.currentEquipment[i] != null)
-            {
-                imagesToUpdate[i].sprite = EquipmentManager.instance.currentEquipment[i].icon;
-            }
-            else if (EquipmentManager.instance.currentEquipment[i] == null)
-            {
-                imagesToUpdate[i].sprite = placeholders[i];
-            }
-        }
+        //for (int i = 0; i < System.Enum.GetNames(typeof(EquipmentSlot)).Length; i++)
+        //{
+        //    if (EquipmentManager.instance.currentEquipment[i] != null)
+        //    {
+        //        imagesToUpdate[i].sprite = EquipmentManager.instance.currentEquipment[i].icon;
+        //    }
+        //    else if (EquipmentManager.instance.currentEquipment[i] == null)
+        //    {
+        //        imagesToUpdate[i].sprite = placeholders[i];
+        //    }
+        //}
 
-        if(EquipmentManager.instance.currentEquipment[4] != null)
-            inHand.sprite = EquipmentManager.instance.currentEquipment[4].icon;
-        else
-            inHand.sprite = placeholders[4];
+        //if(EquipmentManager.instance.currentEquipment[4] != null)
+        //    inHand.sprite = EquipmentManager.instance.currentEquipment[4].icon;
+        //else
+        //    inHand.sprite = placeholders[4];
     }
 }

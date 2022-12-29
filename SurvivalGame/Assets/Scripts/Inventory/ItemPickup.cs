@@ -11,7 +11,6 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             PickUp();
-            ArrowsScript.UpdateEquipmentInInventory();
             item.playerWhoUse = pickUpCollision.gameObject.GetComponent<Player_Data>();
         }
     }

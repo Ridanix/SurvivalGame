@@ -25,14 +25,15 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment = new ScriptableEquipment[numSlots];
     }
 
-    public void EquipItem(ScriptableEquipment newItem)
+    public void EquipItem(ScriptableEquipment newItem, string whereUsed)
     {
         int slotIndex = (int)newItem.equip;
         ScriptableEquipment oldItem = null;
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            inventory.AddItem(oldItem);
+            if(whereUsed == "Inventory") inventory.AddItem(oldItem);
+            else if(whereUsed == "Hotbar") inventory.AddItemToHotbar(oldItem);
         }
 
         currentEquipment[slotIndex] = newItem;

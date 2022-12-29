@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ArrowsScript : MonoBehaviour
 {
-    public int weAreOnIndex = 0;
-    public static List<ScriptableEquipment> equipmentInInventory; 
+    //public int weAreOnIndex = 0;
+    //public static List<ScriptableEquipment> equipmentInInventory; 
 
     public static void UpdateEquipmentInInventory()
     {

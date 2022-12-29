@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class InventoryUIScript : MonoBehaviour
 {
-    public Transform itemsParent;
+    public Transform itemsParentInventory;
+    public Transform itemsParentHotbar;
     public GameObject inventoryUIGameObject;
     Inventory inventory;
     InventorySlotScript[] slots;
-    
+    //NEW
+    HotbarSlotScript[] hotbarSlots;
+
     void Start()
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
-        slots = itemsParent.GetComponentsInChildren<InventorySlotScript>();
+        slots = itemsParentInventory.GetComponentsInChildren<InventorySlotScript>();
+        //NEW
+        hotbarSlots = itemsParentHotbar.GetComponentsInChildren<HotbarSlotScript>();
     }
 
     void Update()
@@ -35,6 +40,18 @@ public class InventoryUIScript : MonoBehaviour
             else
             {
                 slots[i].ClearSlot();
+            }
+        }
+        //NEW
+        for (int i = 0; i < hotbarSlots.Length; i++)
+        {
+            if (i < inventory.hotbarList.Count)
+            {
+                hotbarSlots[i].AddItem(inventory.hotbarList[i]);
+            }
+            else
+            {
+                hotbarSlots[i].ClearSlot();
             }
         }
         Debug.Log("Updating");
