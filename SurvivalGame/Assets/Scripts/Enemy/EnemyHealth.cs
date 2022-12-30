@@ -9,8 +9,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] EnemyHealthBar enemyHealthBar;
 
     //Health
-    [SerializeField] float maxHealth;
-    float health;
+    [SerializeField] public float maxHealth;
+    public float health;
 
     //Animator
     Animator animator;
@@ -24,10 +24,10 @@ public class EnemyHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
 
-    }
+    }*/
 
     //možný pozdìjší health
     public void TakeDamage(float amount)

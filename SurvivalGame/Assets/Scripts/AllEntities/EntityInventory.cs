@@ -22,14 +22,14 @@ public class EntityInventory : MonoBehaviour
         if (mana > maxMana)
         {
             Debug.Log($"Mana burn damage: {mana - maxMana}");
-            HealOrDamage(maxMana-mana);
-            mana=maxMana;
+            HealOrDamage(maxMana - mana);
+            mana = maxMana;
         }
         else if (mana < 0)
         {
-            Debug.Log($"Mana fatique damage: {-1*mana}");
+            Debug.Log($"Mana fatique damage: {-1 * mana}");
             HealOrDamage(mana);
-            mana=0;
+            mana = 0;
         }
         if (health > maxHealth)
             health = maxHealth;
@@ -45,6 +45,6 @@ public class EntityInventory : MonoBehaviour
 
     public void ManaManipulaton(float value)
     {
-        mana+=value;
+        mana += value;
     }
 }

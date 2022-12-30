@@ -14,7 +14,6 @@ public class Player_Controller : MonoBehaviour
     float attackRange = 0.6f;
     public bool disabled = false;
     [SerializeField] LayerMask enemyLayers;
-    GameObject goblinGameObject;
 
     //PLAYER ROTATION
     public float playerRotation = 0.1f;
@@ -62,7 +61,6 @@ public class Player_Controller : MonoBehaviour
         {
             playerData.HealOrDamage(-60);
         }
-            
 
         //geting input
         float moveX = Input.GetAxisRaw("Horizontal") * speed;
@@ -97,6 +95,7 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            //Pokus o otoèení na místo útoku
             /*Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             Physics.Raycast(ray, out hit);
@@ -120,9 +119,5 @@ public class Player_Controller : MonoBehaviour
         {          
             SceneManager.LoadScene("MainMenu");
         }
-
     }
-
-  
-
 }
