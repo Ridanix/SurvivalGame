@@ -10,7 +10,7 @@ public class InventorySlotScript : MonoBehaviour
     public Button removeButton;
     public Button toHotbarButton;
 
-    public void AddItem(ScriptableItem newItem)
+    public virtual void AddItem(ScriptableItem newItem)
     {
         item = newItem;
 
@@ -20,7 +20,7 @@ public class InventorySlotScript : MonoBehaviour
         toHotbarButton.interactable = true;
     }
     
-    public void ClearSlot()
+    public virtual void ClearSlot()
     {
         item = null;
         icon.sprite = null;
@@ -34,13 +34,13 @@ public class InventorySlotScript : MonoBehaviour
         Inventory.instance.RemoveItem(item);
     }
 
-    public void UseItem()
+    public virtual void UseItem()
     {
         if (item != null) item.UseItem("Inventory");
     }
 
     //NEW
-    public void OnSwitchButton()
+    public virtual void OnSwitchButton()
     {
         Inventory.instance.InventoryToHotbar(item);
     }

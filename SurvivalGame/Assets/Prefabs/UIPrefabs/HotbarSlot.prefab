@@ -362,7 +362,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 3030979486974465462}
   item: {fileID: 0}
+  removeButton: {fileID: 0}
+  toHotbarButton: {fileID: 0}
   toInventoryButton: {fileID: 2998572996879522739}
+  placeholder: {fileID: 21300000, guid: c47bfaea02af0bf47a88cb67360c81e4, type: 3}
 --- !u!114 &60706696124243251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d91cd5643f659469120637a67a5e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotScript: {fileID: 0}
+  inventorySlotScript: {fileID: 3205327961081651175}
   pictogram: {fileID: 0}
   name: {fileID: 0}
   stats: {fileID: 0}
@@ -418,8 +421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchoredPosition: {x: -0, y: 0}
+  m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3030979486974465457
 CanvasRenderer:
@@ -449,7 +452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 93405843c0355794e862b5abac8fabb5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c47bfaea02af0bf47a88cb67360c81e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

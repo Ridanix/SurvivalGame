@@ -28,17 +28,16 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void SetDescription()
     {
-        //int numberOfSlot;
-        //if (int.TryParse(this.gameObject.name, out numberOfSlot)&&EquipmentManager.instance.currentEquipment[numberOfSlot] != null)
-        //{
-        //    pictogram.gameObject.SetActive(true);
-        //    pictogram.sprite = EquipmentManager.instance.currentEquipment[numberOfSlot].icon;
-        //    name.text = EquipmentManager.instance.currentEquipment[numberOfSlot].name;
-        //    description.text = EquipmentManager.instance.currentEquipment[numberOfSlot].description;
-        //    stats.text = EquipmentManager.instance.currentEquipment[numberOfSlot].stats;
-        //}
-        //else
-        if (this.gameObject.GetComponent<InventorySlotScript>()!=null &&inventorySlotScript.item != null)
+        int numberOfSlot;
+        if (int.TryParse(this.gameObject.name, out numberOfSlot)&&EquipmentManager.instance.currentEquipment[numberOfSlot] != null)
+        {
+            pictogram.gameObject.SetActive(true);
+            pictogram.sprite = EquipmentManager.instance.currentEquipment[numberOfSlot].icon;
+            name.text = EquipmentManager.instance.currentEquipment[numberOfSlot].name;
+            description.text = EquipmentManager.instance.currentEquipment[numberOfSlot].description;
+            stats.text = EquipmentManager.instance.currentEquipment[numberOfSlot].stats;
+        }
+        else if (this.gameObject.GetComponent<InventorySlotScript>()!=null &&inventorySlotScript.item != null)
         {
             pictogram.gameObject.SetActive(true);
             pictogram.sprite = inventorySlotScript.item.icon;

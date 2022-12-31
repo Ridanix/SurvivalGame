@@ -25,15 +25,23 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment = new ScriptableEquipment[numSlots];
     }
 
-    public void EquipItem(ScriptableEquipment newItem, string whereUsed)
+    public void EquipItem(ScriptableEquipment newItem,/*NEW*/ string whereUsed = "Hotbar")
     {
         int slotIndex = (int)newItem.equip;
         ScriptableEquipment oldItem = null;
+
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            if(whereUsed == "Inventory") inventory.AddItem(oldItem);
-            else if(whereUsed == "Hotbar") inventory.AddItemToHotbar(oldItem);
+            /*NEW*/
+            if (whereUsed == "Inventory")
+            {
+                inventory.AddItem(oldItem);
+            }
+            else if (whereUsed == "Hotbar")
+            {
+                inventory.AddItemToHotbar(oldItem);
+            }
         }
 
         currentEquipment[slotIndex] = newItem;
@@ -57,8 +65,6 @@ public class EquipmentManager : MonoBehaviour
                 onEquipmentChanged.Invoke(null, oldItem);
             }
         }
-
-       
     }
 
     public void UnequipAllItems()
@@ -72,6 +78,5 @@ public class EquipmentManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U)) UnequipAllItems();
-           
     }
 }

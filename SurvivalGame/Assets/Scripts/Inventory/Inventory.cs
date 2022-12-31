@@ -29,7 +29,6 @@ public class Inventory : MonoBehaviour
         if (itemList.Count >= inventorySpace)
         {
             return false;
-            
         }
         itemList.Add(item);
         if (onItemChangedCallback != null) onItemChangedCallback.Invoke(); 

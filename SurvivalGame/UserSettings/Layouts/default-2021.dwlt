@@ -427,7 +427,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 10fff5ff481af6ff36dcf9fff0ddf9ffdedff9ff2ee1ffff44e1ffffa0e2ffffb6e2ffff88f0ffff9cf0ffff9ef0ffff
+      m_ExpandedIDs: dafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1702,12 +1702,14 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+    - Assets/UI Sprites/Items/PlaceHolders
     - Assets/Prefabs/Enemy/Golem
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+  - Assets/UI Sprites/Items/PlaceHolders
   - Assets/Prefabs/Enemy/Golem
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\\u0160kola\\3.B\\STP - hra\\GitHub\\SurvivalGame\\SurvivalGame"
@@ -1745,7 +1747,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000024a2000026a2000028a200002aa200002ca200002ea2000030a2000032a2000034a20000
+    m_ExpandedIDs: 00000000f69d0000f89d0000fa9d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
