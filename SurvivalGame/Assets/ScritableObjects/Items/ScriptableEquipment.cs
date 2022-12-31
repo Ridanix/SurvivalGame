@@ -12,7 +12,7 @@ public class ScriptableEquipment : ScriptableItem
     {
         base.UseItem(whereFromDoYouUseIt);
         EquipmentManager.instance.EquipItem(this, whereFromDoYouUseIt);
-        RemoveItemFromInventory();
+        RemoveItemFromInventory(whereFromDoYouUseIt);
     }
 }
 public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}

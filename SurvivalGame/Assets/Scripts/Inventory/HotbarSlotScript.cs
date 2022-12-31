@@ -3,35 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotbarSlotScript : MonoBehaviour
+public class HotbarSlotScript : InventorySlotScript
 {
-    public Image icon;
-    public ScriptableItem item;
     public Button toInventoryButton;
+    public Sprite placeholder;
 
-    public void AddItem(ScriptableItem newItem)
+    public void Awake()
+    {
+        icon.enabled = true;
+    }
+
+    public override void AddItem(ScriptableItem newItem)
     {
         item = newItem;
 
         icon.sprite = item.icon;
-        icon.enabled = true;
         toInventoryButton.interactable = true;
     }
 
-    public void ClearSlot()
+    public override void ClearSlot()
     {
         item = null;
-        icon.sprite = null;
-        icon.enabled = false;
+        icon.sprite = placeholder;
         toInventoryButton.interactable = false;
     }
 
-    public void OnSwitchButton()
+    public override void OnSwitchButton()
     {
         Inventory.instance.HotbarToInventory(item);
     }
 
-    public void UseItem()
+    public override void UseItem()
     {
         if (item != null) item.UseItem("Hotbar");
     }

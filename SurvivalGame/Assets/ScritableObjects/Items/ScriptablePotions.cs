@@ -12,13 +12,13 @@ public class ScriptablePotions : ScriptableItem
     public override void UseItem(string whereFromDoYouUseIt)
     {
         base.UseItem(whereFromDoYouUseIt);
-        DrinkPotion();
+        DrinkPotion(whereFromDoYouUseIt);
     }
 
-    public void DrinkPotion()
+    public void DrinkPotion(string whereFromDoYouUseIt)
     {
         playerWhoUse.ManaManipulaton(manaModifier);
         playerWhoUse.HealOrDamage(healthModifier);
-        RemoveItemFromInventory();
+        RemoveItemFromInventory(whereFromDoYouUseIt);
     }
 }

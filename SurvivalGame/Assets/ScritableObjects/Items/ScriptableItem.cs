@@ -15,9 +15,12 @@ public class ScriptableItem : ScriptableObject
         Debug.Log("You used " + name + "from: " + whereFromDoYouUseIt);
     }
 
-    public void RemoveItemFromInventory()
+    public void RemoveItemFromInventory(string whereFromDoYouUseIt)
     {
-        Inventory.instance.RemoveItem(this);
+        if(whereFromDoYouUseIt == "Inventory")
+            Inventory.instance.RemoveItem(this);
+        if (whereFromDoYouUseIt == "Hotbar")
+            Inventory.instance.RemoveItemFromHotbar(this);
     }
 
 }

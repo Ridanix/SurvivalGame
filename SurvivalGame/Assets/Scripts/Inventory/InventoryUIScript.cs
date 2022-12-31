@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUIScript : MonoBehaviour
 {
+    public static InventoryUIScript instance;
+    
+    //NEW
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public Transform itemsParentInventory;
     public Transform itemsParentHotbar;
     public GameObject inventoryUIGameObject;
     Inventory inventory;
     InventorySlotScript[] slots;
     //NEW
-    HotbarSlotScript[] hotbarSlots;
+    public HotbarSlotScript[] hotbarSlots;
+
+    public Sprite hotbarPlaceholder;
+    public Image[] hotbarInGameSlots;
 
     void Start()
     {
@@ -29,7 +41,8 @@ public class InventoryUIScript : MonoBehaviour
         }
     }
     
-    void UpdateUI()
+
+    public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -48,10 +61,12 @@ public class InventoryUIScript : MonoBehaviour
             if (i < inventory.hotbarList.Count)
             {
                 hotbarSlots[i].AddItem(inventory.hotbarList[i]);
+                hotbarInGameSlots[i].sprite = inventory.hotbarList[i].icon;
             }
             else
             {
                 hotbarSlots[i].ClearSlot();
+                hotbarInGameSlots[i].sprite = hotbarPlaceholder;
             }
         }
         Debug.Log("Updating");
