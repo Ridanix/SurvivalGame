@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Troll : MonoBehaviour
 {
+    [SerializeField] EnemyHealth enemyHealth;
+
+    [SerializeField] float attackDmg;
     Transform player; //Hlavní hráèská postava
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    //public GameObject serverPrefab;
+    //public GameObject playerPf;
 
     //Attack
-    [SerializeField] float attackDmg;
     [SerializeField] AnimationClip attackAnimation;
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
-    float attackRange = 2f;
-    [SerializeField] LayerMask playerLayer;
-    bool dealDmg = false;
+    float attackRange = 0.6f;
 
-    //Health
-    [SerializeField] EnemyHealth enemyHealth;
+    public LayerMask playerLayer;
+    public bool dealDmg = false;
 
     //Components
     Animator animator;
@@ -48,12 +51,14 @@ public class Troll : MonoBehaviour
             return;
         }
         else if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
+
         dealDmg = false;
 
+        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
+
         float distance = Vector3.Distance(transform.position, player.position);
-        //Debug.Log(distance);
-        //Debug.Log(nav.stoppingDistance * 1.1f);
-        if (distance < agroRange && distance > nav.stoppingDistance * 1.05f)
+
+        if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
             transform.LookAt(player);
@@ -63,7 +68,7 @@ public class Troll : MonoBehaviour
         {
             animator.SetBool("following", false);
         }
-        else if (distance <= nav.stoppingDistance*1.05f)
+        else if (distance <= nav.stoppingDistance)
         {
             animator.SetBool("following", false);
             Attack();
@@ -71,10 +76,18 @@ public class Troll : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
         //RageMode
-        if (enemyHealth.health <= enemyHealth.maxHealth / 2)
+
+        if (enemyHealth.health  <= enemyHealth.maxHealth / 2)
         {
             attackDmg = attackDmg * 2;
             nav.speed = 4;
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("hit"); //Test jestli to funguje
         }
     }
 
@@ -84,5 +97,8 @@ public class Troll : MonoBehaviour
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }
+
+
+
 
 }

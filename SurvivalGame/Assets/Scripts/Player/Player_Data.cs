@@ -117,13 +117,6 @@ public class Player_Data : EntityInventory
     {
         CheckStats();
         UpateBars();
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Vector3 vec = transform.position;
-            vec.y = 1.08f;
-            transform.position = vec;
-        }
     }
 
 

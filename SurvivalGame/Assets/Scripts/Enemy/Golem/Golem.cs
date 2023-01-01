@@ -14,9 +14,11 @@ public class Golem : MonoBehaviour
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
-    float attackRange = 2.2f;
-    [SerializeField] LayerMask playerLayer;
-    bool dealDmg = false;
+    float attackRange = 0.6f;
+    float attackDamage = 20f;
+
+    public LayerMask playerLayer;
+    public bool dealDmg = false;
 
     //Components
     Animator animator;
@@ -27,9 +29,7 @@ public class Golem : MonoBehaviour
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
         attackCooldown = attackAnimation.length;
-        player = GameObject.Find("PlayerPrefab").transform;
     }
 
     // Update is called once per frame
@@ -45,12 +45,18 @@ public class Golem : MonoBehaviour
             return;
         }
         else if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
+
         dealDmg = false;
+
+        player = GameObject.Find("PlayerPrefab").transform;
+        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
         float distance = Vector3.Distance(transform.position, player.position);
 
+
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
+
             nav.SetDestination(player.position);
             transform.LookAt(player);
             animator.SetBool("following", true);
@@ -68,10 +74,28 @@ public class Golem : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("hit"); //Test jestli to funguje
+        }
+    }
+
     void Attack()
     {
         transform.LookAt(player);
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }
+
+    //možný pozdìjší health
+    /*void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }*/
 }

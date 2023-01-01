@@ -24,10 +24,10 @@ public class EnemyHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
 
-    }*/
+    }
 
     //možný pozdìjší health
     public void TakeDamage(float amount)

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Goblin : MonoBehaviour
 {
+
     Transform player; //Hlavní hráèská postava
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    //public GameObject serverPrefab;
+    //public GameObject playerPf;
 
     //Attack
     [SerializeField] float attackDmg;
@@ -14,9 +18,10 @@ public class Goblin : MonoBehaviour
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
-    float attackRange = 1f;
-    [SerializeField] LayerMask playerLayer;
-    bool dealDmg = false;
+    float attackRange = 0.6f;
+
+    public LayerMask playerLayer;
+    public bool dealDmg = false;
 
     //Components
     Animator animator;
@@ -27,7 +32,7 @@ public class Goblin : MonoBehaviour
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
+        
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
     }
@@ -48,7 +53,9 @@ public class Goblin : MonoBehaviour
 
         dealDmg = false;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
+
+        float distance = Vector3.Distance(transform.position, player.position); 
 
         //Hledání hráèské postavy
         //Transform GetClosestPlayer(Transform[] player)
@@ -70,12 +77,14 @@ public class Goblin : MonoBehaviour
 
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
+
             nav.SetDestination(player.position);
             transform.LookAt(player);
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
         {
+
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance)
@@ -85,13 +94,22 @@ public class Goblin : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("hit"); //Test jestli to funguje
+        }
+    }
 
     void Attack()
     {
         transform.LookAt(player);
         animator.SetTrigger("attack");
         lastAttack = Time.time;
-
-
     }
+
+
+
+  
 }
