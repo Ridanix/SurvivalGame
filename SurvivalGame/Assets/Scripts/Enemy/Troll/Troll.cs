@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class Troll : MonoBehaviour
 {
-    [SerializeField] EnemyHealth enemyHealth;
-
-    [SerializeField] float attackDmg;
+    [SerializeField] EnemyHealth enemyHealth;  
     Transform player; //Hlavní hráèská postava
     [SerializeField] float agroRange; //Range na hledání nepøátel
-    //public GameObject serverPrefab;
-    //public GameObject playerPf;
 
     //Attack
-    [SerializeField] AnimationClip attackAnimation;
+    [SerializeField] float attackDmg; //Dmg Moba
+    [SerializeField] AnimationClip attackAnimation; //Aniamce útoku
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
-    float attackRange = 0.6f;
-
+    float attackRange = 2f;
     public LayerMask playerLayer;
-    public bool dealDmg = false;
+    bool dealDmg = false;
 
     //Components
     Animator animator;
@@ -54,11 +49,9 @@ public class Troll : MonoBehaviour
 
         dealDmg = false;
 
-        if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
-
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance < agroRange && distance > nav.stoppingDistance)
+        if (distance < agroRange && distance > nav.stoppingDistance * 1.11)
         {
             nav.SetDestination(player.position);
             transform.LookAt(player);
@@ -68,7 +61,7 @@ public class Troll : MonoBehaviour
         {
             animator.SetBool("following", false);
         }
-        else if (distance <= nav.stoppingDistance)
+        else if (distance <= nav.stoppingDistance * 1.11)
         {
             animator.SetBool("following", false);
             Attack();
@@ -83,13 +76,6 @@ public class Troll : MonoBehaviour
             nav.speed = 4;
         }
     }
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            //Debug.Log("hit"); //Test jestli to funguje
-        }
-    }
 
     void Attack()
     {
@@ -97,8 +83,4 @@ public class Troll : MonoBehaviour
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }
-
-
-
-
 }

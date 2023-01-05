@@ -121,7 +121,6 @@ public class Player_Controller : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
 
-        //Teleport Back to ground
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Vector3 vec = transform.position;
