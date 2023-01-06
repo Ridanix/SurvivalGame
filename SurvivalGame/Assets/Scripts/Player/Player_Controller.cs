@@ -121,12 +121,12 @@ public class Player_Controller : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        /*if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Vector3 vec = transform.position;
             vec.y = 1.08f;
             transform.position = vec;
-        }
+        }*/
     }
 
   
