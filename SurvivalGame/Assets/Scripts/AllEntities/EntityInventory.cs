@@ -13,6 +13,9 @@ public class EntityInventory : MonoBehaviour
     public float mana = 100f;
     public float maxMana = 100f;
 
+    //Other Player Stats
+    public float wealth = 0;
+
     public void CheckStats()
     {
         if (stamina > maxStamina)
@@ -36,6 +39,11 @@ public class EntityInventory : MonoBehaviour
         else if (health < 0)
             health = 0;
         //Die From cringe
+    }
+
+    public void WealthManipulation(float value)
+    {
+        wealth += value;
     }
 
     public void HealOrDamage(float value)

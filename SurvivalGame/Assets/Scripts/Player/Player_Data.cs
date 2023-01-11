@@ -18,6 +18,9 @@ public class Player_Data : EntityInventory
     public Slider[] manaBars;
     public TMP_Text[] manaTexts;
 
+    //Other Stats References
+    public TMP_Text wealthText;
+
     //Items
     public GameObject spathaGameObject;
     public GameObject lumberAxeGameObject;
@@ -94,6 +97,11 @@ public class Player_Data : EntityInventory
         }
     }
 
+    public void UpdateStats()
+    {
+        wealthText.text = wealth.ToString();
+    }
+
     public void SetBars()
     {
         foreach (Slider s in healthBars)
@@ -117,6 +125,7 @@ public class Player_Data : EntityInventory
     {
         CheckStats();
         UpateBars();
+        UpdateStats();
 
         //Teleport Back to ground
         if (Input.GetKeyDown(KeyCode.LeftControl))

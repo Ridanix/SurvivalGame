@@ -9,6 +9,8 @@ public class ScriptableItem : ScriptableObject
     public string stats;
 
     public Player_Data playerWhoUse;
+    
+    public int amount = 1;
 
     public virtual void UseItem(string whereFromDoYouUseIt)
     {
