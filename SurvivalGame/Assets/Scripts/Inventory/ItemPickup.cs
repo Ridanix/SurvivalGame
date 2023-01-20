@@ -13,13 +13,23 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             PickUp();
-            item.playerWhoUse = pickUpCollision.gameObject.GetComponent<Player_Data>();
+        }
+
+        item.playerWhoUse = pickUpCollision.gameObject.GetComponent<Player_Data>();
+    }
+
+    private void OnCollisionExit(Collision pickUpCollision)
+    {
+        if (pickUpCollision.gameObject.tag == "Player")
+        { 
+        
         }
     }
+
     void PickUp()
     {
+        //Debug.Log("Picking Up " + item.name);
         
-        Debug.Log("Picking Up " + item.name);
         bool wasPickedUp = true;
         if (item.name == "Coins")
         {
