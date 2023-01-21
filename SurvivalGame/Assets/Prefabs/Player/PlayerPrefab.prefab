@@ -5266,7 +5266,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -14154,6 +14154,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: edf222f022b9fa5439bb34b587a50ed8, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: edf222f022b9fa5439bb34b587a50ed8, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 938173970433832394, guid: edf222f022b9fa5439bb34b587a50ed8, type: 3}
       propertyPath: m_Layer

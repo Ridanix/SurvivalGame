@@ -13,9 +13,10 @@ public class PickUpHintScript : MonoBehaviour
     {
         mainCamera = GameObject.Find("Main Camera");
     }
-    public void Update()
+    public void FixedUpdate()
     {
-        this.gameObject.transform.LookAt(mainCamera.transform);
+        this.gameObject.transform.LookAt(transform.position + mainCamera.transform.rotation*Vector3.forward, mainCamera.transform.rotation*Vector3.up);
+        
         LoadFill();
     }
 

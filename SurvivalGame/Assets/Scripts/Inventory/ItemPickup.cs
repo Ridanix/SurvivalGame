@@ -7,22 +7,46 @@ public class ItemPickup : MonoBehaviour
 {
     public ScriptableItem item;
     PickUpTextParent pickUpTextParent;
+    [SerializeField] GameObject pickUpLoader;
+    PickUpHintScript pickUpHintScript;
 
-    private void OnCollisionEnter(Collision pickUpCollision)
+    private void Awake()
+    {
+        pickUpLoader.gameObject.SetActive(false);
+        pickUpHintScript = pickUpLoader.GetComponent<PickUpHintScript>();
+    }
+
+    public void FixedUpdate()
+    {
+        if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject.activeInHierarchy)
+        {
+            pickUpHintScript.fillAmount += 0.05f;
+            if(pickUpHintScript.fillAmount > 1)
+            {
+                PickUp();
+            }
+        }
+        else
+        {
+            pickUpHintScript.fillAmount = 0f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider pickUpCollision)
     {
         if (pickUpCollision.gameObject.tag == "Player")
         {
-            PickUp();
+            pickUpLoader.SetActive(true);
+            item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
         }
-
-        item.playerWhoUse = pickUpCollision.gameObject.GetComponent<Player_Data>();
     }
 
-    private void OnCollisionExit(Collision pickUpCollision)
+    private void OnTriggerExit(Collider pickUpCollision)
     {
         if (pickUpCollision.gameObject.tag == "Player")
-        { 
-        
+        {
+            pickUpLoader.SetActive(false);
+
         }
     }
 
