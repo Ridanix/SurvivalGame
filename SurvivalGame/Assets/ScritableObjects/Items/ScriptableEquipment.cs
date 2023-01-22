@@ -7,7 +7,8 @@ public class ScriptableEquipment : ScriptableItem
 {
     public int damageModifier;
     public EquipmentSlot equip;
-
+    public string strength;
+    
     public override void UseItem(string whereFromDoYouUseIt)
     {
         base.UseItem(whereFromDoYouUseIt);

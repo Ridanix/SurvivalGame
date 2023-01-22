@@ -24,13 +24,13 @@ public class EntityInventory : MonoBehaviour
             stamina = 0;
         if (mana > maxMana)
         {
-            Debug.Log($"Mana burn damage: {mana - maxMana}");
+            //Debug.Log($"Mana burn damage: {mana - maxMana}");
             HealOrDamage(maxMana-mana);
             mana=maxMana;
         }
         else if (mana < 0)
         {
-            Debug.Log($"Mana fatique damage: {-1*mana}");
+            //Debug.Log($"Mana fatique damage: {-1*mana}");
             HealOrDamage(mana);
             mana=0;
         }

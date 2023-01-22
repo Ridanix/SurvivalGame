@@ -411,12 +411,16 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
+  suplieLayers:
+    serializedVersion: 2
+    m_Bits: 0
   playerRotation: 0.1
   playerCamera: {fileID: 5535588369407285606}
   playerModel: {fileID: 161253107125550747}
   mainCamera: {fileID: 7199747644870168616}
   playerData: {fileID: 1272567868024724427}
   attackDmg: 20
+  vulterablity: axe
 --- !u!1 &208493312971256236
 GameObject:
   m_ObjectHideFlags: 0

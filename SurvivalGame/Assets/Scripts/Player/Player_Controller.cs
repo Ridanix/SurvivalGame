@@ -14,6 +14,7 @@ public class Player_Controller : MonoBehaviour
     float attackRange = 0.6f;
     public bool disabled = false;
     [SerializeField] LayerMask enemyLayers;
+    [SerializeField] LayerMask suplieLayers;
     GameObject goblinGameObject;
 
     //PLAYER ROTATION
@@ -31,6 +32,8 @@ public class Player_Controller : MonoBehaviour
 
     //ATTACK
     [SerializeField] float attackDmg;
+    [SerializeField] string vulterablity;
+    
 
     //INVENTORY
     //private InventoryScript inventory;
@@ -110,6 +113,18 @@ public class Player_Controller : MonoBehaviour
                 if (hitEnemies.Length > 0)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
+
+                }
+                //goblinGameObject = GameObject.Find("BasicGoblin");
+            }
+
+            Collider[] hitSuplies = Physics.OverlapSphere(attackPoint.position, attackRange, suplieLayers);
+
+            foreach (Collider suply in hitSuplies)
+            {
+                if (hitSuplies.Length > 0)
+                {
+                    suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
 
                 }
                 //goblinGameObject = GameObject.Find("BasicGoblin");
