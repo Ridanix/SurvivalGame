@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8086461006507524008}
   - component: {fileID: 6820939544596108946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pinetree 3 snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +126,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3053350bb08227e49bc8b2963afcbdca, type: 3}
       propertyPath: m_Name
       value: tree6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3053350bb08227e49bc8b2963afcbdca, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3053350bb08227e49bc8b2963afcbdca, type: 3}

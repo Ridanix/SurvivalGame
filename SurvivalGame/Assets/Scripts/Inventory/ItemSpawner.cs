@@ -7,9 +7,9 @@ public class ItemSpawner : MonoBehaviour
 
     public List<GameObject> itemsToSpawn = new List<GameObject>();
     public float hitsBeforeDestruction;
-    public string vulnerability;
+    public WeaponType vulnerability;
 
-    public void TakeDamage(float destructionPoints, string damageTypeRequired)
+    public void TakeDamage(float destructionPoints, WeaponType damageTypeRequired)
     {
         if(damageTypeRequired == vulnerability)
         {

@@ -25,21 +25,20 @@ public class Player_Controller : MonoBehaviour
     //CAMERA ROTATION
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject mainCamera;
-     
+
 
     //HEALTH
     [SerializeField] Player_Data playerData;
 
     //ATTACK
-    [SerializeField] float attackDmg;
-    [SerializeField] string vulterablity;
-    
+    public static float attackDmg;
+    public static WeaponType vulterablity;
 
     //INVENTORY
     //private InventoryScript inventory;
     //[SerializeField] InventoryUIScript inventoryUI;
 
-   
+
     private void Start()
     {
         //inventory = new InventoryScript();
@@ -125,7 +124,7 @@ public class Player_Controller : MonoBehaviour
                 if (hitSuplies.Length > 0)
                 {
                     suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
-
+                    Debug.Log(suply.name);
                 }
                 //goblinGameObject = GameObject.Find("BasicGoblin");
             }

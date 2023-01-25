@@ -4099,8 +4099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToSpawn:
   - {fileID: 9154236708646147503, guid: ba2deae13333a4840bdc39ea2ada2c7d, type: 3}
-  hitsBeforeDestruction: 100
-  vulnerability: axe
+  hitsBeforeDestruction: 20
+  vulnerability: 0
 --- !u!65 &8474462029013946910
 BoxCollider:
   m_ObjectHideFlags: 0

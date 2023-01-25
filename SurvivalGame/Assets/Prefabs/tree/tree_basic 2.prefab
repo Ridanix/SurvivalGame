@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4606610900218249722}
   - component: {fileID: 4352618558326168420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tree_basic 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,6 +118,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1282979925de3e74c865a0e2b853c002, type: 3}
       propertyPath: m_Name
       value: tree2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1282979925de3e74c865a0e2b853c002, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1282979925de3e74c865a0e2b853c002, type: 3}

@@ -7,7 +7,7 @@ public class ScriptableEquipment : ScriptableItem
 {
     public int damageModifier;
     public EquipmentSlot equip;
-    public string strength;
+    public WeaponType damageType;
     
     public override void UseItem(string whereFromDoYouUseIt)
     {
@@ -16,4 +16,5 @@ public class ScriptableEquipment : ScriptableItem
         RemoveItemFromInventory(whereFromDoYouUseIt);
     }
 }
-public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}
+public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon }
+public enum WeaponType { axe, pickaxe, slashing }
