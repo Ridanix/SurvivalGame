@@ -18,6 +18,7 @@ public class Goblin : MonoBehaviour
     float attackRange = 0.6f;
     public LayerMask playerLayer;
     bool dealDmg = false;
+    float distance;
 
     //Components
     Animator animator;
@@ -31,11 +32,13 @@ public class Goblin : MonoBehaviour
 
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {

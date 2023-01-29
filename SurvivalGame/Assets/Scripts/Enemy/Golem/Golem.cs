@@ -60,7 +60,7 @@ public class Golem : MonoBehaviour
         }
         else if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
 
-        if (Time.time - lastThrow > throwCooldownAnim / 1.2f && Time.time - lastThrow < throwCooldownAnim && throwRock == false)
+        if (Time.time - lastThrow > throwCooldownAnim / 1.5f && Time.time - lastThrow < throwCooldownAnim && throwRock == false)
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
