@@ -2347,8 +2347,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   throwDmg: 90
-  throwAnimation: {fileID: 0}
-  projectile: {fileID: 2530506169223739699, guid: b538fa652fdfb7a4ebf123a236918dee, type: 3}
+  throwAnimation: {fileID: -8593065245080242498, guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af, type: 3}
+  projectile: {fileID: 1249685726680323326, guid: 233fd717552442f4a852da9e71c82012, type: 3}
 --- !u!114 &5318530375231566357
 MonoBehaviour:
   m_ObjectHideFlags: 0

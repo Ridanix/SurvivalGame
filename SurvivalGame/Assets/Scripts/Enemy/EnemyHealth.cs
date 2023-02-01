@@ -30,10 +30,12 @@ public class EnemyHealth : MonoBehaviour
     }
 
     //možný pozdìjší health
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, string name = "")
     {
         health -= amount;
-        animator.SetTrigger("hit");
+        //if (name == "Golem" || (name == "Troll" && health > )) animator.SetTrigger("hit");
+        if (name == "Golem" || (name == "Troll")) animator.SetTrigger("hit");
+        Debug.Log(name);
         enemyHealthBar.SetHealth(health);
         if (health <= 0)
         {

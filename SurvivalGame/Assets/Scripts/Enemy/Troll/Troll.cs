@@ -19,6 +19,11 @@ public class Troll : MonoBehaviour
     public LayerMask playerLayer;
     bool dealDmg = false;
 
+    //RageMode
+    [SerializeField] AnimationClip roarAnimation; //Aniamce útoku
+    float roarCooldown; //délka animace attacku
+    bool rageMode = false;
+
     //Components
     Animator animator;
     NavMeshAgent nav;
@@ -30,12 +35,14 @@ public class Troll : MonoBehaviour
         animator = GetComponent<Animator>();
 
         attackCooldown = attackAnimation.length;
+        roarCooldown = roarAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.time - lastAttack < roarCooldown) return;
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
@@ -70,10 +77,13 @@ public class Troll : MonoBehaviour
 
         //RageMode
 
-        if (enemyHealth.health  <= enemyHealth.maxHealth / 2)
+        if (!rageMode && enemyHealth.health  <= enemyHealth.maxHealth / 2)
         {
+            animator.SetTrigger("rageMode");
+            lastAttack = Time.time;
             attackDmg = attackDmg * 2;
             nav.speed = 4;
+            rageMode = true;
         }
     }
 

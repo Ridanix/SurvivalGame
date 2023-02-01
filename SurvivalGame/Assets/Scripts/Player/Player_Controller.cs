@@ -111,7 +111,7 @@ public class Player_Controller : MonoBehaviour
                 //Debug.Log("Hráètrefa");
                 if (hitEnemies.Length > 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg, enemy.gameObject.name);
 
                 }
                 //goblinGameObject = GameObject.Find("BasicGoblin");

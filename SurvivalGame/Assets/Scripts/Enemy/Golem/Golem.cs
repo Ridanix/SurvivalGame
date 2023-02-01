@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Golem : MonoBehaviour
 {
-    Transform player; //Hlavní hráèská postava
+    public Transform player; //Hlavní hráèská postava
     [SerializeField] float agroRange; //Range na hledání nepøátel
 
     //Attack
@@ -62,9 +62,9 @@ public class Golem : MonoBehaviour
 
         if (Time.time - lastThrow > throwCooldownAnim / 1.5f && Time.time - lastThrow < throwCooldownAnim && throwRock == false)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Rigidbody rb = Instantiate(projectile, attackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 13f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 2f, ForceMode.Impulse);
 
             throwRock = true;
             return;

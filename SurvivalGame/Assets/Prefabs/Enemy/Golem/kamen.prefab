@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1881403073194643012}
   - component: {fileID: 3293201933150929377}
   - component: {fileID: 745129118114755883}
+  - component: {fileID: 4769699020500545263}
+  - component: {fileID: -6841899559436046747}
+  - component: {fileID: 8146247219082771822}
   m_Layer: 0
   m_Name: kamen
   m_TagString: Untagged
@@ -27,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1249685726680323326}
   m_LocalRotation: {x: -0.6963643, y: 0.12278779, z: 0.12278779, w: 0.6963643}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2501589, y: 0.2501589, z: 0.19080937}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.45765162}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +86,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4769699020500545263
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249685726680323326}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-6841899559436046747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249685726680323326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e029d542ba7d51440ace764ccb056051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golem: {fileID: 0}
+  projectileDmg: 40
+  entityInventory: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!135 &8146247219082771822
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249685726680323326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2990658
+  m_Center: {x: -0.028339209, y: 0.087867044, z: -0.10569135}
