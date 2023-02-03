@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787658006209104269}
   - component: {fileID: 1306502015728251724}
+  - component: {fileID: 4670974948421363536}
   m_Layer: 8
   m_Name: pinetree 2
   m_TagString: Untagged
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4248001001661211684}
   m_Enabled: 1
+--- !u!136 &4670974948421363536
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18100953722708946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.1
+  m_Height: 4.5432196
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.1716099, z: 0}
 --- !u!1001 &3256801573680429216
 PrefabInstance:
   m_ObjectHideFlags: 0

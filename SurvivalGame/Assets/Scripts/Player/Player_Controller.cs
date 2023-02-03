@@ -34,6 +34,9 @@ public class Player_Controller : MonoBehaviour
     public static float attackDmg;
     public static WeaponType vulterablity;
 
+    //TREE DESTRUCTION
+    public Terrain mainTerain;
+
     //INVENTORY
     //private InventoryScript inventory;
     //[SerializeField] InventoryUIScript inventoryUI;
@@ -45,14 +48,9 @@ public class Player_Controller : MonoBehaviour
         //inventoryUI.SetInventory(inventory);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
-        //if(itemWorld != null)
-        //{
-        //    inventory.AddItem(itemWorld.GetItem());
-        //    itemWorld.DestroySelf();
-        //}
+         Debug.LogWarning(other.name);
     }
 
     public void Update()
@@ -123,8 +121,26 @@ public class Player_Controller : MonoBehaviour
             {
                 if (hitSuplies.Length > 0)
                 {
-                    suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
-                    Debug.Log(suply.name);
+                    //float theClosestLength = 100f;
+                    //int indexOfClosestTree = 0;
+                    //for (int i = 0; i < mainTerain.terrainData.treeInstances.Length; i++)
+                    //{
+                    //    Vector3 lengtToPlayer = mainTerain.terrainData.treeInstances[i].position - transform.position;
+                    //    float convertedLengt = lengtToPlayer.magnitude;
+                    //    Debug.LogWarning($"{i} {convertedLengt}");
+                    //    if (theClosestLength>convertedLengt)
+                    //    {
+                    //        theClosestLength = convertedLengt;
+                    //        indexOfClosestTree = i;
+                    //    }
+                    //}
+                    //Debug.LogWarning($"Nearest: {indexOfClosestTree}");
+
+                    //Debug.LogWarning(mainTerain.terrainData.treeInstances[indexOfClosestTree].ToString());
+                    //mainTerain.terrainData.SetTreeInstance(indexOfClosestTree, new TreeInstance());
+                    
+                    //suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
+                   
                 }
                 //goblinGameObject = GameObject.Find("BasicGoblin");
             }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8086461006507524008}
   - component: {fileID: 6820939544596108946}
+  - component: {fileID: 3235256987178533527}
   m_Layer: 8
   m_Name: pinetree 3 snow
   m_TagString: Untagged
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8278292584550111033}
   m_Enabled: 1
+--- !u!136 &3235256987178533527
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886247089287024058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Height: 3.7143707
+  m_Direction: 1
+  m_Center: {x: 0.060000002, y: 1.1071854, z: 0}
 --- !u!1001 &7287935386771164093
 PrefabInstance:
   m_ObjectHideFlags: 0

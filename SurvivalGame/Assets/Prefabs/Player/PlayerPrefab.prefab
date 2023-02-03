@@ -367,6 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2668167583608692982}
   - component: {fileID: 1996891978409348165}
+  - component: {fileID: 4716573262208412372}
   m_Layer: 0
   m_Name: Model_GO
   m_TagString: Untagged
@@ -419,8 +420,20 @@ MonoBehaviour:
   playerModel: {fileID: 161253107125550747}
   mainCamera: {fileID: 7199747644870168616}
   playerData: {fileID: 1272567868024724427}
-  attackDmg: 20
-  vulterablity: axe
+  mainTerain: {fileID: 0}
+--- !u!65 &4716573262208412372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161253107125550747}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.5, z: 2}
+  m_Center: {x: 0, y: -0.74, z: 0}
 --- !u!1 &208493312971256236
 GameObject:
   m_ObjectHideFlags: 0
