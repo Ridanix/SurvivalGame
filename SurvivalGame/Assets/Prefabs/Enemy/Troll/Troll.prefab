@@ -855,7 +855,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.275
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!95 &4715000676686193189
@@ -910,11 +910,11 @@ MonoBehaviour:
   agroRange: 10
   attackDmg: 40
   attackAnimation: {fileID: 5486411676377632654, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
-  roarAnimation: {fileID: 532543887178543829, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
   attackPoint: {fileID: 5894532693081963730}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  roarAnimation: {fileID: 532543887178543829, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
 --- !u!114 &651894509151814941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +930,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 407859262584534687}
   maxHealth: 200
   health: 0
+  deathAnim: {fileID: 3913752260282981913, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
 --- !u!1 &2119482277419689825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,6 +2418,7 @@ GameObject:
   - component: {fileID: 859343922983714302}
   - component: {fileID: 3397482889841908449}
   - component: {fileID: 7527067216917260669}
+  - component: {fileID: 6138019017228934107}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2506,6 +2508,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6138019017228934107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051650338750370327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &6383842326449675102
 GameObject:
   m_ObjectHideFlags: 0

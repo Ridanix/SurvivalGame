@@ -75,7 +75,10 @@ public class Goblin : MonoBehaviour
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
-            transform.LookAt(player);
+            //transform.LookAt(player);
+            Vector3 lookDiecrtion = player.position - transform.position;
+            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
+            transform.rotation = lookRatation;
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)

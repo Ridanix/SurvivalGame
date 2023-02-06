@@ -1502,6 +1502,7 @@ GameObject:
   - component: {fileID: 5496463422983939843}
   - component: {fileID: 722517293746462344}
   - component: {fileID: 8900967546423802910}
+  - component: {fileID: 986521498453321840}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1591,6 +1592,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &986521498453321840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720730735233221835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &4753162170051534837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,9 +2280,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.75
-  m_Height: 3
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!195 &-1310507561369374491
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2288,7 +2302,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.145
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!95 &-8939166247812702833
@@ -2340,6 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agroRange: 10
+  projectile: {fileID: 1249685726680323326, guid: 233fd717552442f4a852da9e71c82012, type: 3}
   attackDmg: 50
   attackAnimation: {fileID: 7247959309433570918, guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af, type: 3}
   attackPoint: {fileID: 2120879332059205979}
@@ -2348,7 +2363,6 @@ MonoBehaviour:
     m_Bits: 64
   throwDmg: 90
   throwAnimation: {fileID: -8593065245080242498, guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af, type: 3}
-  projectile: {fileID: 1249685726680323326, guid: 233fd717552442f4a852da9e71c82012, type: 3}
 --- !u!114 &5318530375231566357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2364,6 +2378,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 1638068037642508707}
   maxHealth: 250
   health: 0
+  deathAnim: {fileID: 6578231272443540608, guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af, type: 3}
 --- !u!1 &7558505695705292299
 GameObject:
   m_ObjectHideFlags: 0

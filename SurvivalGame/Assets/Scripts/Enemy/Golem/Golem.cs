@@ -6,8 +6,9 @@ using UnityEngine.AI;
 
 public class Golem : MonoBehaviour
 {
-    public Transform player; //Hlavní hráèská postava
+    Transform player; //Hlavní hráèská postava
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    public GameObject projectile;
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -34,7 +35,7 @@ public class Golem : MonoBehaviour
     Animator animator;
     NavMeshAgent nav;
 
-    public GameObject projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,7 +85,10 @@ public class Golem : MonoBehaviour
                 return;
             }
             nav.SetDestination(player.position);
-            transform.LookAt(player);
+            //transform.LookAt(player);
+            Vector3 lookDiecrtion = player.position - transform.position;
+            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
+            transform.rotation = lookRatation;
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)

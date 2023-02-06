@@ -15,7 +15,7 @@ public class Houbak : MonoBehaviour
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
-    float attackRange = 0.6f;
+    float attackRange = 0.8f;
     public LayerMask playerLayer;
     bool dealDmg = false;
 
@@ -87,7 +87,10 @@ public class Houbak : MonoBehaviour
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
-            transform.LookAt(player);
+            //transform.LookAt(player);
+            Vector3 lookDiecrtion = player.position - transform.position;
+            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
+            transform.rotation = lookRatation;
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
