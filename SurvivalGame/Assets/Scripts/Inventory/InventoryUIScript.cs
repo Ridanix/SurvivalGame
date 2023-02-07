@@ -11,11 +11,16 @@ public class InventoryUIScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        bookMarksSpriteRenders = new SpriteRenderer[bookMarks.Length];
+        for (int i = 0; i < bookMarks.Length; i++)
+        {
+            bookMarksSpriteRenders[i] = bookMarks[i].GetComponent<SpriteRenderer>();
+        }
     }
 
     public Transform itemsParentInventory;
     public Transform itemsParentHotbar;
-    public GameObject inventoryUIGameObject;
+    public GameObject inventoryUIMainPanel;
     Inventory inventory;
     InventorySlotScript[] slots;
     //NEW
@@ -24,6 +29,25 @@ public class InventoryUIScript : MonoBehaviour
     public Sprite hotbarPlaceholder;
     public Image[] hotbarInGameSlots;
 
+    public GameObject[] bookMarks;
+    public GameObject rootOfInventoryUI;
+    public SpriteRenderer[] bookMarksSpriteRenders;
+    public SpriteRenderer activeBookMark;
+
+    public void OnBookMarkClick(SpriteRenderer clickedBookMark)
+    {
+        activeBookMark = clickedBookMark;
+
+        for (int i = 0; i < bookMarksSpriteRenders.Length; i++)
+        {
+            bookMarksSpriteRenders[i].sortingOrder = 0;
+            if (bookMarksSpriteRenders[i] == activeBookMark)
+            {
+                bookMarksSpriteRenders[i].sortingOrder = 2;
+            }
+        }
+    }
+     
     void Start()
     {
         inventory = Inventory.instance;
@@ -37,11 +61,10 @@ public class InventoryUIScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventoryUIGameObject.SetActive(!inventoryUIGameObject.activeSelf);
+            rootOfInventoryUI.SetActive(!rootOfInventoryUI.activeSelf);
         }
     }
     
-
     public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -71,4 +94,6 @@ public class InventoryUIScript : MonoBehaviour
         }
         Debug.Log("Updating");
     }
+
+
 }
