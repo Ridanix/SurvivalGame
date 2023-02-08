@@ -11,11 +11,6 @@ public class InventoryUIScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        bookMarksSpriteRenders = new SpriteRenderer[bookMarks.Length];
-        for (int i = 0; i < bookMarks.Length; i++)
-        {
-            bookMarksSpriteRenders[i] = bookMarks[i].GetComponent<SpriteRenderer>();
-        }
     }
 
     public Transform itemsParentInventory;
@@ -29,21 +24,26 @@ public class InventoryUIScript : MonoBehaviour
     public Sprite hotbarPlaceholder;
     public Image[] hotbarInGameSlots;
 
+    //BOOKMARKS
     public GameObject[] bookMarks;
     public GameObject rootOfInventoryUI;
-    public SpriteRenderer[] bookMarksSpriteRenders;
-    public SpriteRenderer activeBookMark;
+    public GameObject[] panelsOfInventory;
+    public GameObject activeBookMark;
+    public Sprite panelOpened;
+    public Sprite panelClosed;
 
-    public void OnBookMarkClick(SpriteRenderer clickedBookMark)
+    public void OnBookMarkClick(GameObject clickedBookMark)
     {
         activeBookMark = clickedBookMark;
 
-        for (int i = 0; i < bookMarksSpriteRenders.Length; i++)
+        for (int i = 0; i < bookMarks.Length; i++)
         {
-            bookMarksSpriteRenders[i].sortingOrder = 0;
-            if (bookMarksSpriteRenders[i] == activeBookMark)
+            bookMarks[i].GetComponent<Image>().sprite = panelClosed;
+            panelsOfInventory[i].SetActive(false);
+            if (bookMarks[i] == activeBookMark)
             {
-                bookMarksSpriteRenders[i].sortingOrder = 2;
+                bookMarks[i].GetComponent<Image>().sprite = panelOpened;
+                panelsOfInventory[i].SetActive(true);
             }
         }
     }
@@ -62,6 +62,7 @@ public class InventoryUIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             rootOfInventoryUI.SetActive(!rootOfInventoryUI.activeSelf);
+            OnBookMarkClick(activeBookMark);
         }
     }
     
