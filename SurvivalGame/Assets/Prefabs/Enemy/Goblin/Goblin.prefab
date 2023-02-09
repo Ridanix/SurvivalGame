@@ -1245,7 +1245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &3733491787295563529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239b7f66e37b0b5459c658b67efa43e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 6301891423942142050}
   agroRange: 10
   attackDmg: 15
   attackAnimation: {fileID: 2180276689868566354, guid: f800e2fbea6d0e74bb92538315f09153, type: 3}
@@ -1517,9 +1517,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 4323430939221986213}
+  healthCanvas: {fileID: 3687794026996988820}
   maxHealth: 100
   health: 0
-  deathAnim: {fileID: 5715563873171417193, guid: f800e2fbea6d0e74bb92538315f09153, type: 3}
+  dead: 0
+  deathAnim: {fileID: 7400000, guid: ec055f72469cb8f45bda2519c8c9c865, type: 2}
 --- !u!1 &4086158151850356781
 GameObject:
   m_ObjectHideFlags: 0

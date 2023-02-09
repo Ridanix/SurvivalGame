@@ -7,8 +7,10 @@ using UnityEngine.AI;
 public class Golem : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
+    [SerializeField] EnemyHealth enemyHealth; //Health Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
     public GameObject projectile;
+    float distance;
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -50,6 +52,8 @@ public class Golem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyHealth.dead) return;
+
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
@@ -75,7 +79,7 @@ public class Golem : MonoBehaviour
         dealDmg = false;
         throwRock = false;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player.position);
 
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
@@ -85,10 +89,7 @@ public class Golem : MonoBehaviour
                 return;
             }
             nav.SetDestination(player.position);
-            //transform.LookAt(player);
-            Vector3 lookDiecrtion = player.position - transform.position;
-            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
-            transform.rotation = lookRatation;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
@@ -100,12 +101,12 @@ public class Golem : MonoBehaviour
             animator.SetBool("following", false);
             Attack();
         }
-        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+        //transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 
     void Attack()
     {
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }
@@ -113,7 +114,7 @@ public class Golem : MonoBehaviour
     {
         nav.SetDestination(transform.position);
         //Debug.Log("throw");
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("throw");
         lastThrow = Time.time;
     }

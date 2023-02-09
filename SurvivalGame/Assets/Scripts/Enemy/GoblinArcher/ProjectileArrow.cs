@@ -14,9 +14,9 @@ public class ProjectileArrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(Vector3.up, 90);
+        //transform.Rotate(Vector3.up, 90);
         //transform.Rotate(Vector3.right, 90);
-        transform.Rotate(Vector3.forward, 90);
+        //transform.Rotate(Vector3.forward, 90);
     }
 
     // Update is called once per frame

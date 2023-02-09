@@ -1012,7 +1012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &2925160892769181416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,8 +3526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290ed05a92758cb4f9395f969ad875a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 3761151291185763203}
   agroRange: 15
-  projectile: {fileID: 7228101900450272003, guid: 1a19f04b444f98f46a49effcbf34cadf, type: 3}
+  projectile: {fileID: 4646172209905993071, guid: 3a86ca8c8d6f91d44ae53e4e81e07b12, type: 3}
   attackAnimation: {fileID: -1399343952896481615, guid: d8e9b7c0659e8204d8e92d6be7d3eefb, type: 3}
   attackPoint: {fileID: 1185013362690708514}
 --- !u!114 &3761151291185763203
@@ -3544,9 +3544,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 4399112691763262905}
+  healthCanvas: {fileID: 2882720319857879309}
   maxHealth: 80
   health: 0
-  deathAnim: {fileID: 3889858844082787463, guid: d8e9b7c0659e8204d8e92d6be7d3eefb, type: 3}
+  dead: 0
+  deathAnim: {fileID: 7400000, guid: 36a6adfbcc4030a42b274e1faf05f3b5, type: 2}
 --- !u!1 &9177088751959954892
 GameObject:
   m_ObjectHideFlags: 0

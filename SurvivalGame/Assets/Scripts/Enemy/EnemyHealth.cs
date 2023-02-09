@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     //HealthBarScript
     [SerializeField] EnemyHealthBar enemyHealthBar;
+    [SerializeField] GameObject healthCanvas;
 
     //Health
     [SerializeField] public float maxHealth;
@@ -16,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     Animator animator;
 
     //Die
+    public bool dead = false;
     bool die = false;
     bool dying = false;
     [SerializeField] AnimationClip deathAnim;
@@ -56,11 +58,13 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             die = true;
+            dead = true;
+            healthCanvas.SetActive(false);
             return;
             //animator.SetTrigger("die");
             //Destroy(gameObject);
         }
         //else if (name == "Golem" || (name == "Troll" && health > )) animator.SetTrigger("hit");
-        else if (!die && !dying && name != "Golem" || (name == "Troll")) animator.SetTrigger("hit");
+        else if (!die && !dying && name != "Golem" || name != "BossGoblin") animator.SetTrigger("hit");
     }
 }

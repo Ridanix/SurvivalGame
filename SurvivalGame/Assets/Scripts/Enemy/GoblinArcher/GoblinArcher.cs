@@ -7,8 +7,10 @@ using UnityEngine.AI;
 public class GoblinArcher : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
+    [SerializeField] EnemyHealth enemyHealth; //Health Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
     public GameObject projectile;
+    float distance;
 
     //Attack
     //[SerializeField] float attackDmg; //Dmg Moba
@@ -33,33 +35,38 @@ public class GoblinArcher : MonoBehaviour
 
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
-
+        lastAttack = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (enemyHealth.dead) return;
+
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && arrowShot == false)
         {
-            Rigidbody rb = Instantiate(projectile, attackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            Rigidbody rb = Instantiate(projectile, attackPoint.position, transform.rotation).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
             //rb.AddForce(transform.right * 2f, ForceMode.Impulse);
             //rb.AddForce(transform.up * 2f, ForceMode.Impulse);
             arrowShot = true;
             return;
         }
-        else if (Time.time - lastAttack < attackCooldown) return; //èekání než hodí vystøelí
+        else if (Time.time - lastAttack < attackCooldown)
+        {
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            return; //èekání než hodí vystøelí
+        }
+
         arrowShot = false;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player.position);
 
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
-            //transform.LookAt(player);
-            Vector3 lookDiecrtion = player.position - transform.position;
-            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
-            transform.rotation = lookRatation;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
@@ -76,7 +83,7 @@ public class GoblinArcher : MonoBehaviour
 
     void Attack()
     {
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }

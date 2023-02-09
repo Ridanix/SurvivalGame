@@ -7,7 +7,9 @@ using UnityEngine.AI;
 public class Houbak : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
+    [SerializeField] EnemyHealth enemyHealth; //Health Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    float distance;
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -27,6 +29,9 @@ public class Houbak : MonoBehaviour
     float spawningTime;
     float spawnTime;
 
+    //Health
+    [SerializeField] GameObject healthCanvas;
+
     //Components
     Animator animator;
     NavMeshAgent nav;
@@ -45,11 +50,13 @@ public class Houbak : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
+        if (enemyHealth.dead) return;
+
+        distance = Vector3.Distance(transform.position, player.position);
 
         if (!spawn)
         {
-            if (!spawnTrigger && distance > spawnRange)return;
+            if (!spawnTrigger && distance > spawnRange) return;
             else if(!spawnTrigger && distance <= spawnRange)
             {
                 animator.SetTrigger("spawnTrigger");
@@ -57,7 +64,11 @@ public class Houbak : MonoBehaviour
                 spawnTrigger = true;
                 return;
             }
-            if (Time.time - spawnTime < spawningTime)
+            else if (Time.time - spawnTime > spawningTime * 0.6f)
+            {
+                healthCanvas.SetActive(true);
+            }
+            else if (Time.time - spawnTime < spawningTime)
             {
                 return;
             }
@@ -68,10 +79,6 @@ public class Houbak : MonoBehaviour
             }
         }
         
-
-        //transform.position += Vector3.up * 10f * Time.deltaTime;
-        //transform.position += Vector3.up * 1f * Time.deltaTime;
-        //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
@@ -87,10 +94,7 @@ public class Houbak : MonoBehaviour
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
-            //transform.LookAt(player);
-            Vector3 lookDiecrtion = player.position - transform.position;
-            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
-            transform.rotation = lookRatation;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
@@ -107,7 +111,7 @@ public class Houbak : MonoBehaviour
 
     void Attack()
     {
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }

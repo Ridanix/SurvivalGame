@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &841991208453624764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -527,7 +527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &1584881677560186802
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +850,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1263,6 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f132faf92132a1e4f9ed63a3a58665a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 6310615366220133438}
   agroRange: 8
   attackDmg: 30
   attackAnimation: {fileID: -8689284941605800061, guid: 16af35c890b457549853ab56639a15f3, type: 3}
@@ -1272,6 +1272,7 @@ MonoBehaviour:
     m_Bits: 64
   spawnRange: 3
   spawnAnimation: {fileID: -9219545864690377164, guid: 16af35c890b457549853ab56639a15f3, type: 3}
+  healthCanvas: {fileID: 1557998051015401563}
 --- !u!114 &6310615366220133438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,9 +1286,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 1232307521074193534}
+  healthCanvas: {fileID: 1557998051015401563}
   maxHealth: 100
   health: 0
-  deathAnim: {fileID: -4308666471793572365, guid: 16af35c890b457549853ab56639a15f3, type: 3}
+  dead: 0
+  deathAnim: {fileID: 7400000, guid: 0e094d39c53d42c4492d67da8742dc0e, type: 2}
 --- !u!1 &2774124258100854833
 GameObject:
   m_ObjectHideFlags: 0

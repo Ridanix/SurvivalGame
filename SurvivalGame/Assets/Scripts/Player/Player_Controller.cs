@@ -50,7 +50,7 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-         Debug.LogWarning(other.name);
+         //Debug.LogWarning(other.name);
     }
 
     public void Update()
@@ -58,10 +58,10 @@ public class Player_Controller : MonoBehaviour
         //???
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Space))
         {
             playerData.HealOrDamage(-60);
-        }
+        }*/
             
 
         //geting input
@@ -106,13 +106,10 @@ public class Player_Controller : MonoBehaviour
 
             foreach (Collider enemy in hitEnemies)
             {
-                //Debug.Log("Hráètrefa");
                 if (hitEnemies.Length > 0)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg, enemy.gameObject.name);
-
                 }
-                //goblinGameObject = GameObject.Find("BasicGoblin");
             }
 
             Collider[] hitSuplies = Physics.OverlapSphere(attackPoint.position, attackRange, suplieLayers);
@@ -142,7 +139,6 @@ public class Player_Controller : MonoBehaviour
                     //suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
                    
                 }
-                //goblinGameObject = GameObject.Find("BasicGoblin");
             }
         }
 
@@ -150,13 +146,6 @@ public class Player_Controller : MonoBehaviour
         {          
             SceneManager.LoadScene("MainMenu");
         }
-
-        /*if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Vector3 vec = transform.position;
-            vec.y = 1.08f;
-            transform.position = vec;
-        }*/
     }
 
   

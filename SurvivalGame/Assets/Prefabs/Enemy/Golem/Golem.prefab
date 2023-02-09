@@ -700,7 +700,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0.000000011838765, z: 4.832164e-10, w: 0.7071067}
   m_LocalPosition: {x: 0.000000009313228, y: 1.4860905, z: 0.03688395}
   m_LocalScale: {x: 51.106514, y: 51.106518, z: 51.106514}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7974290030559291402}
   m_RootOrder: 0
@@ -1355,7 +1355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3619004654232195989}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0005415957, y: 0.023357354, z: 0.0019534752}
+  m_LocalPosition: {x: -0.0005415957, y: 0.02336, z: 0.006}
   m_LocalScale: {x: 0.01977761, y: 0.019777613, z: 0.019777613}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1604,7 +1604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &4753162170051534837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db6f66b287835c4a8dcc3e6a71baf8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 5318530375231566357}
   agroRange: 10
   projectile: {fileID: 1249685726680323326, guid: 233fd717552442f4a852da9e71c82012, type: 3}
   attackDmg: 50
@@ -2376,9 +2376,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 1638068037642508707}
+  healthCanvas: {fileID: 4720730735233221835}
   maxHealth: 250
   health: 0
-  deathAnim: {fileID: 6578231272443540608, guid: 0dcfdd0b89d3bcf4a82880f4ce78f4af, type: 3}
+  dead: 0
+  deathAnim: {fileID: 7400000, guid: 81a11036ae702df49ac817ad8ef816bc, type: 2}
 --- !u!1 &7558505695705292299
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,9 @@ using UnityEngine.AI;
 public class Goblin : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
+    [SerializeField] EnemyHealth enemyHealth; //Health Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    float distance;
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -18,7 +20,6 @@ public class Goblin : MonoBehaviour
     float attackRange = 0.6f;
     public LayerMask playerLayer;
     bool dealDmg = false;
-    float distance;
 
     //Components
     Animator animator;
@@ -32,13 +33,13 @@ public class Goblin : MonoBehaviour
 
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (enemyHealth.dead) return;
+
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
@@ -52,33 +53,12 @@ public class Goblin : MonoBehaviour
 
         dealDmg = false;
 
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        //Hledání hráèské postavy
-        //Transform GetClosestPlayer(Transform[] player)
-        //{
-        //    Transform tMin = null;
-        //    float minDist = Mathf.Infinity;
-        //    Vector3 currentPos = transform.position;
-        //    foreach (Transform t in player)
-        //    {
-        //        float dist = Vector3.Distance(t.position, currentPos);
-        //        if (dist < minDist)
-        //        {
-        //            tMin = t;
-        //            minDist = dist;
-        //        }
-        //    }
-        //    return tMin;
-        //}
+        distance = Vector3.Distance(transform.position, player.position);
 
         if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
-            //transform.LookAt(player);
-            Vector3 lookDiecrtion = player.position - transform.position;
-            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
-            transform.rotation = lookRatation;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
@@ -95,7 +75,7 @@ public class Goblin : MonoBehaviour
 
     void Attack()
     {
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }

@@ -5,9 +5,11 @@ using UnityEngine.AI;
 
 public class Troll : MonoBehaviour
 {
-    [SerializeField] EnemyHealth enemyHealth;  
     Transform player; //Hlavní hráèská postava
+    [SerializeField] EnemyHealth enemyHealth;
+    [SerializeField] Shake shake;
     [SerializeField] float agroRange; //Range na hledání nepøátel
+    float distance;
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -23,6 +25,7 @@ public class Troll : MonoBehaviour
     [SerializeField] AnimationClip roarAnimation; //Aniamce útoku
     float roarCooldown; //délka animace attacku
     bool rageMode = false;
+
 
     //Components
     Animator animator;
@@ -42,6 +45,8 @@ public class Troll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyHealth.dead) return;
+
         if (Time.time - lastAttack < roarCooldown) return;
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
@@ -56,15 +61,12 @@ public class Troll : MonoBehaviour
 
         dealDmg = false;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player.position);
 
         if (distance < agroRange && distance > nav.stoppingDistance * 1.11)
         {
             nav.SetDestination(player.position);
-            //transform.LookAt(player);
-            Vector3 lookDiecrtion = player.position - transform.position;
-            Quaternion lookRatation = Quaternion.LookRotation(lookDiecrtion, Vector3.up);
-            transform.rotation = lookRatation;
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
         else if (distance >= agroRange)
@@ -79,10 +81,11 @@ public class Troll : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
         //RageMode
-
         if (!rageMode && enemyHealth.health  <= enemyHealth.maxHealth / 2)
         {
             animator.SetTrigger("rageMode");
+            //shake.duration = roarCooldown * 0.7f;
+            shake.start = true;
             lastAttack = Time.time;
             attackDmg = attackDmg * 2;
             nav.speed = 4;
@@ -92,7 +95,7 @@ public class Troll : MonoBehaviour
 
     void Attack()
     {
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
     }

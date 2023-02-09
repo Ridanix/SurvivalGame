@@ -35,7 +35,6 @@ public class PlayerAnimations : MonoBehaviour
         else if (MoveY != 0 || MoveX != 0)
         {
             ChangeAnimationState("Walking");
-            
         }
         else
         {

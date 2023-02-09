@@ -928,9 +928,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 407859262584534687}
+  healthCanvas: {fileID: 6051650338750370327}
   maxHealth: 200
   health: 0
-  deathAnim: {fileID: 3913752260282981913, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
+  dead: 0
+  deathAnim: {fileID: 7400000, guid: ec43ffcff208e4f46848aa5f5387369a, type: 2}
 --- !u!1 &2119482277419689825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +2522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24deca3018682947a6cb52a81eea370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &6383842326449675102
 GameObject:
   m_ObjectHideFlags: 0
