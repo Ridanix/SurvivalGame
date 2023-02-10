@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: snow
-  m_DiffuseTexture: {fileID: 2800000, guid: 9a0b2ff4ac367cb479855ace473f3fa5, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: e699c5a25ae818b44a6ab5c6b059b8da, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
