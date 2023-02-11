@@ -1,5 +1,5 @@
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "bf6943169abf4e879a94ec5ebcd36c01",
     "m_Properties": [
@@ -14,6 +14,12 @@
         }
     ],
     "m_Keywords": [],
+    "m_Dropdowns": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "6565e3f08e6e4872b4213a377b806da4"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "c6bc21dd8c2c48bca70228ae00138088"
@@ -308,12 +314,13 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10200,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
-        }
+        },
+        "preventRotation": false
     },
     "m_Path": "Sub Graphs",
-    "m_ConcretePrecision": 0,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "c6bc21dd8c2c48bca70228ae00138088"
@@ -494,9 +501,13 @@
         "m_GuidSerialized": "e78de181-dabc-4242-b474-823ee11e1ff5"
     },
     "m_Name": "Octave Factor",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_1f9d2fc200e74ded962656f2c53c1c2b",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -701,9 +712,13 @@
         "m_GuidSerialized": "8de6a30d-f000-4357-a4ca-5ed89cd5af30"
     },
     "m_Name": "scale",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_4a54f1bca334479499cf4bb49a968b4c",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -878,6 +893,24 @@
         "e32": 0.0,
         "e33": 1.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "6565e3f08e6e4872b4213a377b806da4",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "4a54f1bca334479499cf4bb49a968b4c"
+        },
+        {
+            "m_Id": "94764b6de09545d7bb6af30ddc45e306"
+        },
+        {
+            "m_Id": "1f9d2fc200e74ded962656f2c53c1c2b"
+        }
+    ]
 }
 
 {
@@ -1317,9 +1350,13 @@
         "m_GuidSerialized": "49060d33-ff99-4547-8d53-3a528c5e79bc"
     },
     "m_Name": "Speed",
+    "m_DefaultRefNameVersion": 0,
+    "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Vector1_94764b6de09545d7bb6af30ddc45e306",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
@@ -1362,7 +1399,8 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 2
+    "m_Space": 2,
+    "m_PositionSource": 0
 }
 
 {
@@ -1642,8 +1680,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 257.0000305175781,
-            "y": -171.0,
+            "x": 299.0,
+            "y": -229.0,
             "width": 147.0,
             "height": 118.0
         }
@@ -1926,7 +1964,7 @@
     },
     "m_Name": "Tiling And Offset",
     "m_DrawState": {
-        "m_Expanded": false,
+        "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
             "x": 75.00003051757813,
