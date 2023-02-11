@@ -6163,6 +6163,7 @@ GameObject:
   - component: {fileID: 826257455275255635}
   - component: {fileID: 1105912958}
   - component: {fileID: 1105912966}
+  - component: {fileID: 7922073864109026179}
   m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -6337,6 +6338,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEquipment: []
+--- !u!114 &7922073864109026179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535588371233806436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf278e7e07821b749be6bbf993341782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCraftingTable: []
+  crafttableSpace: 3
 --- !u!1 &5552340393562594142
 GameObject:
   m_ObjectHideFlags: 0

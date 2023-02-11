@@ -9,6 +9,8 @@ public class CraftingSlot : MonoBehaviour
     public ScriptableItem item;
     public Button removeButton;
     public Button toInventoryButton;
+    public bool isOutputslot= false;
+    public CraftingSlot[] allOtehrInputCraftingSlots;
 
     public virtual void AddItem(ScriptableItem newItem)
     {
@@ -20,7 +22,7 @@ public class CraftingSlot : MonoBehaviour
         toInventoryButton.interactable = true;
     }
 
-    private void ClearSlot()
+    public void ClearSlot()
     {
         item = null;
         icon.sprite = null;
@@ -29,13 +31,7 @@ public class CraftingSlot : MonoBehaviour
         toInventoryButton.interactable = false;
     }
 
-    public void OnRemoveButton()
-    {
-        Inventory.instance.RemoveItem(item);
-        ClearSlot();
-    }
-
-    public virtual void UseItem()
+    public void UseItem()
     {
         if (item != null)
         {
@@ -43,9 +39,21 @@ public class CraftingSlot : MonoBehaviour
             {
                 return;
             }
-            OnRemoveButton();
-            ClearSlot();
+            OnInventoryButton();
 
         }        
+    }
+
+    public void OnInventoryButton()
+    {
+        Crafting.instance.TableToInventory(item);
+        ClearSlot();
+        if(isOutputslot)
+        {
+            for (int i = 0; i < allOtehrInputCraftingSlots.Length; i++)
+            {
+                allOtehrInputCraftingSlots[i].ClearSlot();
+            }
+        }
     }
 }
