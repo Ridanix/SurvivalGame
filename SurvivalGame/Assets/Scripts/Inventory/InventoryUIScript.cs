@@ -16,9 +16,10 @@ public class InventoryUIScript : MonoBehaviour
     public Transform itemsParentInventory;
     public Transform itemsParentHotbar;
     public GameObject inventoryUIMainPanel;
+
+
     Inventory inventory;
     InventorySlotScript[] slots;
-    //NEW
     public HotbarSlotScript[] hotbarSlots;
 
     public Sprite hotbarPlaceholder;
