@@ -11,7 +11,8 @@ public class BossGoblin : MonoBehaviour
     [SerializeField] Shake shake;
     [SerializeField] float agroRange; //Range na hledání nepøátel
     float distance;
-
+    float posX;
+    float posZ;
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
     [SerializeField] AnimationClip attackAnimation1; //Aniamce útoku
@@ -26,6 +27,8 @@ public class BossGoblin : MonoBehaviour
     bool dealDmg = false;
     [SerializeField] GameObject projectileAxe1;
     [SerializeField] GameObject projectileAxe2;
+    [SerializeField] GameObject spawnAxe;
+    bool itemSpawned = false;
     int random;
 
     //Spawn (Boss vstane z trùnu)
@@ -55,6 +58,7 @@ public class BossGoblin : MonoBehaviour
     float throwLenght;
     [SerializeField] GameObject axeProjectile;
 
+
     //Components
     Animator animator;
     NavMeshAgent nav;
@@ -75,7 +79,17 @@ public class BossGoblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyHealth.dead) return;
+        if (enemyHealth.dead) {
+            
+
+            if (itemSpawned == false)
+            {
+                Instantiate(spawnAxe, gameObject.transform.position, Quaternion.identity);
+                itemSpawned = true;
+            }
+            return;
+        }
+       
 
         distance = Vector3.Distance(transform.position, player.position);
 

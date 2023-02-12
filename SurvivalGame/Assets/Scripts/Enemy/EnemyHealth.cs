@@ -45,6 +45,7 @@ public class EnemyHealth : MonoBehaviour
             die = false;
             return;
         }
+    
         else if (dying && Time.time - deathTime < deathLenght) return;
         else if (dying && Time.time - deathTime >= deathLenght) Destroy(gameObject);
     }

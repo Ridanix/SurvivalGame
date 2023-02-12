@@ -126,12 +126,15 @@ public class Player_Data : EntityInventory
         CheckStats();
         UpateBars();
         UpdateStats();
-
+        if (gameObject.transform.position.y > 11.3)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 11, gameObject.transform.position.z);
+        }
         //Teleport Back to ground
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Vector3 vec = transform.position;
-            vec.y = 1.08f;
+            vec.y = 11f;
             transform.position = vec;
         }
     }

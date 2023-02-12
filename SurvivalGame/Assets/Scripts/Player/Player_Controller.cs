@@ -62,7 +62,7 @@ public class Player_Controller : MonoBehaviour
         {
             playerData.HealOrDamage(-60);
         }*/
-            
+      
 
         //geting input
         float moveX = Input.GetAxisRaw("Horizontal") * speed;

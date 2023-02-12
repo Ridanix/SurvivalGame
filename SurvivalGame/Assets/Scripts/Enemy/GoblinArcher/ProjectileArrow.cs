@@ -9,6 +9,7 @@ public class ProjectileArrow : MonoBehaviour
     [SerializeField] float projectileDmg;
     //[SerializeField] EntityInventory entityInventory;
     [SerializeField] LayerMask playerLayer;
+    GameObject player;
     //[SerializeField] LayerMask enemyLayer;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class ProjectileArrow : MonoBehaviour
         //transform.Rotate(Vector3.up, 90);
         //transform.Rotate(Vector3.right, 90);
         //transform.Rotate(Vector3.forward, 90);
+        player = GameObject.Find("PlayerPrefab");
     }
 
     // Update is called once per frame
@@ -33,6 +35,9 @@ public class ProjectileArrow : MonoBehaviour
         {
             //Debug.Log("arrowhit");
             //entityInventory.HealOrDamage(-projectileDmg);
+            
+            player.GetComponent<Player_Data>().HealOrDamage(-20f);
+
         }
         Destroy(gameObject);
     }
