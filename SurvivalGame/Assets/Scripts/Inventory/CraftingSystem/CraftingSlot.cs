@@ -39,21 +39,15 @@ public class CraftingSlot : MonoBehaviour
             {
                 return;
             }
-            OnInventoryButton();
-
-        }        
-    }
-
-    public void OnInventoryButton()
-    {
-        Crafting.instance.TableToInventory(item);
-        ClearSlot();
-        if(isOutputslot)
-        {
-            for (int i = 0; i < allOtehrInputCraftingSlots.Length; i++)
+            
+            if (isOutputslot)
             {
-                allOtehrInputCraftingSlots[i].ClearSlot();
+                foreach (ScriptableItem iteminCrafttable in Crafting.instance.onCraftingTable)
+                {
+                    Crafting.instance.RemoveItemFromTable(iteminCrafttable);
+                }
+                Debug.LogWarning("Clearing Input Slots");
             }
-        }
+        }        
     }
 }

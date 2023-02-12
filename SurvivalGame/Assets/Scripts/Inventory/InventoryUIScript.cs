@@ -15,6 +15,7 @@ public class InventoryUIScript : MonoBehaviour
 
     public Transform itemsParentInventory;
     public Transform itemsParentHotbar;
+    
     public GameObject inventoryUIMainPanel;
     Inventory inventory;
     InventorySlotScript[] slots;
@@ -31,6 +32,11 @@ public class InventoryUIScript : MonoBehaviour
     public GameObject activeBookMark;
     public Sprite panelOpened;
     public Sprite panelClosed;
+
+    //CRAFITNG INVENTORY PART
+    public Transform itemsParentCraftingInventory;
+    public InventorySlotScript[] inventoryCraftingMenuSlots;
+
 
     public void OnBookMarkClick(GameObject clickedBookMark)
     {
@@ -55,6 +61,7 @@ public class InventoryUIScript : MonoBehaviour
         slots = itemsParentInventory.GetComponentsInChildren<InventorySlotScript>();
         //NEW
         hotbarSlots = itemsParentHotbar.GetComponentsInChildren<HotbarSlotScript>();
+        inventoryCraftingMenuSlots = itemsParentCraftingInventory.GetComponentsInChildren<InventorySlotScript>();
     }
 
     void Update()
@@ -93,6 +100,19 @@ public class InventoryUIScript : MonoBehaviour
                 hotbarInGameSlots[i].sprite = hotbarPlaceholder;
             }
         }
+        
+        for (int i = 0; i < inventoryCraftingMenuSlots.Length; i++)
+        {
+            if (i < inventory.itemList.Count)
+            {
+                inventoryCraftingMenuSlots[i].AddItem(inventory.itemList[i]);
+            }
+            else
+            {
+                inventoryCraftingMenuSlots[i].ClearSlot();
+            }
+        }
+
         Debug.Log("Updating");
     }
 

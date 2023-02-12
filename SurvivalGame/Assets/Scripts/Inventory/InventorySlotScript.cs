@@ -9,6 +9,7 @@ public class InventorySlotScript : MonoBehaviour
     public ScriptableItem item;
     public Button removeButton;
     public Button toHotbarButton;
+    public bool isInNormalInventory = true;
 
     public virtual void AddItem(ScriptableItem newItem)
     {
@@ -36,7 +37,15 @@ public class InventorySlotScript : MonoBehaviour
 
     public virtual void UseItem()
     {
-        if (item != null) item.UseItem("Inventory");
+        if (isInNormalInventory)
+        {
+           if (item != null) item.UseItem("Inventory");
+        }
+        else
+        {
+            if (item != null)
+                Crafting.instance.InventoryToTable(item);
+        }
     }
 
     //NEW
