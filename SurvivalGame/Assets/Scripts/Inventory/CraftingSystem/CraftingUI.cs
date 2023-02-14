@@ -58,6 +58,8 @@ public class CraftingUI : MonoBehaviour
                     break;
                 }
             }
+
+            Debug.LogWarning($"{craftingSlots.Length}");
         }
         else
         {

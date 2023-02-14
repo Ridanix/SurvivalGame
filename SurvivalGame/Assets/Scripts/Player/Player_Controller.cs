@@ -55,7 +55,12 @@ public class Player_Controller : MonoBehaviour
 
     public void Update()
     {
-        //???
+        if (Shake.isActive == false && mainCamera.transform.localPosition != new Vector3(0, 0, 0))
+        {
+            mainCamera.transform.localPosition = new Vector3(0, 0, 0);
+        }
+
+
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
         /*if(Input.GetKeyDown(KeyCode.Space))

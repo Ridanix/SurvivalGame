@@ -86,6 +86,7 @@ public class Troll : MonoBehaviour
             animator.SetTrigger("rageMode");
             //shake.duration = roarCooldown * 0.7f;
             shake.start = true;
+            Shake.isActive = false;
             lastAttack = Time.time;
             attackDmg = attackDmg * 2;
             nav.speed = 4;

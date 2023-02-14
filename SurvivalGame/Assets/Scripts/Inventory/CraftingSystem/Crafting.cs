@@ -37,7 +37,7 @@ public class Crafting : MonoBehaviour
             this.ingredient2 = ingredient2;
             this.ingredient3 = ingredient3;
             this.output = output;
-            Debug.Log($"Recepie: {this.ingredient1} + {this.ingredient2} + {this.ingredient3} = {this.output}");
+            //Debug.Log($"Recepie: {this.ingredient1} + {this.ingredient2} + {this.ingredient3} = {this.output}");
         }
         public Recepie(string ingredient1, string ingredient2, string ingredient3)
         {

@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     //Die
     public bool dead = false;
     bool die = false;
+    bool dieHelper= false;
     bool dying = false;
     [SerializeField] AnimationClip deathAnim;
     float deathLenght;
@@ -43,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
             deathTime = Time.time;
             dying = true;
             die = false;
+            dieHelper = true;
             return;
         }
     
@@ -53,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
     //možný pozdìjší health
     public void TakeDamage(float amount, string name = "")
     {
+        if (dieHelper) return;
         health -= amount;
         //Debug.Log(name);
         enemyHealthBar.SetHealth(health);

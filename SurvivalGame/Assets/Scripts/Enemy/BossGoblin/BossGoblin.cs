@@ -47,7 +47,7 @@ public class BossGoblin : MonoBehaviour
     //Phase
     bool phase1 = true;
     bool enteringPhase2 = false;
-    bool roar = false;
+    float speed = 0f;
     float phase2EnterTime;
     float throwEnterTime;
     bool throwingAxe = false;
@@ -89,7 +89,6 @@ public class BossGoblin : MonoBehaviour
             }
             return;
         }
-       
 
         distance = Vector3.Distance(transform.position, player.position);
 
@@ -146,6 +145,7 @@ public class BossGoblin : MonoBehaviour
             {
                 throwEnterTime = Time.time;
                 throwingAxe = true;
+                Shake.isActive = false;
                 return;
             }
             if (!throwAxe && throwingAxe && Time.time - throwEnterTime > throwLenght * 0.3f)
@@ -157,14 +157,16 @@ public class BossGoblin : MonoBehaviour
                 rb.AddForce(transform.up * 3f, ForceMode.Impulse);
                 throwAxe = true;
             }
+            
             else if (throwingAxe && Time.time - throwEnterTime < throwLenght)
             {
                 transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
                 return;
             }
+           
             else
             {
-                nav.speed = nav.speed * 1.5f;
+                nav.speed = speed * 1.5f;
                 enteringPhase2 = false;
                 return;
             }
@@ -202,11 +204,12 @@ public class BossGoblin : MonoBehaviour
 
         if (phase1 && enemyHealth.health < enemyHealth.maxHealth * 0.5f)
         {
+            speed = nav.speed;
+            nav.speed = 0f;
             animator.SetTrigger("phase2");
             phase2EnterTime = Time.time;
             phase1 = false;
             enteringPhase2 = true;
-            roar = true;
             return;
         }
     }
