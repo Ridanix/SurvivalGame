@@ -35,7 +35,11 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
             pictogram.sprite = EquipmentManager.instance.currentEquipment[numberOfSlot].icon;
             name.text = EquipmentManager.instance.currentEquipment[numberOfSlot].name;
             description.text = EquipmentManager.instance.currentEquipment[numberOfSlot].description;
-            stats.text = EquipmentManager.instance.currentEquipment[numberOfSlot].stats;
+            for (int i = 0; i <EquipmentManager.instance.currentEquipment[numberOfSlot].stats.Count; i++)
+            {
+                stats.text += $"{EquipmentManager.instance.currentEquipment[numberOfSlot].stats[i]}: {EquipmentManager.instance.currentEquipment[numberOfSlot].statsValues[i]}\n";
+            }
+            
         }
         else if (this.gameObject.GetComponent<InventorySlotScript>()!=null &&inventorySlotScript.item != null)
         {
@@ -43,7 +47,10 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
             pictogram.sprite = inventorySlotScript.item.icon;
             name.text = inventorySlotScript.item.name;
             description.text = inventorySlotScript.item.description;
-            stats.text = inventorySlotScript.item.stats;
+            for (int i = 0; i <inventorySlotScript.item.stats.Count; i++)
+            {
+                stats.text += $"{inventorySlotScript.item.stats[i]}: {inventorySlotScript.item.statsValues[i]}\n";
+            }
         }
         
     }

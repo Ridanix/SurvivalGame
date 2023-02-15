@@ -258,7 +258,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8669229168072147908}
         m_TargetAssemblyTypeName: InventorySlotScript, Assembly-CSharp
         m_MethodName: UseItem
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -498,6 +498,7 @@ MonoBehaviour:
   item: {fileID: 0}
   removeButton: {fileID: 4308950622140749191}
   toHotbarButton: {fileID: 6221446654643580437}
+  isInNormalInventory: 1
 --- !u!114 &3936298802526761867
 MonoBehaviour:
   m_ObjectHideFlags: 0

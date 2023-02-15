@@ -33,7 +33,7 @@ public class HotbarSlotScript : InventorySlotScript
         Inventory.instance.HotbarToInventory(item);
     }
 
-    public override void UseItem()
+    public override void UseItem(bool conectedToCrafting)
     {
         if (item != null) item.UseItem("Hotbar");
     }

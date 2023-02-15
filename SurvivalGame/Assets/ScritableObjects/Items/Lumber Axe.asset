@@ -15,7 +15,10 @@ MonoBehaviour:
   name: Lumber Axe
   icon: {fileID: 21300000, guid: 93405843c0355794e862b5abac8fabb5, type: 3}
   description: Hits timber harder then his owner.
-  stats: 'Damage: 5'
-  equip: 4
+  stats:
+  - Damage
+  statsValues: 05000000
   playerWhoUse: {fileID: 0}
-  damageModifier: 5
+  amount: 1
+  equip: 4
+  damageType: 0

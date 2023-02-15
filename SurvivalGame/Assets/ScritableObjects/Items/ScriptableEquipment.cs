@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class ScriptableEquipment : ScriptableItem
 {
-    public int damageModifier;
     public EquipmentSlot equip;
     public WeaponType damageType;
     

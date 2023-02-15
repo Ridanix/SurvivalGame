@@ -16,17 +16,29 @@ public class Crafting : MonoBehaviour
             Recepie recepie = new Recepie(line[0], line[1], line[2], line[3]);
             recepies.Add(recepie);
         }
+        string[] upgradeRecepiesInString = File.ReadAllLines("UpgradeRecepies.txt");
+        for (int i = 0; i < upgradeRecepiesInString.Length; i++)
+        {
+            string[] line = upgradeRecepiesInString[i].Split('|');
+            UpgradeRecepie recepie = new UpgradeRecepie(line[0], line[1]);
+            upgradeRecepies.Add(recepie);
+        }
+
     }
 
     public static Crafting instance;
 
     public List<ScriptableItem> onCraftingTable = new List<ScriptableItem>();
+    public List<ScriptableItem> onUpgradeTable = new List<ScriptableItem>();
     public int crafttableSpace = 3;
-    public delegate void OnItemChanged();
+    public int upgradeableSpace = 2;
+
+    public delegate void OnItemChanged(bool fromCraftingTable);
     public OnItemChanged onItemChangedCallback;
 
     //CraftingData
     public List<Recepie> recepies = new List<Recepie>();
+    public List<UpgradeRecepie> upgradeRecepies = new List<UpgradeRecepie>();
     public ScriptableItem[] allItemsWeCanCraft;
 
     public class Recepie
@@ -37,7 +49,6 @@ public class Crafting : MonoBehaviour
             this.ingredient2 = ingredient2;
             this.ingredient3 = ingredient3;
             this.output = output;
-            //Debug.Log($"Recepie: {this.ingredient1} + {this.ingredient2} + {this.ingredient3} = {this.output}");
         }
         public Recepie(string ingredient1, string ingredient2, string ingredient3)
         {
@@ -48,41 +59,64 @@ public class Crafting : MonoBehaviour
 
         public string ingredient1, ingredient2, ingredient3, output;
     }
-    
-    public void RemoveItemFromTable(ScriptableItem item)
+    public class UpgradeRecepie
     {
-        instance.onCraftingTable.Remove(item);
-        if (onItemChangedCallback != null) onItemChangedCallback.Invoke();
+        public string equipment, material;
+       
+        public UpgradeRecepie(string equipment, string material)
+        {
+            this.equipment = equipment;
+            this.material = material;
+        }
     }
 
-    public bool AddItemToTable(ScriptableItem item, bool fromRecepieFinder = false)
+
+    public void RemoveItemFromTable(ScriptableItem item, bool fromCraftingTable)
     {
-        if (instance.onCraftingTable.Count >= crafttableSpace && fromRecepieFinder == false)
+        if(fromCraftingTable) instance.onCraftingTable.Remove(item);
+        else instance.onUpgradeTable.Remove(item);
+        if (onItemChangedCallback != null) onItemChangedCallback.Invoke(fromCraftingTable);
+    }
+
+    public bool AddItemToTable(ScriptableItem item, bool fromCraftingTable, bool fromRecepieFinder = false)
+    {
+        if(fromCraftingTable)
         {
-            return false;
+            if (instance.onCraftingTable.Count >= crafttableSpace && fromRecepieFinder == false)
+            {
+                return false;
+            }
+            instance.onCraftingTable.Add(item);
         }
-        instance.onCraftingTable.Add(item);
-        if (onItemChangedCallback != null) onItemChangedCallback.Invoke();
+        else
+        {
+            if (instance.onUpgradeTable.Count >= upgradeableSpace && fromRecepieFinder == false)
+            {
+                return false;
+            }
+            instance.onUpgradeTable.Add(item);
+        }
+        if (onItemChangedCallback != null) onItemChangedCallback.Invoke(fromCraftingTable);
         return true;
     }
 
-    public bool InventoryToTable(ScriptableItem item)
+    public bool InventoryToTable(ScriptableItem item, bool fromCraftingTable)
     {
-        bool goOn = AddItemToTable(item);
+        bool goOn = AddItemToTable(item,fromCraftingTable);
         if (goOn == false)
             return false;
         Inventory.instance.RemoveItem(item);
-        if (onItemChangedCallback != null) onItemChangedCallback.Invoke();
+        if (onItemChangedCallback != null) onItemChangedCallback.Invoke(fromCraftingTable);
         return true;
     }
 
-    public bool TableToInventory(ScriptableItem item)
+    public bool TableToInventory(ScriptableItem item, bool fromCraftingTable)
     {
         bool goOn = Inventory.instance.AddItem(item);
         if (goOn == false)
             return false;
-        RemoveItemFromTable(item);
-        if (onItemChangedCallback != null) onItemChangedCallback.Invoke();
+        RemoveItemFromTable(item,fromCraftingTable);
+        if (onItemChangedCallback != null) onItemChangedCallback.Invoke(fromCraftingTable);
         return true;
     }
 }

@@ -9,7 +9,7 @@ public class CraftingSlot : MonoBehaviour
     public ScriptableItem item;
     public Button removeButton;
     public Button toInventoryButton;
-    public bool isOutputslot= false;
+    public bool isOutputslot = false;
     public CraftingSlot[] allOtehrInputCraftingSlots;
 
 
@@ -32,20 +32,37 @@ public class CraftingSlot : MonoBehaviour
         toInventoryButton.interactable = false;
     }
 
-    public void UseItem()
+    public void UseItem(bool fromCraftingTable)
     {
         if (item != null)
         {
-            if (isOutputslot)
-            {
-                Crafting.instance.onCraftingTable.Clear();
-            }
-            else if (Crafting.instance.onCraftingTable.Count>3)
-            {
-                Crafting.instance.onCraftingTable.RemoveAt(3);
-            }
             
-            if(Crafting.instance.TableToInventory(item) == false)
+            if(fromCraftingTable)
+            {
+                if (isOutputslot)
+                {
+                    Crafting.instance.onCraftingTable.Clear();
+                }
+                else if (Crafting.instance.onCraftingTable.Count>3)
+                {
+                    Crafting.instance.onCraftingTable.RemoveAt(3);
+                }
+            }
+            else
+            {
+                if (isOutputslot)
+                {
+                    Crafting.instance.onUpgradeTable.Clear();
+                }
+                else if (Crafting.instance.onUpgradeTable.Count>2)
+                {
+                    Crafting.instance.onUpgradeTable.RemoveAt(2);
+                }
+            }
+
+
+            Debug.LogWarning($"click: {fromCraftingTable}");
+            if (Crafting.instance.TableToInventory(item, fromCraftingTable) == false)
             {
                 return;
             }

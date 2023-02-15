@@ -35,7 +35,7 @@ public class InventorySlotScript : MonoBehaviour
         Inventory.instance.RemoveItem(item);
     }
 
-    public virtual void UseItem()
+    public virtual void UseItem(bool conectedToCrafting)
     {
         if (isInNormalInventory)
         {
@@ -44,7 +44,7 @@ public class InventorySlotScript : MonoBehaviour
         else
         {
             if (item != null)
-                Crafting.instance.InventoryToTable(item);
+                Crafting.instance.InventoryToTable(item, conectedToCrafting);
         }
     }
 

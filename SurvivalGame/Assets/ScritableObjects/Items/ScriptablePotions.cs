@@ -6,9 +6,6 @@ using UnityEngine;
 public class ScriptablePotions : ScriptableItem
 {
 
-    public int healthModifier;
-    public int manaModifier;
-
     public override void UseItem(string whereFromDoYouUseIt)
     {
         base.UseItem(whereFromDoYouUseIt);
@@ -17,8 +14,8 @@ public class ScriptablePotions : ScriptableItem
 
     public void DrinkPotion(string whereFromDoYouUseIt)
     {
-        playerWhoUse.ManaManipulaton(manaModifier);
-        playerWhoUse.HealOrDamage(healthModifier);
+        playerWhoUse.ManaManipulaton(statsValues[stats.IndexOf("Mana")]);
+        playerWhoUse.HealOrDamage(statsValues[stats.IndexOf("Health")]);
         RemoveItemFromInventory(whereFromDoYouUseIt);
     }
 }

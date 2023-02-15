@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Health Potion
   icon: {fileID: 21300000, guid: 11b9cb6ddb35ec14598be8f03601cdf7, type: 3}
   description: Gives you chance to survive another day.
-  stats: 'Health: 50   Mana: -50'
-  equip: 6
+  stats:
+  - Health
+  - Mana
+  statsValues: 32000000ceffffff
   playerWhoUse: {fileID: 0}
-  healthModifier: 50
-  manaModifier: -50
+  amount: 1
