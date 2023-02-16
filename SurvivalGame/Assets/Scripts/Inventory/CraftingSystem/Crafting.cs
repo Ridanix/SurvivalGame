@@ -13,7 +13,7 @@ public class Crafting : MonoBehaviour
         for (int i = 0; i < recepiesInString.Length; i++)
         {
             string[] line = recepiesInString[i].Split('|');
-            Recepie recepie = new Recepie(line[0], line[1], line[2], line[3]);
+            Recepie recepie = new Recepie(line, line[0] + "|" +line[1] + "|" + line[2]);
             recepies.Add(recepie);
         }
         string[] upgradeRecepiesInString = File.ReadAllLines("UpgradeRecepies.txt");
@@ -43,21 +43,21 @@ public class Crafting : MonoBehaviour
 
     public class Recepie
     {
-        public Recepie(string ingredient1, string ingredient2, string ingredient3, string output)
+        public Recepie(string[] line, string noLine)
         {
-            this.ingredient1 = ingredient1;
-            this.ingredient2 = ingredient2;
-            this.ingredient3 = ingredient3;
-            this.output = output;
+            ingridientsAndOutput = line;
+            noSplit = noLine;
         }
         public Recepie(string ingredient1, string ingredient2, string ingredient3)
         {
-            this.ingredient1 = ingredient1;
-            this.ingredient2 = ingredient2;
-            this.ingredient3 = ingredient3;
+            ingridientsAndOutput = new string[3];
+            ingridientsAndOutput[0] = ingredient1;
+            ingridientsAndOutput[1] = ingredient2;
+            ingridientsAndOutput[2] = ingredient3;
         }
 
-        public string ingredient1, ingredient2, ingredient3, output;
+        public string noSplit;
+        public string[] ingridientsAndOutput;
     }
     public class UpgradeRecepie
     {

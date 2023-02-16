@@ -17,7 +17,9 @@ MonoBehaviour:
   description: Hits timber harder then his owner.
   stats:
   - Damage
-  statsValues: 05000000
+  statsValues:
+  - 5
+  upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
   equip: 4

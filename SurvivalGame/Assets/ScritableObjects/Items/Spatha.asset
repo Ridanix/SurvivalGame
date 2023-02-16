@@ -17,7 +17,9 @@ MonoBehaviour:
   description: Favorite weapon between goblin slayers.
   stats:
   - Damage
-  statsValues: 14000000
+  statsValues:
+  - 20
+  upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
   equip: 4

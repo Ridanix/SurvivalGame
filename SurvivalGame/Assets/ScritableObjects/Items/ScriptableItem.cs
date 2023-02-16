@@ -9,9 +9,9 @@ public class ScriptableItem : ScriptableObject
     public string description;
 
     public List<string> stats = new List<string>();
-    public List<int> statsValues = new List<int>();
+    public List<float> statsValues = new List<float>();
 
-
+    public int upgradeMade = 0;
     public Player_Data playerWhoUse;
     
     public int amount = 1;

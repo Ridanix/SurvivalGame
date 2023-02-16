@@ -18,6 +18,9 @@ MonoBehaviour:
   stats:
   - Health
   - Mana
-  statsValues: 32000000ceffffff
+  statsValues:
+  - 50
+  - -50
+  upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
