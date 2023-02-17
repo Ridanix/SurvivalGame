@@ -9,6 +9,7 @@ public class Player_Controller : MonoBehaviour
     //MOVEMENT
     [SerializeField] CharacterController controller;
     [SerializeField] float speed = 5.0f;
+    public Vector3 direction;
     [SerializeField] private GameObject healingParticlePrefab;
     [SerializeField] Transform attackPoint;
     float attackRange = 0.6f;
@@ -72,7 +73,7 @@ public class Player_Controller : MonoBehaviour
         //geting input
         float moveX = Input.GetAxisRaw("Horizontal") * speed;
         float moveZ = Input.GetAxisRaw("Vertical") * speed;
-        Vector3 direction = new Vector3(moveX, 0, moveZ).normalized;
+        direction = new Vector3(moveX, 0, moveZ).normalized;
 
         //If gets any input, moves and rotates
         if (direction.magnitude >= 0.1f && disabled == false)
