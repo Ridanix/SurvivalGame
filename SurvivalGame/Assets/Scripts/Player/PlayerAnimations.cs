@@ -11,6 +11,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] AnimationClip attackAnimation;
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
+    public bool attackReady;
 
     // Start is called before the first frame update
     void Start()
@@ -24,21 +25,25 @@ public class PlayerAnimations : MonoBehaviour
     {
         
         if (Time.time - lastAttack < attackCooldown) return; //èekání než dodìlá attack
+        attackReady = true;
         float MoveY = Input.GetAxisRaw("Horizontal");
         float MoveX = Input.GetAxisRaw("Vertical");
         if (Input.GetMouseButtonDown(0))
         {
-            
             ChangeAnimationState("LightAttack1");
             lastAttack = Time.time;
+            attackReady = false;
+            return;
         }
         else if (MoveY != 0 || MoveX != 0)
         {
             ChangeAnimationState("Walking");
+            return;
         }
         else
         {
             ChangeAnimationState("Idle");
+            return;
         }
     }
     void ChangeAnimationState(string newState)

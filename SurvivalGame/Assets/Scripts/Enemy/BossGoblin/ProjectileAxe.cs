@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class ProjectileAxe : MonoBehaviour
 {
+    GameObject player;
     [SerializeField] float projectileDmg;
     [SerializeField] LayerMask playerLayer;
+    //[SerializeField] LayerMask enemyLayer;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //transform.Rotate(Vector3.up, 90);
-        //transform.Rotate(Vector3.right, 90);
-        //transform.Rotate(Vector3.forward, 90);
+        player = GameObject.Find("PlayerPrefab");
+        transform.Rotate(transform.rotation.x - 90, transform.rotation.y, transform.rotation.z - 90);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(transform.rotation.x, transform.rotation.y + 10, transform.rotation.z);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +31,7 @@ public class ProjectileAxe : MonoBehaviour
         //if (collision.gameObject.layer == playerLayer)
         if (collision.gameObject.name == "PlayerPrefab")
         {
-            //entityInventory.HealOrDamage(-projectileDmg);
+            player.GetComponent<Player_Data>().HealOrDamage(-projectileDmg);
         }
         Destroy(gameObject);
     }

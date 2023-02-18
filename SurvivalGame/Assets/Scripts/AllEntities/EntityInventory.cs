@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
+
 
 public class EntityInventory : MonoBehaviour
 {
@@ -16,29 +18,37 @@ public class EntityInventory : MonoBehaviour
     //Other Player Stats
     public float wealth = 0;
 
+    //RestartGame
+    bool restartGame = false;
+
     public void CheckStats()
     {
         if (stamina > maxStamina)
             stamina = maxStamina;
-        else if (stamina < 0)
-            stamina = 0;
+        else if (stamina < 0) stamina = 0;
+
         if (mana > maxMana)
         {
             //Debug.Log($"Mana burn damage: {mana - maxMana}");
-            HealOrDamage(maxMana-mana);
-            mana=maxMana;
+            HealOrDamage(maxMana - mana);
+            mana = maxMana;
         }
         else if (mana < 0)
         {
             //Debug.Log($"Mana fatique damage: {-1*mana}");
             HealOrDamage(mana);
-            mana=0;
+            mana = 0;
         }
-        if (health > maxHealth)
-            health = maxHealth;
-        else if (health < 0)
+
+        if (health > maxHealth) health = maxHealth;
+        else if (health <= 0)
+        {
             health = 0;
-        //Die From cringe
+            if(!restartGame) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartGame = true;
+        }
+
+        
     }
 
     public void WealthManipulation(float value)
@@ -53,6 +63,6 @@ public class EntityInventory : MonoBehaviour
 
     public void ManaManipulaton(float value)
     {
-        mana+=value;
+        mana += value;
     }
 }

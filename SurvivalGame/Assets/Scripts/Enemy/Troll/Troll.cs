@@ -7,7 +7,7 @@ public class Troll : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
     [SerializeField] EnemyHealth enemyHealth;
-    [SerializeField] Shake shake;
+    [SerializeField] GameObject shake;
     [SerializeField] float agroRange; //Range na hledání nepøátel
     float distance;
 
@@ -23,7 +23,7 @@ public class Troll : MonoBehaviour
 
     //RageMode
     [SerializeField] AnimationClip roarAnimation; //Aniamce útoku
-    float roarCooldown; //délka animace attacku
+    float roadLenght; //délka animace attacku
     bool rageMode = false;
 
 
@@ -38,8 +38,9 @@ public class Troll : MonoBehaviour
         animator = GetComponent<Animator>();
 
         attackCooldown = attackAnimation.length;
-        roarCooldown = roarAnimation.length;
+        roadLenght = roarAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
+        shake = GameObject.Find("Camera_GO");
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class Troll : MonoBehaviour
     {
         if (enemyHealth.dead) return;
 
-        if (Time.time - lastAttack < roarCooldown) return;
+        if (Time.time - lastAttack < roadLenght) return;
         //èekání do pùlky animace útoku, ubrání životù
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
@@ -71,10 +72,12 @@ public class Troll : MonoBehaviour
         }
         else if (distance >= agroRange)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance * 1.11)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
             Attack();
         }
@@ -84,8 +87,8 @@ public class Troll : MonoBehaviour
         if (!rageMode && enemyHealth.health  <= enemyHealth.maxHealth / 2)
         {
             animator.SetTrigger("rageMode");
-            //shake.duration = roarCooldown * 0.7f;
-            shake.start = true;
+            shake.GetComponent<Shake>().duration = roadLenght * 0.8f;
+            shake.GetComponent<Shake>().start = true;
             Shake.isActive = false;
             lastAttack = Time.time;
             attackDmg = attackDmg * 2;

@@ -63,10 +63,12 @@ public class Goblin : MonoBehaviour
         }
         else if (distance >= agroRange)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
             Attack();
         }

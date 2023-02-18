@@ -96,9 +96,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 9.556412
-  m_Height: 1.9617347
-  m_Direction: 1
+  m_Radius: 4
+  m_Height: 20
+  m_Direction: 2
   m_Center: {x: 0.24921483, y: -0.000000059604645, z: 8.822269}
 --- !u!54 &-8683521655147564376
 Rigidbody:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f48deb3b78b41a4dbb8c8a1926722d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDmg: 45
+  projectileDmg: 25
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

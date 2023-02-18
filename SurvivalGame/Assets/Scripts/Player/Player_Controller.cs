@@ -34,6 +34,7 @@ public class Player_Controller : MonoBehaviour
     //ATTACK
     public static float attackDmg;
     public static WeaponType vulterablity;
+    [SerializeField] PlayerAnimations playerAnimations;
 
     //TREE DESTRUCTION
     public Terrain mainTerain;
@@ -51,7 +52,7 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-         //Debug.LogWarning(other.name);
+        //Debug.LogWarning(other.name);
     }
 
     public void Update()
@@ -61,14 +62,7 @@ public class Player_Controller : MonoBehaviour
             mainCamera.transform.localPosition = new Vector3(0, 0, 0);
         }
 
-
         if (EventSystem.current.IsPointerOverGameObject()) return;
-
-        /*if(Input.GetKeyDown(KeyCode.Space))
-        {
-            playerData.HealOrDamage(-60);
-        }*/
-      
 
         //geting input
         float moveX = Input.GetAxisRaw("Horizontal") * speed;
@@ -79,24 +73,20 @@ public class Player_Controller : MonoBehaviour
         if (direction.magnitude >= 0.1f && disabled == false)
         {
             //rotates
-            float target_angle = Mathf.Atan2(direction.x, direction.z)* Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+            float target_angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turnSmoothVelocity, playerRotation);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //moves
-            Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f)*Vector3.forward;
-            controller.Move(move_direction.normalized*speed*Time.deltaTime);
+            Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f) * Vector3.forward;
+            controller.Move(move_direction.normalized * speed * Time.deltaTime);
 
-            //bar reduce
-            playerData.stamina -= 1f;
+           
         }
-        else
-        {
-            if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;
-        }
-             
+        
+
         //rotates camera, if you want to rotate only while standing, add code bellow like else to moverot part
-        if (Input.GetKey(KeyCode.Mouse1)== true && disabled == false)
+        if (Input.GetKey(KeyCode.Mouse1) == true && disabled == false)
         {
             mainCamera.transform.rotation = Quaternion.Euler(0f, Input.mousePosition.magnitude, 0f);
         }
@@ -112,7 +102,7 @@ public class Player_Controller : MonoBehaviour
 
             foreach (Collider enemy in hitEnemies)
             {
-                if (hitEnemies.Length > 0)
+                if (playerAnimations.attackReady && hitEnemies.Length > 0)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg, enemy.gameObject.name);
                 }
@@ -141,19 +131,29 @@ public class Player_Controller : MonoBehaviour
 
                     //Debug.LogWarning(mainTerain.terrainData.treeInstances[indexOfClosestTree].ToString());
                     //mainTerain.terrainData.SetTreeInstance(indexOfClosestTree, new TreeInstance());
-                    
+
                     //suply.GetComponent<ItemSpawner>().TakeDamage(attackDmg, vulterablity);
-                   
+
                 }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
-        {          
+        {
             SceneManager.LoadScene("MainMenu");
         }
+
+    }
+    private void FixedUpdate()
+    {
+        if (direction.magnitude >= 0.1f && disabled == false)
+        {
+            //bar reduce
+            playerData.stamina -= 1f;
+        }
+        else if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;
     }
 
-  
+
 
 }

@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class ProjectileArrow : MonoBehaviour
 {
-    //Transform player; //Hlavní hráèská postava
-    // [SerializeField] Golem golem;
-    [SerializeField] float projectileDmg;
-    //[SerializeField] EntityInventory entityInventory;
-    [SerializeField] LayerMask playerLayer;
     GameObject player;
+    [SerializeField] float projectileDmg;
+    [SerializeField] LayerMask playerLayer;
     //[SerializeField] LayerMask enemyLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //transform.Rotate(Vector3.up, 90);
-        //transform.Rotate(Vector3.right, 90);
-        //transform.Rotate(Vector3.forward, 90);
         player = GameObject.Find("PlayerPrefab");
     }
 
@@ -33,11 +27,7 @@ public class ProjectileArrow : MonoBehaviour
         //if (collision.gameObject.layer == playerLayer)
         if (collision.gameObject.name == "PlayerPrefab")
         {
-            //Debug.Log("arrowhit");
-            //entityInventory.HealOrDamage(-projectileDmg);
-            
-            player.GetComponent<Player_Data>().HealOrDamage(-20f);
-
+            player.GetComponent<Player_Data>().HealOrDamage(-projectileDmg);
         }
         Destroy(gameObject);
     }

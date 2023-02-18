@@ -362,6 +362,37 @@ Transform:
   m_Father: {fileID: 8077244393344316048}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1044832596761554069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9048407795986864432}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9048407795986864432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044832596761554069}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 1}
+  m_LocalScale: {x: 0.74074084, y: 0.74074084, z: 0.74074084}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8946885488211813853}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1076291568972337759
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +751,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!95 &5275992282193409670
 Animator:
@@ -771,24 +802,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: -779203914666348234}
-  shake: {fileID: 0}
   agroRange: 10
-  attackDmg: 45
   attackAnimation1: {fileID: -6147249311645580057, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
   attackAnimation2: {fileID: 6457552204004075500, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
   attackAnimation3: {fileID: -8365294297794111422, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
   attackAnimation4: {fileID: 79980851993513094, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
+  Attack1Dmg: 35
+  Attack2Dmg: 30
+  Attack3Dmg: 50
+  Attack4Dmg: 50
   attackPoint: {fileID: 8375592826894300568}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   projectileAxe1: {fileID: 7542841390843331163}
   projectileAxe2: {fileID: 2711829528418514088}
+  spawnAxe: {fileID: 0}
   spawnRange: 5
   spawnAnimation: {fileID: 7400000, guid: 49e0525579d7e3f40aa501202053b165, type: 2}
+  throwPoint: {fileID: 9048407795986864432}
   RoarAnimation: {fileID: -4959615707063348476, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
   ThrowAnimation: {fileID: -441022941028631595, guid: 1e6763efd204d244e8c4193aa5965c77, type: 3}
-  axeProjectile: {fileID: 26187021718490694, guid: 924531850fee710478f888fff54c149c, type: 3}
+  axeProjectile: {fileID: 8734942093641772866, guid: 575ee3987201c224aa8f24c5d356470b, type: 3}
 --- !u!114 &-779203914666348234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3374,6 +3409,7 @@ Transform:
   - {fileID: 1642027487018362028}
   - {fileID: 8077244393344316048}
   - {fileID: 8375592826894300568}
+  - {fileID: 9048407795986864432}
   m_Father: {fileID: 2294649785366015228}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

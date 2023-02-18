@@ -6,7 +6,7 @@ public class Shake : MonoBehaviour
 {
     public bool start = false;
     public static bool isActive = false;
-    public float duration = 0.5f;
+    public float duration = 0.1f;
 
     // Update is called once per frame
     void Update()
@@ -20,7 +20,6 @@ public class Shake : MonoBehaviour
     }
     IEnumerator Shaking()
     {
-
         Vector3 startPostion = transform.position;
         float elapsedTime = 0f;
 
@@ -37,5 +36,6 @@ public class Shake : MonoBehaviour
         }
 
         //transform.position = startPostion;
+
     }
 }

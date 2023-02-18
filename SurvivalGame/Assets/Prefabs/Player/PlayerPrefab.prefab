@@ -584,6 +584,7 @@ MonoBehaviour:
   playerModel: {fileID: 161253107125550747}
   mainCamera: {fileID: 7199747644870168616}
   playerData: {fileID: 1272567868024724427}
+  playerAnimations: {fileID: 3495042432987967857}
   mainTerain: {fileID: 0}
 --- !u!65 &4716573262208412372
 BoxCollider:
@@ -6811,15 +6812,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535588369407285604}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 8, z: -15}
+  m_LocalRotation: {x: -0.00000008940697, y: -0.000000017216717, z: 0.00000005089366, w: 1}
+  m_LocalPosition: {x: 0.00004863739, y: -0.00013093825, z: -0.00002461271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 46932531637178964}
   m_Father: {fileID: 853321873333618579}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5535588369407285606
 Camera:
   m_ObjectHideFlags: 0
@@ -7164,6 +7165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnimation: {fileID: -2070121543212762094, guid: edf222f022b9fa5439bb34b587a50ed8, type: 3}
+  attackReady: 0
 --- !u!114 &826257455275255635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9168,15 +9170,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7199747644870168616}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 7, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5535588369407285607}
   m_Father: {fileID: 5535588371233806437}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &796121378544137390
 MonoBehaviour:
   m_ObjectHideFlags: 0

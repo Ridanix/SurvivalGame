@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ProjectilRock : MonoBehaviour
 {
-    //Transform player; //Hlavní hráèská postava
-    // [SerializeField] Golem golem;
+    GameObject player;
     [SerializeField] float projectileDmg;
     [SerializeField] EntityInventory entityInventory;
     [SerializeField] LayerMask playerLayer;
@@ -14,7 +13,7 @@ public class ProjectilRock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("PlayerPrefab");
     }
 
     // Update is called once per frame
@@ -29,8 +28,7 @@ public class ProjectilRock : MonoBehaviour
         //if (collision.gameObject.layer == playerLayer)
         if (collision.gameObject.name == "PlayerPrefab")
         {
-            //Debug.Log("throwhit");
-            //entityInventory.HealOrDamage(-projectileDmg);
+            player.GetComponent<Player_Data>().HealOrDamage(-projectileDmg);
         }
         Destroy(gameObject);
     }

@@ -8,17 +8,23 @@ public class BossGoblin : MonoBehaviour
 {
     Transform player; //Hlavní hráèská postava
     [SerializeField] EnemyHealth enemyHealth; //Health Script
-    [SerializeField] Shake shake;
+    //[SerializeField] GameObject shake; //CameraShake Script
+    GameObject shake; //CameraShake Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
     float distance;
-    float posX;
-    float posZ;
+    //float posX;
+    //float posZ;
+
     //Attack
-    [SerializeField] float attackDmg; //Dmg Moba
+    float attackDmg = 30; //Dmg Moba
     [SerializeField] AnimationClip attackAnimation1; //Aniamce útoku
     [SerializeField] AnimationClip attackAnimation2; //Aniamce útoku
     [SerializeField] AnimationClip attackAnimation3; //Aniamce útoku
     [SerializeField] AnimationClip attackAnimation4; //Aniamce útoku
+    [SerializeField] float Attack1Dmg;
+    [SerializeField] float Attack2Dmg;
+    [SerializeField] float Attack3Dmg;
+    [SerializeField] float Attack4Dmg;
     float attackCooldown; //délka animace attacku
     float lastAttack; //kdy attack zaèal
     [SerializeField] Transform attackPoint;
@@ -30,6 +36,7 @@ public class BossGoblin : MonoBehaviour
     [SerializeField] GameObject spawnAxe;
     bool itemSpawned = false;
     int random;
+    float attackAnimPlayedTime = 0.8f;
 
     //Spawn (Boss vstane z trùnu)
     bool spawnTrigger = false;
@@ -52,11 +59,14 @@ public class BossGoblin : MonoBehaviour
     float throwEnterTime;
     bool throwingAxe = false;
     bool throwAxe = false;
+    [SerializeField] Transform throwPoint;
     [SerializeField] AnimationClip RoarAnimation;
     [SerializeField] AnimationClip ThrowAnimation;
     float roarLenght;
     float throwLenght;
     [SerializeField] GameObject axeProjectile;
+    bool shakeCam = false;
+
 
 
     //Components
@@ -74,14 +84,16 @@ public class BossGoblin : MonoBehaviour
         roarLenght = RoarAnimation.length;
         throwLenght = ThrowAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
+        shake = GameObject.Find("Camera_GO");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyHealth.dead) {
-            
-
+        if (enemyHealth.dead)
+        {
+            nav.enabled = false;
             if (itemSpawned == false)
             {
                 Instantiate(spawnAxe, gameObject.transform.position, Quaternion.identity);
@@ -127,20 +139,14 @@ public class BossGoblin : MonoBehaviour
         {
             if (!throwingAxe && Time.time - phase2EnterTime < roarLenght)
             {
-                //shake.duration = roarLenght * 0.8f;
-                shake.start = true;
+                if (!shakeCam)
+                {
+                    shake.GetComponent<Shake>().duration = roarLenght * 0.8f;
+                    shake.GetComponent<Shake>().start = true;
+                    shakeCam = true;
+                }
                 return;
             }
-            /*else if (!throwingAxe && Time.time - phase2EnterTime > (roarLenght * 0.1f))
-            {
-                shake.start = true;
-                return;
-            }*/
-            /*else if (!throwingAxe && Time.time - phase2EnterTime < (roarLenght * 0.5f))
-            {
-                shake.start = false;
-                return;
-            }*/
             else if (!throwingAxe && Time.time - phase2EnterTime >= roarLenght)
             {
                 throwEnterTime = Time.time;
@@ -152,21 +158,19 @@ public class BossGoblin : MonoBehaviour
             {
                 projectileAxe2.SetActive(false);
                 transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
-                Rigidbody rb = Instantiate(axeProjectile, attackPoint.position, transform.rotation).GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
-                rb.AddForce(transform.up * 3f, ForceMode.Impulse);
+                Rigidbody rb = Instantiate(axeProjectile, throwPoint.position, transform.rotation).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 4f, ForceMode.Impulse);
                 throwAxe = true;
             }
-            
             else if (throwingAxe && Time.time - throwEnterTime < throwLenght)
             {
                 transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
                 return;
             }
-           
             else
             {
-                nav.speed = speed * 1.5f;
+                nav.speed = speed * 1.25f;
                 enteringPhase2 = false;
                 return;
             }
@@ -174,7 +178,7 @@ public class BossGoblin : MonoBehaviour
         }
 
         //èekání do pùlky animace útoku, ubrání životù
-        if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
+        if (Time.time - lastAttack > attackCooldown * attackAnimPlayedTime && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
             foreach (Collider player in hitEnemies) player.GetComponent<Player_Data>().HealOrDamage(-attackDmg);
@@ -194,10 +198,12 @@ public class BossGoblin : MonoBehaviour
         }
         else if (distance >= agroRange)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
             Attack();
         }
@@ -217,21 +223,43 @@ public class BossGoblin : MonoBehaviour
     void Attack()
     {
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
-        random = Random.Range(1, 3);
+        //random = Random.Range(1, 3);
+        if (random > 5) random = 1;
+
         //Debug.Log(random);
-        if (random == 1)
+        if (random == 1 || random == 2 || random == 3 || random == 4)
         {
             animator.SetTrigger("attack");
-            if (phase1) attackCooldown = attackAnimation1.length;
-            else if (!phase1)attackCooldown = attackAnimation3.length;
+            if (phase1)
+            {
+                attackCooldown = attackAnimation1.length;
+                attackDmg = Attack1Dmg; 
+                attackAnimPlayedTime = 0.6f;
+            }
+            else if (!phase1)
+            {
+                attackCooldown = attackAnimation3.length;
+                attackDmg = Attack3Dmg;
+                attackAnimPlayedTime = 0.6f;
+            }
         }
-        else if (random == 2)
+        else if (random == 5)
         {
             animator.SetTrigger("attack2");
-            if (phase1) attackCooldown = attackAnimation2.length;
-            else if (!phase1) attackCooldown = attackAnimation4.length;
+            if (phase1)
+            {
+                attackCooldown = attackAnimation2.length;
+                attackDmg = Attack2Dmg;
+                attackAnimPlayedTime = 0.5f;
+            }
+            else if (!phase1)
+            {
+                attackCooldown = attackAnimation4.length;
+                attackDmg = Attack4Dmg;
+                attackAnimPlayedTime = 0.5f;
+            }
         }
-
+        random++;
         lastAttack = Time.time;
     }
 }

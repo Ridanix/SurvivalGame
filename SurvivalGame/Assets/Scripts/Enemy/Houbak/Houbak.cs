@@ -57,7 +57,7 @@ public class Houbak : MonoBehaviour
         if (!spawn)
         {
             if (!spawnTrigger && distance > spawnRange) return;
-            else if(!spawnTrigger && distance <= spawnRange)
+            else if (!spawnTrigger && distance <= spawnRange)
             {
                 animator.SetTrigger("spawnTrigger");
                 spawnTime = Time.time;
@@ -78,7 +78,7 @@ public class Houbak : MonoBehaviour
                 return;
             }
         }
-        
+
         if (Time.time - lastAttack > attackCooldown / 1.5f && Time.time - lastAttack < attackCooldown && dealDmg == false)
         {
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
@@ -99,10 +99,12 @@ public class Houbak : MonoBehaviour
         }
         else if (distance >= agroRange)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
         }
         else if (distance <= nav.stoppingDistance)
         {
+            nav.SetDestination(transform.position);
             animator.SetBool("following", false);
             Attack();
         }
