@@ -8,7 +8,7 @@ public class Player_Controller : MonoBehaviour
 {
     //MOVEMENT
     [SerializeField] CharacterController controller;
-    [SerializeField] float speed = 5.0f;
+    [SerializeField] public float speed = 5.0f;
     public Vector3 direction;
     [SerializeField] private GameObject healingParticlePrefab;
     [SerializeField] Transform attackPoint;
@@ -32,6 +32,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] Player_Data playerData;
 
     //ATTACK
+    public float strenghtModifier;
     public static float attackDmg;
     public static WeaponType vulterablity;
     [SerializeField] PlayerAnimations playerAnimations;
@@ -104,7 +105,7 @@ public class Player_Controller : MonoBehaviour
             {
                 if (playerAnimations.attackReady && hitEnemies.Length > 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg, enemy.gameObject.name);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg * strenghtModifier, enemy.gameObject.name);
                 }
             }
 

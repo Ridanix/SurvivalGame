@@ -14,6 +14,7 @@ public class EntityInventory : MonoBehaviour
     public float maxStamina = 100f;
     public float mana = 100f;
     public float maxMana = 100f;
+    public PlayerAbilityShield playerAbilityShield;
 
     //Other Player Stats
     public float wealth = 0;
@@ -40,7 +41,7 @@ public class EntityInventory : MonoBehaviour
             mana = 0;
         }
 
-        if (health > maxHealth) health = maxHealth;
+        if (health > maxHealth && playerAbilityShield.playerAbilityShieldIsActive == false) health = maxHealth;
         else if (health <= 0)
         {
             health = 0;
