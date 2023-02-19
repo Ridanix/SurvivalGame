@@ -103,10 +103,12 @@ public class Player_Controller : MonoBehaviour
 
             foreach (Collider enemy in hitEnemies)
             {
-                if (playerAnimations.attackReady && hitEnemies.Length > 0)
+                if (hitEnemies.Length > 0)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg * strenghtModifier, enemy.gameObject.name);
+                    
                 }
+                Debug.Log("try");
             }
 
             Collider[] hitSuplies = Physics.OverlapSphere(attackPoint.position, attackRange, suplieLayers);
