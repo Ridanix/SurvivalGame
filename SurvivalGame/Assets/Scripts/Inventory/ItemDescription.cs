@@ -1,56 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 
-public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemDescription : MonoBehaviour
 {
     public InventorySlotScript inventorySlotScript;
-    public Image pictogram;
-    new public TMP_Text name;
-    public TMP_Text stats;
-    public TMP_Text description;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    private void OnMouseEnter()
     {
-        SetDescription();
+        Debug.LogWarning("DA");
+        Invoke("SetDescription", 2f);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    private void OnMouseExit()
     {
-        pictogram.gameObject.SetActive(false);
-        name.text = "Item name";
-        description.text = default;
-        stats.text = default;
+        CancelInvoke("SetDescription");
+        ToltipManager.instance.HideTolTip();
     }
 
     public void SetDescription()
     {
         int numberOfSlot;
+        string stats = "";
+        
         if (int.TryParse(this.gameObject.name, out numberOfSlot)&&EquipmentManager.instance.currentEquipment[numberOfSlot] != null)
         {
-            pictogram.gameObject.SetActive(true);
-            pictogram.sprite = EquipmentManager.instance.currentEquipment[numberOfSlot].icon;
-            name.text = EquipmentManager.instance.currentEquipment[numberOfSlot].name;
-            description.text = EquipmentManager.instance.currentEquipment[numberOfSlot].description;
             for (int i = 0; i <EquipmentManager.instance.currentEquipment[numberOfSlot].stats.Count; i++)
             {
-                stats.text += $"{EquipmentManager.instance.currentEquipment[numberOfSlot].stats[i]}: {EquipmentManager.instance.currentEquipment[numberOfSlot].statsValues[i]}\n";
+                stats += $"{EquipmentManager.instance.currentEquipment[numberOfSlot].stats[i]}: {EquipmentManager.instance.currentEquipment[numberOfSlot].statsValues[i]}\n";
             }
-            
+            ToltipManager.instance.SetAndShowTolTip(EquipmentManager.instance.currentEquipment[numberOfSlot].name, EquipmentManager.instance.currentEquipment[numberOfSlot].description, EquipmentManager.instance.currentEquipment[numberOfSlot].icon, stats);
         }
         else if (this.gameObject.GetComponent<InventorySlotScript>()!=null &&inventorySlotScript.item != null)
         {
-            pictogram.gameObject.SetActive(true);
-            pictogram.sprite = inventorySlotScript.item.icon;
-            name.text = inventorySlotScript.item.name;
-            description.text = inventorySlotScript.item.description;
+            Debug.LogWarning(inventorySlotScript.item.name);
             for (int i = 0; i <inventorySlotScript.item.stats.Count; i++)
             {
-                stats.text += $"{inventorySlotScript.item.stats[i]}: {inventorySlotScript.item.statsValues[i]}\n";
+                stats += $"{inventorySlotScript.item.stats[i]}: {inventorySlotScript.item.statsValues[i]}\n";
             }
+            ToltipManager.instance.SetAndShowTolTip(inventorySlotScript.item.name, inventorySlotScript.item.description, inventorySlotScript.item.icon, stats);
         }
         
     }

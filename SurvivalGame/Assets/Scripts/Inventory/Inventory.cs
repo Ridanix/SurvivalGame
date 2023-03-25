@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("You Did Done Fucked Up");
             return;
         }
         instance = this;

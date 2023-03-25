@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InventorySlotScript : MonoBehaviour
 {
@@ -47,7 +48,6 @@ public class InventorySlotScript : MonoBehaviour
                 Crafting.instance.InventoryToTable(item, conectedToCrafting);
         }
     }
-
     //NEW
     public virtual void OnSwitchButton()
     {
