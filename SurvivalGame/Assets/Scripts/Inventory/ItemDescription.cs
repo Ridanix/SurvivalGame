@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ItemDescription : MonoBehaviour
+public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public InventorySlotScript inventorySlotScript;
 
-    private void OnMouseEnter()
+    public void Start()
     {
-        Debug.LogWarning("DA");
+        Inventory.instance.onItemChangedCallback += ToltipManager.instance.HideTolTip;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
         Invoke("SetDescription", 2f);
     }
 
-    private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
         CancelInvoke("SetDescription");
         ToltipManager.instance.HideTolTip();
@@ -23,7 +28,7 @@ public class ItemDescription : MonoBehaviour
         int numberOfSlot;
         string stats = "";
         
-        if (int.TryParse(this.gameObject.name, out numberOfSlot)&&EquipmentManager.instance.currentEquipment[numberOfSlot] != null)
+        if (int.TryParse(this.gameObject.name, out numberOfSlot) && EquipmentManager.instance.currentEquipment[numberOfSlot] != null)
         {
             for (int i = 0; i <EquipmentManager.instance.currentEquipment[numberOfSlot].stats.Count; i++)
             {
@@ -31,7 +36,7 @@ public class ItemDescription : MonoBehaviour
             }
             ToltipManager.instance.SetAndShowTolTip(EquipmentManager.instance.currentEquipment[numberOfSlot].name, EquipmentManager.instance.currentEquipment[numberOfSlot].description, EquipmentManager.instance.currentEquipment[numberOfSlot].icon, stats);
         }
-        else if (this.gameObject.GetComponent<InventorySlotScript>()!=null &&inventorySlotScript.item != null)
+        else if (inventorySlotScript !=null && inventorySlotScript.item != null)
         {
             Debug.LogWarning(inventorySlotScript.item.name);
             for (int i = 0; i <inventorySlotScript.item.stats.Count; i++)
@@ -40,6 +45,5 @@ public class ItemDescription : MonoBehaviour
             }
             ToltipManager.instance.SetAndShowTolTip(inventorySlotScript.item.name, inventorySlotScript.item.description, inventorySlotScript.item.icon, stats);
         }
-        
     }
 }

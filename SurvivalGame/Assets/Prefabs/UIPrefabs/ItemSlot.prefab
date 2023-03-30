@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlotScript: {fileID: 8669229168072147908}
-  clicked: 0
 --- !u!1 &6297874607038582736
 GameObject:
   m_ObjectHideFlags: 0

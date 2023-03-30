@@ -13,6 +13,7 @@ public class ToltipManager : MonoBehaviour
     public TMP_Text itemDescriptionText;
     public TMP_Text itemStatsText;
     public Image itemImage;
+    public bool show = false;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class ToltipManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(tolTipIsShown == false)
+        if(tolTipIsShown == true)
         {
             transform.position = Input.mousePosition;
         }
@@ -31,7 +32,8 @@ public class ToltipManager : MonoBehaviour
 
     public void SetAndShowTolTip(string name,string description, Sprite image, string stats)
     {
-        gameObject.SetActive(true);
+        tolTipIsShown = true;
+        gameObject.SetActive(tolTipIsShown);
         itemNameText.text = name;
         itemDescriptionText.text = description;
         itemImage.sprite = image;
@@ -40,7 +42,8 @@ public class ToltipManager : MonoBehaviour
 
     public void HideTolTip()
     {
-        gameObject.SetActive(false);
+        tolTipIsShown = false;
+        gameObject.SetActive(tolTipIsShown);
         itemNameText.text = string.Empty;
         itemDescriptionText.text = string.Empty;
         itemStatsText.text = string.Empty;
