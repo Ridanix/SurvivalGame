@@ -40,20 +40,9 @@ public class Player_Controller : MonoBehaviour
     //TREE DESTRUCTION
     public Terrain mainTerain;
 
-    //INVENTORY
-    //private InventoryScript inventory;
-    //[SerializeField] InventoryUIScript inventoryUI;
-
-
-    private void Start()
-    {
-        //inventory = new InventoryScript();
-        //inventoryUI.SetInventory(inventory);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.LogWarning(other.name);
+
     }
 
     public void Update()
@@ -147,6 +136,7 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
+   
     private void FixedUpdate()
     {
         if (direction.magnitude >= 0.1f && disabled == false)

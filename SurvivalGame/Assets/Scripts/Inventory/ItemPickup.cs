@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
     public ScriptableItem item;
     PickUpTextParent pickUpTextParent;
-    [SerializeField] GameObject pickUpLoader;
+    public float pickUpTime = 0f;
+    public string pickUpText = "";
+    public static GameObject pickUpLoader;
     PickUpHintScript pickUpHintScript;
 
     private void Awake()
     {
+        pickUpLoader = GameObject.Find("ActionProgressLoader");
         pickUpLoader.gameObject.SetActive(false);
         pickUpHintScript = pickUpLoader.GetComponent<PickUpHintScript>();
     }
@@ -21,7 +25,7 @@ public class ItemPickup : MonoBehaviour
         if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject.activeInHierarchy)
         {
             pickUpHintScript.fillAmount += 0.05f;
-            if(pickUpHintScript.fillAmount > 1)
+            if(pickUpHintScript.fillAmount > pickUpTime)
             {
                 PickUp();
             }
@@ -37,6 +41,8 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             pickUpLoader.SetActive(true);
+            TMP_Text text = pickUpLoader.GetComponentInChildren<TMP_Text>();
+            text.text = pickUpText;
             item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
         }
     }
@@ -52,8 +58,6 @@ public class ItemPickup : MonoBehaviour
 
     void PickUp()
     {
-        //Debug.Log("Picking Up " + item.name);
-        
         bool wasPickedUp = true;
         if (item.name == "Coins")
         {
