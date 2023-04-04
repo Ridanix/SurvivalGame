@@ -11,6 +11,7 @@ public class GoblinArcher : MonoBehaviour
     [SerializeField] float agroRange; //Range na hledání nepøátel
     public GameObject projectile;
     float distance;
+    public float followSpeed = 5f;
 
     //Attack
     //[SerializeField] float attackDmg; //Dmg Moba
@@ -22,6 +23,14 @@ public class GoblinArcher : MonoBehaviour
     //public LayerMask playerLayer;
     //bool dealDmg = false;
     bool arrowShot = false;
+
+    //Patrol
+    Vector3 patrolCenter;
+    Vector3 currentDestination;
+    public float patrolSpeed = 2f;
+    public float patrolWaitTime = 2.5f;
+    public float patrolRange = 15f;
+    private float patrolTimer;
 
     //Components
     Animator animator;
@@ -36,6 +45,10 @@ public class GoblinArcher : MonoBehaviour
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
         lastAttack = 0;
+
+        //Patrol
+        patrolCenter = transform.position; // set the patrol center to the enemy's initial position
+        currentDestination = GetRandomPointInRadius(patrolCenter, patrolRange);
     }
 
     // Update is called once per frame
@@ -63,18 +76,35 @@ public class GoblinArcher : MonoBehaviour
 
         distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance < agroRange && distance > nav.stoppingDistance)
+        if (distance < agroRange && distance > nav.stoppingDistance) //AgroRange
         {
             nav.SetDestination(player.position);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            nav.speed = followSpeed;
             animator.SetBool("following", true);
         }
-        else if (distance >= agroRange)
+        else if (distance >= agroRange) //PatrolRange
         {
-            nav.SetDestination(transform.position);
-            animator.SetBool("following", false);
+            nav.speed = patrolSpeed;
+            //Patrol
+            if (nav.remainingDistance <= nav.stoppingDistance)
+            {
+                animator.SetBool("following", false);
+                patrolTimer += Time.deltaTime;
+                if (patrolTimer >= patrolWaitTime)
+                {
+                    currentDestination = GetRandomPointInRadius(patrolCenter, patrolRange);
+                    nav.SetDestination(currentDestination);
+                    patrolTimer = 0f;
+                }
+            }
+            else
+            {
+                animator.SetBool("following", true);
+                patrolTimer = 0f;
+            }
         }
-        else if (distance <= nav.stoppingDistance)
+        else if (distance <= nav.stoppingDistance) //AttackRange
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);
@@ -88,5 +118,13 @@ public class GoblinArcher : MonoBehaviour
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
+    }
+    private Vector3 GetRandomPointInRadius(Vector3 center, float radius)
+    {
+        Vector3 randomPoint = Random.insideUnitSphere * radius;
+        randomPoint += center;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPoint, out hit, radius, NavMesh.AllAreas);
+        return hit.position;
     }
 }

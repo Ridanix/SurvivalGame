@@ -15,45 +15,46 @@ public class ItemPickup : MonoBehaviour
 
     private void Awake()
     {
-        pickUpLoader = GameObject.Find("ActionProgressLoader");
+        /*pickUpLoader = GameObject.Find("ActionProgressLoader");
         pickUpLoader.gameObject.SetActive(false);
-        pickUpHintScript = pickUpLoader.GetComponent<PickUpHintScript>();
+        pickUpHintScript = pickUpLoader.GetComponent<PickUpHintScript>();*/
     }
 
     public void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject.activeInHierarchy)
+        //if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject)
+        //if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject.activeInHierarchy)
+        if(Input.GetKey(KeyCode.E))
         {
-            pickUpHintScript.fillAmount += 0.05f;
-            if(pickUpHintScript.fillAmount > pickUpTime)
+            //pickUpHintScript.fillAmount += 0.05f;
+            /*if(pickUpHintScript.fillAmount > pickUpTime)
             {
-                PickUp();
-            }
+            }*/
+            PickUp();
         }
-        else
+        /*else
         {
             pickUpHintScript.fillAmount = 0f;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider pickUpCollision)
     {
         if (pickUpCollision.gameObject.tag == "Player")
         {
-            pickUpLoader.SetActive(true);
-            TMP_Text text = pickUpLoader.GetComponentInChildren<TMP_Text>();
-            text.text = pickUpText;
+            //pickUpLoader.SetActive(true);
+            //TMP_Text text = pickUpLoader.GetComponentInChildren<TMP_Text>();
+            //text.text = pickUpText;
             item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
         }
     }
 
     private void OnTriggerExit(Collider pickUpCollision)
     {
-        if (pickUpCollision.gameObject.tag == "Player")
+        /*if (pickUpCollision.gameObject.tag == "Player")
         {
             pickUpLoader.SetActive(false);
-
-        }
+        }*/
     }
 
     void PickUp()

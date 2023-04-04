@@ -10,6 +10,7 @@ public class Goblin : MonoBehaviour
     [SerializeField] EnemyHealth enemyHealth; //Health Script
     [SerializeField] float agroRange; //Range na hledání nepøátel
     float distance;
+    public float followSpeed = 5f; 
 
     //Attack
     [SerializeField] float attackDmg; //Dmg Moba
@@ -20,6 +21,14 @@ public class Goblin : MonoBehaviour
     float attackRange = 0.6f;
     public LayerMask playerLayer;
     bool dealDmg = false;
+
+    //Patrol
+    Vector3 patrolCenter;
+    Vector3 currentDestination;
+    public float patrolSpeed = 2f; 
+    public float patrolWaitTime = 2.5f;
+    public float patrolRange = 15f; 
+    private float patrolTimer;
 
     //Components
     Animator animator;
@@ -33,6 +42,10 @@ public class Goblin : MonoBehaviour
 
         attackCooldown = attackAnimation.length;
         player = GameObject.Find("PlayerPrefab").transform;
+
+        //Patrol
+        patrolCenter = transform.position; // set the patrol center to the enemy's initial position
+        currentDestination = GetRandomPointInRadius(patrolCenter, patrolRange);
     }
 
     // Update is called once per frame
@@ -53,23 +66,44 @@ public class Goblin : MonoBehaviour
 
         dealDmg = false;
 
-        distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance < agroRange && distance > nav.stoppingDistance)
+        distance = Vector3.Distance(transform.position, player.position); //Distance mezi AI, hráèem
+
+        if (distance < agroRange && distance > nav.stoppingDistance) //AgroRange
         {
             nav.SetDestination(player.position);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            nav.speed = followSpeed;
             animator.SetBool("following", true);
+            animator.SetBool("walking", false);
         }
-        else if (distance >= agroRange)
+        else if (distance >= agroRange) //PatrolRange
+        {
+            nav.speed = patrolSpeed;
+            animator.SetBool("following", false);
+            //Patrol
+            if (nav.remainingDistance <= nav.stoppingDistance)
+            {
+                animator.SetBool("walking", false);
+                patrolTimer += Time.deltaTime;
+                if (patrolTimer >= patrolWaitTime)
+                {
+                    currentDestination = GetRandomPointInRadius(patrolCenter, patrolRange);
+                    nav.SetDestination(currentDestination);
+                    patrolTimer = 0f;
+                }
+            }
+            else
+            {
+                animator.SetBool("walking", true);
+                patrolTimer = 0f;
+            }
+        }
+        else if (distance <= nav.stoppingDistance) //AttackRange
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);
-        }
-        else if (distance <= nav.stoppingDistance)
-        {
-            nav.SetDestination(transform.position);
-            animator.SetBool("following", false);
+            animator.SetBool("walking", false);
             Attack();
         }
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
@@ -80,5 +114,14 @@ public class Goblin : MonoBehaviour
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
         animator.SetTrigger("attack");
         lastAttack = Time.time;
+    }
+
+    private Vector3 GetRandomPointInRadius(Vector3 center, float radius)
+    {
+        Vector3 randomPoint = Random.insideUnitSphere * radius;
+        randomPoint += center;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPoint, out hit, radius, NavMesh.AllAreas);
+        return hit.position;
     }
 }

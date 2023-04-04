@@ -849,7 +849,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 200
   m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -907,7 +907,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 651894509151814941}
+  shake: {fileID: 0}
   agroRange: 10
+  followSpeed: 5
   attackDmg: 40
   attackAnimation: {fileID: 5486411676377632654, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
   attackPoint: {fileID: 5894532693081963730}
@@ -915,6 +917,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   roarAnimation: {fileID: 532543887178543829, guid: 000c149576118ea4d95eed0d9ee4c59a, type: 3}
+  patrolSpeed: 2
+  patrolWaitTime: 2.5
+  patrolRange: 15
 --- !u!114 &651894509151814941
 MonoBehaviour:
   m_ObjectHideFlags: 0
