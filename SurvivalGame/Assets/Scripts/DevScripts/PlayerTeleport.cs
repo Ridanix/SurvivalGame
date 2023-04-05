@@ -30,7 +30,6 @@ public class PlayerTeleport : MonoBehaviour
         if (playerTestTeleported == 1)
         {
             gameObject.transform.position = new Vector3(770f, 11f, 794f);
-
         }
 
 

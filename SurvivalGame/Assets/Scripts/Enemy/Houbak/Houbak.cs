@@ -92,18 +92,21 @@ public class Houbak : MonoBehaviour
 
         dealDmg = false;
 
-        if (distance < agroRange && distance > nav.stoppingDistance) //AgroRange
+        //AgroRange
+        if (distance < agroRange && distance > nav.stoppingDistance)
         {
             nav.SetDestination(player.position);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             animator.SetBool("following", true);
         }
-        else if (distance >= agroRange) //Range
+        //Range
+        else if (distance >= agroRange)
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);
         }
-        else if (distance <= nav.stoppingDistance) //AttackRange
+        //AttackRange
+        else if (distance <= nav.stoppingDistance)
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);

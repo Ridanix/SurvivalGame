@@ -25,6 +25,10 @@ public class EnemyHealth : MonoBehaviour
     float deathLenght;
     float deathTime;
 
+    //Friendly Animals
+    public bool hit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +73,7 @@ public class EnemyHealth : MonoBehaviour
             //Destroy(gameObject);
         }
         //else if (name == "Golem" || (name == "Troll" && health > )) animator.SetTrigger("hit");
-        else if (!die && !dying && name != "Golem" || name != "BossGoblin") animator.SetTrigger("hit");
+        else if (!die && !dying && name != "Golem" || name != "BossGoblin" || name != "BossBear" || name != "Cow") animator.SetTrigger("hit");
+        if (name != "Cow") hit = true;
     }
 }

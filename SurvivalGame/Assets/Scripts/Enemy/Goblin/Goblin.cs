@@ -25,10 +25,13 @@ public class Goblin : MonoBehaviour
     //Patrol
     Vector3 patrolCenter;
     Vector3 currentDestination;
-    public float patrolSpeed = 2f; 
-    public float patrolWaitTime = 2.5f;
-    public float patrolRange = 15f; 
-    private float patrolTimer;
+    float patrolSpeed = 2f; 
+    float patrolWaitTime = 2.5f;
+    float patrolRange = 15f; 
+    float patrolTimer;
+    float followingRange = 50f;
+    bool returnToCenter = false;
+
 
     //Components
     Animator animator;
@@ -69,16 +72,29 @@ public class Goblin : MonoBehaviour
 
         distance = Vector3.Distance(transform.position, player.position); //Distance mezi AI, hráèem
 
-        if (distance < agroRange && distance > nav.stoppingDistance) //AgroRange
+        //AgroRange
+        if (distance < agroRange && distance > nav.stoppingDistance) 
         {
+            if (returnToCenter) return; //skip, když se vrací na støed
+            
             nav.SetDestination(player.position);
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             nav.speed = followSpeed;
             animator.SetBool("following", true);
             animator.SetBool("walking", false);
+            //Vracení se na støed, když je moc daleko
+            if (Vector3.Distance(patrolCenter, transform.position) > followingRange)
+            {
+                nav.SetDestination(patrolCenter);
+                transform.LookAt(new Vector3(patrolCenter.x, transform.position.y, patrolCenter.z));
+                returnToCenter = true;
+            }
         }
-        else if (distance >= agroRange) //PatrolRange
+        //PatrolRange
+        else if (distance >= agroRange) 
         {
+            returnToCenter = false; //zautoèí, když jsme moc blízko
+
             nav.speed = patrolSpeed;
             animator.SetBool("following", false);
             //Patrol
@@ -99,7 +115,8 @@ public class Goblin : MonoBehaviour
                 patrolTimer = 0f;
             }
         }
-        else if (distance <= nav.stoppingDistance) //AttackRange
+        //AttackRange
+        else if (distance <= nav.stoppingDistance) 
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);

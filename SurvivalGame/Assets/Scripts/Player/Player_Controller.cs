@@ -40,6 +40,9 @@ public class Player_Controller : MonoBehaviour
     //TREE DESTRUCTION
     public Terrain mainTerain;
 
+    //Player Prefab
+    [SerializeField] GameObject playerPrefab;
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -70,8 +73,7 @@ public class Player_Controller : MonoBehaviour
             //moves
             Vector3 move_direction = Quaternion.Euler(0f, target_angle, 0f) * Vector3.forward;
             controller.Move(move_direction.normalized * speed * Time.deltaTime);
-
-           
+            //playerPrefab.transform.position = new Vector3(playerPrefab.transform.position.x, 11, playerPrefab.transform.position.z);
         }
         
 
@@ -97,7 +99,7 @@ public class Player_Controller : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg * strenghtModifier, enemy.gameObject.name);
                     
                 }
-                Debug.Log("try");
+                //Debug.Log("try");
             }
 
             Collider[] hitSuplies = Physics.OverlapSphere(attackPoint.position, attackRange, suplieLayers);

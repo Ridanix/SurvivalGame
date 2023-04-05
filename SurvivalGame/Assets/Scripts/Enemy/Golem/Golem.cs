@@ -41,6 +41,8 @@ public class Golem : MonoBehaviour
     public float patrolWaitTime = 2.5f;
     public float patrolRange = 15f;
     private float patrolTimer;
+    float followingRange = 50f;
+    bool returnToCenter = false;
 
     //Components
     Animator animator;
@@ -94,9 +96,11 @@ public class Golem : MonoBehaviour
 
         distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance < agroRange && distance > nav.stoppingDistance) //AgroRange
+        //AgroRange
+        if (distance < agroRange && distance > nav.stoppingDistance) 
         {
-            
+            if (returnToCenter) return; //skip, když se vrací na støed
+
             if (Time.time - lastThrow > throwCooldown)
             {
                 Throw();
@@ -106,8 +110,17 @@ public class Golem : MonoBehaviour
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             nav.speed = followSpeed;
             animator.SetBool("following", true);
+
+            //Vracení se na støed, když je moc daleko
+            if (Vector3.Distance(patrolCenter, transform.position) > followingRange)
+            {
+                nav.SetDestination(patrolCenter);
+                transform.LookAt(new Vector3(patrolCenter.x, transform.position.y, patrolCenter.z));
+                returnToCenter = true;
+            }
         }
-        else if (distance >= agroRange) //PatrolRange
+        //PatrolRange
+        else if (distance >= agroRange)
         {
             nav.speed = patrolSpeed;
             //Patrol
@@ -128,7 +141,8 @@ public class Golem : MonoBehaviour
                 patrolTimer = 0f;
             }
         }
-        else if (distance <= nav.stoppingDistance) //AttackRange
+        //AttackRange
+        else if (distance <= nav.stoppingDistance) 
         {
             nav.SetDestination(transform.position);
             animator.SetBool("following", false);
