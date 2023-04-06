@@ -338,8 +338,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dceee53c30252af4aa2c91b7be6ae33e, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: a7900d6052f648e4398d22f3396ef45a, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -364,6 +364,7 @@ MonoBehaviour:
   item: {fileID: 0}
   removeButton: {fileID: 0}
   toHotbarButton: {fileID: 0}
+  isInNormalInventory: 1
   toInventoryButton: {fileID: 2998572996879522739}
   placeholder: {fileID: 21300000, guid: c47bfaea02af0bf47a88cb67360c81e4, type: 3}
 --- !u!114 &60706696124243251
@@ -379,10 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlotScript: {fileID: 3205327961081651175}
-  pictogram: {fileID: 0}
-  name: {fileID: 0}
-  stats: {fileID: 0}
-  description: {fileID: 0}
 --- !u!1 &3030979486974465460
 GameObject:
   m_ObjectHideFlags: 0
