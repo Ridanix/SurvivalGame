@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
-  pickUpLoader: {fileID: 0}
+  pickUpTime: 4
+  pickUpText: To pick up
 --- !u!1 &5279377643459953562
 GameObject:
   m_ObjectHideFlags: 0

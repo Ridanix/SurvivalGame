@@ -113,4 +113,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7e7de469391b7694fa149abf98c79710, type: 2}
-  pickUpLoader: {fileID: 0}
+  pickUpTime: 4
+  pickUpText: To Pick Up

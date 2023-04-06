@@ -13,7 +13,6 @@ public class ToltipManager : MonoBehaviour
     public TMP_Text itemDescriptionText;
     public TMP_Text itemStatsText;
     public Image itemImage;
-    public bool show = false;
 
     void Start()
     {

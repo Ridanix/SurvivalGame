@@ -10,51 +10,41 @@ public class ItemPickup : MonoBehaviour
     PickUpTextParent pickUpTextParent;
     public float pickUpTime = 0f;
     public string pickUpText = "";
-    public static GameObject pickUpLoader;
-    PickUpHintScript pickUpHintScript;
 
-    private void Awake()
-    {
-        /*pickUpLoader = GameObject.Find("ActionProgressLoader");
-        pickUpLoader.gameObject.SetActive(false);
-        pickUpHintScript = pickUpLoader.GetComponent<PickUpHintScript>();*/
-    }
 
     public void FixedUpdate()
     {
-        //if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject)
-        //if(Input.GetKey(KeyCode.E) && pickUpLoader.gameObject.activeInHierarchy)
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.E) && PickUpHintScript.instance.main.activeInHierarchy)
         {
-            //pickUpHintScript.fillAmount += 0.05f;
-            /*if(pickUpHintScript.fillAmount > pickUpTime)
+            Debug.Log("were in");
+            PickUpHintScript.instance.fillAmount += 1f/ (pickUpTime*10);
+            if (PickUpHintScript.instance.fillAmount > pickUpTime)
             {
-            }*/
-            PickUp();
+                PickUp();
+                PickUpHintScript.instance.fillAmount = 0f;
+            }
         }
-        /*else
+        else
         {
-            pickUpHintScript.fillAmount = 0f;
-        }*/
+            PickUpHintScript.instance.fillAmount = 0f;
+        }
     }
 
     private void OnTriggerEnter(Collider pickUpCollision)
     {
         if (pickUpCollision.gameObject.tag == "Player")
         {
-            //pickUpLoader.SetActive(true);
-            //TMP_Text text = pickUpLoader.GetComponentInChildren<TMP_Text>();
-            //text.text = pickUpText;
+            PickUpHintScript.instance.Show(pickUpText);
             item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
         }
     }
 
     private void OnTriggerExit(Collider pickUpCollision)
     {
-        /*if (pickUpCollision.gameObject.tag == "Player")
+        if (pickUpCollision.gameObject.tag == "Player")
         {
-            pickUpLoader.SetActive(false);
-        }*/
+            PickUpHintScript.instance.Hide();
+        }
     }
 
     void PickUp()

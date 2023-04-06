@@ -2,26 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PickUpHintScript : MonoBehaviour
 {
-    public Image fill;
-    public float fillAmount = 0;
-    private GameObject mainCamera;
+    public static PickUpHintScript instance;
 
-    public void Awake()
+    public TMP_Text textOfMessage;
+    public Image fill;
+    public GameObject main;
+    public float fillAmount = 0f;
+
+    private void Awake()
     {
-        mainCamera = GameObject.Find("Main Camera");
+        if(instance == null)
+        {
+            instance = this;
+        }
     }
+
     public void FixedUpdate()
     {
-        this.gameObject.transform.LookAt(transform.position + mainCamera.transform.rotation*Vector3.forward, mainCamera.transform.rotation*Vector3.up);
-        
-        LoadFill();
+        if(main.activeInHierarchy)
+            LoadFill();
+    }
+
+    public void Show(string textToDisplay)
+    {
+        Debug.Log("enter");
+        main.SetActive(true);
+        instance.textOfMessage.text = textToDisplay;
+    }
+
+    public void Hide()
+    {
+        Debug.Log("exit"); 
+        instance.textOfMessage.text = default;
+        instance.main.SetActive(false);
     }
 
     public void LoadFill()
     {
-        fill.fillAmount = fillAmount;
+        instance.fill.fillAmount = fillAmount;
     }
 }

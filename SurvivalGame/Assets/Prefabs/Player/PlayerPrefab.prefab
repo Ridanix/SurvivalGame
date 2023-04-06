@@ -6390,7 +6390,7 @@ GameObject:
   - component: {fileID: 9208498712080447512}
   m_Layer: 0
   m_Name: ActionProgressLoader
-  m_TagString: Untagged
+  m_TagString: ActionProgressLoader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6430,8 +6430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbda59db40d37640aa8e5eb31d4492d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textOfMessage: {fileID: 6803183713706185755}
   fill: {fileID: 6715358938829619940}
+  main: {fileID: 3966404228970676848}
   fillAmount: 0
+  maxFillAmount: 0
 --- !u!1 &3980815603517794381
 GameObject:
   m_ObjectHideFlags: 0
@@ -7828,7 +7831,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535588369407285604}
-  m_LocalRotation: {x: -0.000000059604645, y: -0.00000001721672, z: 0.00000005089366, w: 1}
+  m_LocalRotation: {x: -0.000000029802322, y: -0.000000017216724, z: 0.00000005089366, w: 1}
   m_LocalPosition: {x: 0.000045776367, y: -0.00011806363, z: -0.0000023132416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8416,7 +8419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.5003662, y: 3.7501068}
+  m_AnchoredPosition: {x: 2.5003662, y: 3.750122}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 1.025, y: 1.025}
 --- !u!222 &3496004728561532095
@@ -8473,7 +8476,6 @@ MonoBehaviour:
   itemDescriptionText: {fileID: 4546851525622453865}
   itemStatsText: {fileID: 9147555030971803541}
   itemImage: {fileID: 6859982872055208653}
-  show: 0
 --- !u!1 &5623852244449043487
 GameObject:
   m_ObjectHideFlags: 0

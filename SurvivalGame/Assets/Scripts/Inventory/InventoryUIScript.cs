@@ -72,6 +72,7 @@ public class InventoryUIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             rootOfInventoryUI.SetActive(!rootOfInventoryUI.activeSelf);
+            ToltipManager.instance.HideTolTip();
             OnBookMarkClick(activeBookMark);
         }
     }
