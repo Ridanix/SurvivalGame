@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 082ae4764f6e5f84b900f689f02777e2, type: 3}
-  m_Name: Log
+  m_Name: Stick
   m_EditorClassIdentifier: 
-  name: Log
-  icon: {fileID: 21300000, guid: 89d2dc5ec6f2187419ddc7afe693c620, type: 3}
-  description: The Log cut by one of many duplicated Lumber axes
-  stats: None
+  name: Stick
+  icon: {fileID: 21300000, guid: 6c232e27519e0574d8d61a5c9070ae22, type: 3}
+  description: Once was on tree, or a part of Log
+  stats: []
+  statsValues: []
+  upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1

@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: e84fdf14161a18949a39dabe613740de, type: 2}
+  items:
+  - {fileID: 11400000, guid: e84fdf14161a18949a39dabe613740de, type: 2}
   pickUpTime: 4
   pickUpText: To pick up Spatha
+  isNearPlayer: 0

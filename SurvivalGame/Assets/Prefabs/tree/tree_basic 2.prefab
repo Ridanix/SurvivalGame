@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4434473991726556440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4635712372260535585}
+  - component: {fileID: 1142331351894188300}
+  m_Layer: 8
+  m_Name: Colider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4635712372260535585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434473991726556440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4606610900218249722}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1142331351894188300
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434473991726556440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.121622086
+  m_Height: 1.4777143
+  m_Direction: 1
+  m_Center: {x: -0.0033226013, y: 0.58861196, z: 0.0023708344}
 --- !u!1 &5030962347649573438
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4606610900218249722}
   - component: {fileID: 4352618558326168420}
-  - component: {fileID: 356205087267193178}
+  - component: {fileID: 8119464749617282995}
+  - component: {fileID: 1051006068198892312}
   m_Layer: 8
   m_Name: tree_basic 2
   m_TagString: Untagged
@@ -30,6 +77,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4635712372260535585}
   - {fileID: 1237579719725876594}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,20 +101,38 @@ LODGroup:
     renderers:
     - renderer: {fileID: 101305625998458397}
   m_Enabled: 1
---- !u!136 &356205087267193178
-CapsuleCollider:
+--- !u!65 &8119464749617282995
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5030962347649573438}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.7145388
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.56726944, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.5761337, y: 0.5384051, z: 0.63067627}
+  m_Center: {x: 0.01341629, y: 0.23079744, z: 0.023584366}
+--- !u!114 &1051006068198892312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030962347649573438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: fc905476b33eac648b1e605931cff11a, type: 2}
+  - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
+  pickUpTime: 7
+  pickUpText: To chop tree
+  itemRequired: {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
+  isNearPlayer: 0
 --- !u!1001 &1632129696609100441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,7 +142,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1282979925de3e74c865a0e2b853c002, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1282979925de3e74c865a0e2b853c002, type: 3}
       propertyPath: m_LocalScale.x

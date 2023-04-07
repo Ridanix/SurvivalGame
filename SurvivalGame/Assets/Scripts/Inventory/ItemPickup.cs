@@ -6,10 +6,11 @@ using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
-    public ScriptableItem item;
+    public ScriptableItem[] items;
     PickUpTextParent pickUpTextParent;
     public float pickUpTime = 0f;
     public string pickUpText = "";
+    public ScriptableEquipment itemRequired;
     public bool isNearPlayer = false;
 
     public void FixedUpdate()
@@ -18,12 +19,17 @@ public class ItemPickup : MonoBehaviour
         {
             if(isNearPlayer)
             {
-                PickUpHintScript.instance.fillAmount += 1f/ (pickUpTime*10);
-                if (PickUpHintScript.instance.fillAmount > 1f)
+                if(EquipmentManager.instance.currentEquipment[4] == itemRequired || itemRequired == null)
                 {
-                    PickUp();
-                    PickUpHintScript.instance.fillAmount = 0f;
+                    PickUpHintScript.instance.fillAmount += 1f/ (pickUpTime*10);
+                    if (PickUpHintScript.instance.fillAmount > 1f)
+                    {
+                        PickUp();
+                        PickUpHintScript.instance.fillAmount = 0f;
+                    }
                 }
+
+                
             }
         }
         else
@@ -37,7 +43,10 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             PickUpHintScript.instance.Show(pickUpText);
-            item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
+            foreach(ScriptableItem item in items)
+            {
+                item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
+            }
             isNearPlayer = true;
         }
     }
@@ -53,24 +62,27 @@ public class ItemPickup : MonoBehaviour
 
     void PickUp()
     {
-        bool wasPickedUp = true;
-        if (item.name == "Coins")
+        foreach(ScriptableItem item in items)
         {
-            System.Random rnd = new System.Random();
-            item.amount = rnd.Next(0, 10);
-            GameObject.Find("PlayerPrefab").GetComponent<Player_Data>().WealthManipulation(item.amount);
-        }
-        else
-           wasPickedUp = Inventory.instance.AddItem(item);
+            bool wasPickedUp = true;
+            if (item.name == "Coins")
+            {
+                System.Random rnd = new System.Random();
+                item.amount = rnd.Next(0, 10);
+                GameObject.Find("PlayerPrefab").GetComponent<Player_Data>().WealthManipulation(item.amount);
+            }
+            else
+                wasPickedUp = Inventory.instance.AddItem(item);
 
-        pickUpTextParent = GameObject.Find("PickUpTextParent").GetComponent<PickUpTextParent>();
-        pickUpTextParent.itemstoDisplay.Add(item);
-        if (wasPickedUp)
-        {
+            pickUpTextParent = GameObject.Find("PickUpTextParent").GetComponent<PickUpTextParent>();
+            pickUpTextParent.itemstoDisplay.Add(item);
+            if (wasPickedUp)
+            {
 
-            PickUpHintScript.instance.Hide();
-            isNearPlayer = false;
-            Destroy(gameObject);
+                PickUpHintScript.instance.Hide();
+                isNearPlayer = false;
+                Destroy(gameObject);
+            }
         }
     }
 }

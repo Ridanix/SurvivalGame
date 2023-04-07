@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 843043712153430653}
   - component: {fileID: 4331561651746055640}
   - component: {fileID: 2015425801290764562}
+  - component: {fileID: 132635975099662984}
   m_Layer: 8
   m_Name: tree1
   m_TagString: Untagged
@@ -86,6 +87,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &132635975099662984
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70025038274261191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0028762482
+  m_Height: 0.020947024
+  m_Direction: 2
+  m_Center: {x: 0.00037775695, y: -0.0011195161, z: 0.007215327}
 --- !u!1 &4931396959275911070
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +111,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7284671067974824309}
   - component: {fileID: 3087816280829324222}
-  - component: {fileID: 2144503140652090933}
-  - component: {fileID: 3717668621102173270}
+  - component: {fileID: 3865027885137185004}
+  - component: {fileID: 3022367093715907070}
   m_Layer: 8
   m_Name: tree_basic
   m_TagString: Untagged
@@ -140,21 +155,7 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2015425801290764562}
   m_Enabled: 1
---- !u!136 &2144503140652090933
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4931396959275911070}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3.1984608
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.93, z: 0.16}
---- !u!114 &3717668621102173270
+--- !u!114 &3865027885137185004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,10 +164,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4931396959275911070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5b5c9e5651c3a42a3a5d382575f701, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisSpawner: {fileID: 0}
-  itemsToSpawn: []
-  hitsBeforeDestruction: 0
-  vulnerability: 0
+  items:
+  - {fileID: 11400000, guid: fc905476b33eac648b1e605931cff11a, type: 2}
+  - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
+  - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
+  pickUpTime: 10
+  pickUpText: To chop tree
+  itemRequired: {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
+  isNearPlayer: 0
+--- !u!65 &3022367093715907070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931396959275911070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.302475, y: 0.8743093, z: 2.3799877}
+  m_Center: {x: 0.04006195, y: 0.26709282, z: 0.15056324}
