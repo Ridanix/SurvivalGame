@@ -16,6 +16,9 @@ public class ScriptableItem : ScriptableObject
     
     public int amount = 1;
 
+    public EquipmentSlot equip;
+    //public WeaponType damageType;
+
     public virtual void UseItem(string whereFromDoYouUseIt)
     {
         Debug.Log("You used " + name + "from: " + whereFromDoYouUseIt);
@@ -30,3 +33,4 @@ public class ScriptableItem : ScriptableObject
     }
 }
 
+public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}

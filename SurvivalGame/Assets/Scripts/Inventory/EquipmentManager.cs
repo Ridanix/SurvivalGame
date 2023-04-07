@@ -46,7 +46,7 @@ public class EquipmentManager : MonoBehaviour
 
         currentEquipment[slotIndex] = newItem;
 
-        Player_Controller.vulterablity = newItem.damageType;
+        //Player_Controller.vulterablity = newItem.damageType;
         Player_Controller.attackDmg = newItem.statsValues[newItem.stats.IndexOf("Damage")];
 
         if (onEquipmentChanged != null)

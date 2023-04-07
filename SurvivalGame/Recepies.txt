@@ -1,1 +1,3 @@
-Health Potion|Lumber Axe|Spatha|Log
+Stick|Stick|Stone|Pickaxe
+Red berry|Blue berry|Mushroom|Soup
+Stick|Stone|Stone|Lumber Axe

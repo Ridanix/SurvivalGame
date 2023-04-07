@@ -1912,7 +1912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5535588371233806437, guid: 41118ebc5eb53ba40af53565629552eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5535588371233806437, guid: 41118ebc5eb53ba40af53565629552eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4531,6 +4531,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2990f65bdd97af248a27f7505c9ed506, type: 3}
+--- !u!1 &931964907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3432282583016598857, guid: 2990f65bdd97af248a27f7505c9ed506, type: 3}
+  m_PrefabInstance: {fileID: 931964906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &931964908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931964907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 0659029a2309a794b8b297cf3c14df6e, type: 2}
+  - {fileID: 11400000, guid: 0659029a2309a794b8b297cf3c14df6e, type: 2}
+  - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
+  pickUpTime: 7
+  pickUpText: To gather beries
+  itemRequired: {fileID: 0}
+  isNearPlayer: 0
 --- !u!4 &989398050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5257804753512404813, guid: 318dbc557fed5cb43ba114afd4cb33ec, type: 3}
@@ -5329,6 +5354,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8794204506754499207, guid: 17db705f1d928c548bf7f87289ac36c0, type: 3}
+      propertyPath: items.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794204506754499207, guid: 17db705f1d928c548bf7f87289ac36c0, type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17db705f1d928c548bf7f87289ac36c0, type: 3}
 --- !u!1001 &1558652805
@@ -5608,7 +5641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1894325586204042867, guid: 04b65cfe1b52edb49ac7af866048220e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.751232
+      value: 15.182
       objectReference: {fileID: 0}
     - target: {fileID: 1894325586204042867, guid: 04b65cfe1b52edb49ac7af866048220e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5649,6 +5682,10 @@ PrefabInstance:
     - target: {fileID: 4491822925813204261, guid: 04b65cfe1b52edb49ac7af866048220e, type: 3}
       propertyPath: m_Name
       value: mushroom1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919824536278456571, guid: 04b65cfe1b52edb49ac7af866048220e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04b65cfe1b52edb49ac7af866048220e, type: 3}

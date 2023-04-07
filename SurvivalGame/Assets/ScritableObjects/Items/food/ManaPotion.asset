@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e740aaf77d0cff4a9c9a3c7e5212320, type: 3}
+  m_Name: ManaPotion
+  m_EditorClassIdentifier: 
+  name: Mana potion
+  icon: {fileID: 21300000, guid: 52cc07a9a3ed8d549b8b06b4e4271a2d, type: 3}
+  description: Help you cast your spells all day
+  stats:
+  - Mana
+  - Health
+  statsValues:
+  - 50
+  - 0
+  upgradeMade: 0
+  playerWhoUse: {fileID: 0}
+  amount: 1

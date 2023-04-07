@@ -8242,7 +8242,9 @@ MonoBehaviour:
   crafttableSpace: 3
   upgradeableSpace: 2
   allItemsWeCanCraft:
-  - {fileID: 11400000, guid: fc905476b33eac648b1e605931cff11a, type: 2}
+  - {fileID: 11400000, guid: 5e63cc01e6419b447829e66f21ac6eab, type: 2}
+  - {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
+  - {fileID: 11400000, guid: 48860725f62b4e24889d64090b6f4c97, type: 2}
 --- !u!1 &5552340393562594142
 GameObject:
   m_ObjectHideFlags: 0

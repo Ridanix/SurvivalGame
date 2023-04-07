@@ -62,6 +62,7 @@ public class CraftingUI : MonoBehaviour
                                         {
                                             crafting.AddItemToTable(crafting.allItemsWeCanCraft[j], true, true);
                                             craftingSlots[3].AddItem(crafting.onCraftingTable[3]);
+                                            crafting.onCraftingTable[3].playerWhoUse = crafting.gameObject.GetComponent<Player_Data>();
                                             break;
                                         }
                                     }
@@ -131,5 +132,16 @@ public class CraftingUI : MonoBehaviour
         }
     }
 
-
+    public static string ReplaceFirst(string originalString, string substringToReplace, string replacementSubstring)
+    {
+        int index = originalString.IndexOf(substringToReplace);
+        if (index != -1)
+        {
+            return originalString.Substring(0, index) + replacementSubstring + originalString.Substring(index + substringToReplace.Length);
+        }
+        else
+        {
+            return originalString;
+        }
+    }
 }

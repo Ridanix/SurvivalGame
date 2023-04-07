@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3036611212833678197}
   - component: {fileID: 7184490833548639536}
+  - component: {fileID: 8230487408354726286}
+  - component: {fileID: 7786694775942928932}
   m_Layer: 0
   m_Name: rock_snow2
   m_TagString: Untagged
@@ -52,6 +54,39 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8520231853740390393}
   m_Enabled: 1
+--- !u!65 &8230487408354726286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444336559050342503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.071121, y: 1.4715447, z: 6.5598717}
+  m_Center: {x: 0.48421478, y: 0.23577237, z: -0.14522743}
+--- !u!114 &7786694775942928932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444336559050342503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  pickUpTime: 10
+  pickUpText: To mine stones
+  itemRequired: {fileID: 11400000, guid: 5e63cc01e6419b447829e66f21ac6eab, type: 2}
+  isNearPlayer: 0
 --- !u!1001 &7060628384086977405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +161,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88f577831b154044b876e0c100e35790, type: 3}
   m_PrefabInstance: {fileID: 7060628384086977405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7871462887641208364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 88f577831b154044b876e0c100e35790, type: 3}
+  m_PrefabInstance: {fileID: 7060628384086977405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1309098763403276871
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871462887641208364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3501680941085049505, guid: 88f577831b154044b876e0c100e35790, type: 3}
 --- !u!23 &8520231853740390393 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 88f577831b154044b876e0c100e35790, type: 3}

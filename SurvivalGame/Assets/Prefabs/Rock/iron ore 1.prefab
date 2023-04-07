@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 793821155825489962}
   - component: {fileID: 7158558282286507877}
+  - component: {fileID: 4924627260458281808}
+  - component: {fileID: 182863596409124877}
   m_Layer: 0
   m_Name: iron ore 1
   m_TagString: Untagged
@@ -53,6 +55,37 @@ LODGroup:
     - renderer: {fileID: 3917643579914952025}
     - renderer: {fileID: 4562471449461799059}
   m_Enabled: 1
+--- !u!65 &4924627260458281808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558301867280009205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.498291, y: 1.0931926, z: 4.2058296}
+  m_Center: {x: -0.06489563, y: 0.38209057, z: -0.018640518}
+--- !u!114 &182863596409124877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558301867280009205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 93d7a2761b79d7647b4af52fc579217a, type: 2}
+  pickUpTime: 15
+  pickUpText: To mine Ore
+  itemRequired: {fileID: 11400000, guid: 5e63cc01e6419b447829e66f21ac6eab, type: 2}
+  isNearPlayer: 0
 --- !u!1001 &164156711150716357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +152,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 254a1dadd38bc8646b4a8ad099e96f9d, type: 3}
   m_PrefabInstance: {fileID: 164156711150716357}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1046623440551786644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 254a1dadd38bc8646b4a8ad099e96f9d, type: 3}
+  m_PrefabInstance: {fileID: 164156711150716357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7404357673253274394
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046623440551786644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!23 &3917643579914952025 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3754163417599514780, guid: 254a1dadd38bc8646b4a8ad099e96f9d, type: 3}

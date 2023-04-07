@@ -15,6 +15,7 @@ public class Crafting : MonoBehaviour
             string[] line = recepiesInString[i].Split('|');
             Recepie recepie = new Recepie(line, line[0] + "|" +line[1] + "|" + line[2]);
             recepies.Add(recepie);
+            Debug.LogWarning($"{recepie.ingridientsAndOutput[0]}+{ recepie.ingridientsAndOutput[1]} + {recepie.ingridientsAndOutput[2]} = { recepie.ingridientsAndOutput[3]}");
         }
         string[] upgradeRecepiesInString = File.ReadAllLines("UpgradeRecepies.txt");
         for (int i = 0; i < upgradeRecepiesInString.Length; i++)
@@ -59,6 +60,7 @@ public class Crafting : MonoBehaviour
         public string noSplit;
         public string[] ingridientsAndOutput;
     }
+
     public class UpgradeRecepie
     {
         public string equipment, material;

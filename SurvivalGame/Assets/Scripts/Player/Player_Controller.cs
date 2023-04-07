@@ -34,7 +34,7 @@ public class Player_Controller : MonoBehaviour
     //ATTACK
     public float strenghtModifier;
     public static float attackDmg;
-    public static WeaponType vulterablity;
+    //public static WeaponType vulterablity;
     [SerializeField] PlayerAnimations playerAnimations;
 
     //TREE DESTRUCTION

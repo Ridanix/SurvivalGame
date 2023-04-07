@@ -15,6 +15,9 @@ MonoBehaviour:
   name: Coins
   icon: {fileID: 21300000, guid: 529ea54645854c9438f943da3032966f, type: 3}
   description: Favorite curency among traders
-  stats: 
+  stats: []
+  statsValues: []
+  upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  equip: 4

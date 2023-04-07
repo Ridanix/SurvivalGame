@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4246506255225971217}
   - component: {fileID: 8163892546127205956}
+  - component: {fileID: 7340152208209598790}
+  - component: {fileID: 3869949679657129785}
   m_Layer: 0
   m_Name: rock 2
   m_TagString: Untagged
@@ -52,6 +54,39 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3064693621058364319}
   m_Enabled: 1
+--- !u!65 &7340152208209598790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629391421522522321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.747837, y: 1, z: 5.7205496}
+  m_Center: {x: 0.42293978, y: 0, z: -0.122788906}
+--- !u!114 &3869949679657129785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629391421522522321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  - {fileID: 11400000, guid: 191fedeaa4b0cf44db0ec09dcf78965f, type: 2}
+  pickUpTime: 15
+  pickUpText: To mone stones
+  itemRequired: {fileID: 11400000, guid: 5e63cc01e6419b447829e66f21ac6eab, type: 2}
+  isNearPlayer: 0
 --- !u!1001 &4415338795523931931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,6 +149,25 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7df52db48268c414aa331af3d6362cb0, type: 3}
   m_PrefabInstance: {fileID: 4415338795523931931}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3568828841775940170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7df52db48268c414aa331af3d6362cb0, type: 3}
+  m_PrefabInstance: {fileID: 4415338795523931931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8858261071085749473
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568828841775940170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3501680941085049505, guid: 7df52db48268c414aa331af3d6362cb0, type: 3}
 --- !u!4 &4236996923179473136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7df52db48268c414aa331af3d6362cb0, type: 3}

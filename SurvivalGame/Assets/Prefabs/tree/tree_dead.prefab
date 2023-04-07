@@ -81,8 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: fc905476b33eac648b1e605931cff11a, type: 2}
-  pickUpTime: 6
-  pickUpText: To chop tree
+  pickUpTime: 10
+  pickUpText: Chop down tree
   itemRequired: {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
   isNearPlayer: 0
 --- !u!1001 &187668562631870426

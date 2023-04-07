@@ -172,7 +172,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
   - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
   pickUpTime: 10
-  pickUpText: To chop tree
+  pickUpText: Chop down tree
   itemRequired: {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
   isNearPlayer: 0
 --- !u!65 &3022367093715907070

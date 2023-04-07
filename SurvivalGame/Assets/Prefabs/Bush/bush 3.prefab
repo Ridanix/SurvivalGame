@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7704821231129297384}
   - component: {fileID: 440616124358531040}
+  - component: {fileID: 4671416696264619216}
+  - component: {fileID: 7253724177623599223}
   m_Layer: 0
   m_Name: bush 3
   m_TagString: Untagged
@@ -52,6 +54,39 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1006245243261010840}
   m_Enabled: 1
+--- !u!114 &4671416696264619216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852591014506095551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: d8a693a807ab1804487bab0ed2b04526, type: 2}
+  - {fileID: 11400000, guid: d8a693a807ab1804487bab0ed2b04526, type: 2}
+  - {fileID: 11400000, guid: cb1af132c45ce99469e15b983d276b85, type: 2}
+  pickUpTime: 7
+  pickUpText: To gather beries
+  itemRequired: {fileID: 0}
+  isNearPlayer: 0
+--- !u!65 &7253724177623599223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852591014506095551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7554512, y: 1, z: 2.7758636}
+  m_Center: {x: 0.020410538, y: 0, z: 0.061237335}
 --- !u!1001 &1889105109109792540
 PrefabInstance:
   m_ObjectHideFlags: 0

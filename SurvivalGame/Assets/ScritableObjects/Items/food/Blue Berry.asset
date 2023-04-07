@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e740aaf77d0cff4a9c9a3c7e5212320, type: 3}
-  m_Name: HealthPotion
+  m_Name: Blue Berry
   m_EditorClassIdentifier: 
-  name: Health Potion
-  icon: {fileID: 21300000, guid: 11b9cb6ddb35ec14598be8f03601cdf7, type: 3}
-  description: Gives you chance to survive another day.
+  name: Blue berry
+  icon: {fileID: 21300000, guid: 85478b20ec392fd4faf0e1c13f35da30, type: 3}
+  description: Beries from Winterbush. Usefull in cooking and mana regeneration
   stats:
-  - Health
   - Mana
+  - Health
   statsValues:
-  - 50
-  - -50
+  - 15
+  - 0
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1

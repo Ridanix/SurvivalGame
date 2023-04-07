@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1306258568651552805}
   - component: {fileID: 5571184933138418908}
+  - component: {fileID: 8251605850631201276}
+  - component: {fileID: 6233655452586360548}
   m_Layer: 0
   m_Name: mushroom2
   m_TagString: Untagged
@@ -55,6 +57,38 @@ LODGroup:
     - renderer: {fileID: 2321849387918084892}
     - renderer: {fileID: 3878559116706225155}
   m_Enabled: 1
+--- !u!65 &8251605850631201276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172206358425089932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1332016, y: 0.85431606, z: 1.0998955}
+  m_Center: {x: 1.7565308, y: 0.40999612, z: 0.0124874115}
+--- !u!114 &6233655452586360548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172206358425089932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39f285613ad4349976602963f28bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 06c9e4f85413d5346b279982504add44, type: 2}
+  - {fileID: 11400000, guid: 06c9e4f85413d5346b279982504add44, type: 2}
+  pickUpTime: 7
+  pickUpText: To gather mushroom
+  itemRequired: {fileID: 0}
+  isNearPlayer: 0
 --- !u!1001 &1889724563033598749
 PrefabInstance:
   m_ObjectHideFlags: 0
