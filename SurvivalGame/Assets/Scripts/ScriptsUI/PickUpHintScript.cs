@@ -19,6 +19,7 @@ public class PickUpHintScript : MonoBehaviour
         {
             instance = this;
         }
+        main.SetActive(false);
     }
 
     public void FixedUpdate()

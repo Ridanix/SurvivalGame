@@ -39,7 +39,11 @@ public class InventoryUIScript : MonoBehaviour
     public InventorySlotScript[] inventoryCraftingMenuSlots;
     public InventorySlotScript[] inventoryUpgradeMenuSlots;
 
+    //CRUTIAL FOR TOLTIP
+    public delegate void OnInventoryStateChanged();
+    public static OnInventoryStateChanged WeAraChangingInventoryState;
 
+    //CHANGE PANEL
     public void OnBookMarkClick(GameObject clickedBookMark)
     {
         activeBookMark = clickedBookMark;
@@ -73,6 +77,7 @@ public class InventoryUIScript : MonoBehaviour
         {
             rootOfInventoryUI.SetActive(!rootOfInventoryUI.activeSelf);
             ToltipManager.instance.HideTolTip();
+            if (WeAraChangingInventoryState != null) WeAraChangingInventoryState.Invoke();
             OnBookMarkClick(activeBookMark);
         }
     }

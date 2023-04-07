@@ -7,9 +7,11 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     public InventorySlotScript inventorySlotScript;
 
+
     public void Start()
     {
         Inventory.instance.onItemChangedCallback += ToltipManager.instance.HideTolTip;
+        InventoryUIScript.WeAraChangingInventoryState += HideToltipCompletely;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -18,6 +20,11 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     public void OnPointerExit(PointerEventData eventData)
+    {
+        HideToltipCompletely();
+    }
+
+    public void HideToltipCompletely()
     {
         CancelInvoke("SetDescription");
         ToltipManager.instance.HideTolTip();

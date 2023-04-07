@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 1cc1593e63f7a4f4c93e72129752a01a, type: 2}
-  pickUpTime: 100
+  pickUpTime: 4
   pickUpText: to pick up Coins
 --- !u!1 &4618713716589032057
 GameObject:

@@ -10,18 +10,20 @@ public class ItemPickup : MonoBehaviour
     PickUpTextParent pickUpTextParent;
     public float pickUpTime = 0f;
     public string pickUpText = "";
-
+    public bool isNearPlayer = false;
 
     public void FixedUpdate()
     {
         if(Input.GetKey(KeyCode.E) && PickUpHintScript.instance.main.activeInHierarchy)
         {
-            Debug.Log("were in");
-            PickUpHintScript.instance.fillAmount += 1f/ (pickUpTime*10);
-            if (PickUpHintScript.instance.fillAmount > pickUpTime)
+            if(isNearPlayer)
             {
-                PickUp();
-                PickUpHintScript.instance.fillAmount = 0f;
+                PickUpHintScript.instance.fillAmount += 1f/ (pickUpTime*10);
+                if (PickUpHintScript.instance.fillAmount > 1f)
+                {
+                    PickUp();
+                    PickUpHintScript.instance.fillAmount = 0f;
+                }
             }
         }
         else
@@ -36,6 +38,7 @@ public class ItemPickup : MonoBehaviour
         {
             PickUpHintScript.instance.Show(pickUpText);
             item.playerWhoUse = GameObject.Find("PlayerPrefab").gameObject.GetComponent<Player_Data>();
+            isNearPlayer = true;
         }
     }
 
@@ -44,6 +47,7 @@ public class ItemPickup : MonoBehaviour
         if (pickUpCollision.gameObject.tag == "Player")
         {
             PickUpHintScript.instance.Hide();
+            isNearPlayer = false;
         }
     }
 
@@ -61,11 +65,12 @@ public class ItemPickup : MonoBehaviour
 
         pickUpTextParent = GameObject.Find("PickUpTextParent").GetComponent<PickUpTextParent>();
         pickUpTextParent.itemstoDisplay.Add(item);
-
         if (wasPickedUp)
         {
+
+            PickUpHintScript.instance.Hide();
+            isNearPlayer = false;
             Destroy(gameObject);
         }
-        
     }
 }
