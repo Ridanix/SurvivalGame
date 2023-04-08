@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class ScriptableEquipment : ScriptableItem
 {
-    
+    public SkinnedMeshRenderer mesh;
+
+
     public override void UseItem(string whereFromDoYouUseIt)
     {
         base.UseItem(whereFromDoYouUseIt);

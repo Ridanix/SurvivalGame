@@ -10,7 +10,9 @@ public class EquipmentManager : MonoBehaviour
         instance = this;
     }
 
+    public SkinnedMeshRenderer targetMesh;
     public ScriptableEquipment[] currentEquipment;
+    public SkinnedMeshRenderer[] currentMeshes;
 
     Inventory inventory;
 
@@ -23,9 +25,10 @@ public class EquipmentManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
 
         currentEquipment = new ScriptableEquipment[numSlots];
+        currentMeshes = new SkinnedMeshRenderer[numSlots];
     }
 
-    public void EquipItem(ScriptableEquipment newItem,/*NEW*/ string whereUsed = "Hotbar")
+    public void EquipItem(ScriptableEquipment newItem, string whereUsed = "Hotbar")
     {
         int slotIndex = (int)newItem.equip;
         ScriptableEquipment oldItem = null;
@@ -33,7 +36,6 @@ public class EquipmentManager : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            /*NEW*/
             if (whereUsed == "Inventory")
             {
                 inventory.AddItem(oldItem);
@@ -46,19 +48,33 @@ public class EquipmentManager : MonoBehaviour
 
         currentEquipment[slotIndex] = newItem;
 
-        //Player_Controller.vulterablity = newItem.damageType;
         Player_Controller.attackDmg = newItem.statsValues[newItem.stats.IndexOf("Damage")];
 
         if (onEquipmentChanged != null)
         {
             onEquipmentChanged.Invoke(newItem, oldItem);
         }
+
+        if(newItem.mesh != null)
+        {
+            SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+            currentMeshes[slotIndex] = newMesh;
+        }
+        
     }
 
     public void UnequipItem(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
+            if(currentMeshes[slotIndex] != null)
+            {
+                Destroy(currentMeshes[slotIndex].gameObject);
+            }
+
             ScriptableEquipment oldItem = currentEquipment[slotIndex];
             inventory.AddItem(oldItem);
             currentEquipment[slotIndex] = null;
