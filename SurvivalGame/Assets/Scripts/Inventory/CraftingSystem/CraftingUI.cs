@@ -50,10 +50,10 @@ public class CraftingUI : MonoBehaviour
                         string weaAreCheking = Crafting.instance.recepies[i].noSplit;
                         if (weaAreCheking.Contains(recepie.ingridientsAndOutput[0]))
                         {
-                            weaAreCheking = weaAreCheking.Replace(recepie.ingridientsAndOutput[0], "x");
+                            weaAreCheking = ReplaceFirst(weaAreCheking, recepie.ingridientsAndOutput[0], "x");
                             if (weaAreCheking.Contains(recepie.ingridientsAndOutput[1]))
                             {
-                                weaAreCheking = weaAreCheking.Replace(recepie.ingridientsAndOutput[1], "x");
+                                weaAreCheking = ReplaceFirst(weaAreCheking, recepie.ingridientsAndOutput[1], "x");
                                 if (weaAreCheking.Contains(recepie.ingridientsAndOutput[2]))
                                 {
                                     for (int j = 0; j < Crafting.instance.allItemsWeCanCraft.Length; j++)
