@@ -1,8 +1,30 @@
-Stick|Stick|Stone|Pickaxe
+Blue berry|Blue berry|Blue berry|Mana potion
+Red berry|Red berry|Red berry|Health Potion
+Red berry|Blue berry|Mushroom|Soup
+Raw chiken|Log|Log|Cooked chiken
+Raw steak|Log|Log|Cooked steak
+Stone|Stone|Stone|Stone plate
+Log|Iron ore|Iron ore|Iron ingot
+Stick|Leather|Stone|Pickaxe
+Stick|Stone|Stone|Spatha
 Stick|Stone|Stone|Lumber Axe
+Stick|Stick|Iron ingot|Batle Axe
+Stick|Iron ingot|Iron ingot|Bastard's sword
+Stick|Leather|Iron ingot|Rogue's comrades
+Stick|Log|Leather|Torch
+Stone plate|Stone plate|Stone plate|Stone chestplate
+Stone plate|Stone plate|Stone|Stone legins
+Stone plate|Stone plate|Leather|Stone helmet
+Stone plate|Stone|Stone|Stone boots
+Leather|Stick|Stick|Leather boots
+Leather|Leather|Leather|Leather chestplate
+Leather|Leather|Log|Leather helmet
+Leather|Leather|Stick|Leather legins
+Log|Log|Log|Wooden chestplate
+Stick|Stick|Stick|Wooden boots
+Log|Stick|Stick|Wooden helmet
+Log|Log|Stick|Wooden legins
 Log|Iron ore|Iron ore|Iron boots
 Iron ingot|Iron ingot|Iron ingot|Iron chestplate
 Log|Iron ingot|Iron ore|Iron helmet
 Log|Iron ingot|Iron ingot|Iron legins
-Red berry|Blue berry|Mushroom|Soup
-Log|Log|Stick|Wooden boots
