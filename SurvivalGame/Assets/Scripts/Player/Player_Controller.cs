@@ -27,6 +27,8 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject mainCamera;
 
+    //WORK STATIONS
+    public bool[] nearWorkStations = new bool[3];
 
     //HEALTH
     [SerializeField] Player_Data playerData;
@@ -37,6 +39,9 @@ public class Player_Controller : MonoBehaviour
     //public static WeaponType vulterablity;
     [SerializeField] PlayerAnimations playerAnimations;
 
+    //DEFENSE
+    public static float armorPoints = 0;
+
     //TREE DESTRUCTION
     public Terrain mainTerain;
 
@@ -45,8 +50,36 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        if(other.gameObject.name == "anvil")
+        {
+            nearWorkStations[0] = true;
+        }
+        else if(other.gameObject.name == "forge")
+        {
+            nearWorkStations[1] = true;
+        }
+        else if(other.gameObject.name == "craftingTable")
+        {
+            nearWorkStations[2] = true;
+        }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "anvil")
+        {
+            nearWorkStations[0] = false;
+        }
+        else if (other.gameObject.name == "forge")
+        {
+            nearWorkStations[1] = false;
+        }
+        else if (other.gameObject.name == "craftingTable")
+        {
+            nearWorkStations[2] = false;
+        }
+    }
+
+
 
     public void Update()
     {
@@ -147,6 +180,7 @@ public class Player_Controller : MonoBehaviour
             playerData.stamina -= 1f;
         }
         else if (playerData.stamina < playerData.maxStamina) playerData.stamina += 1f;
+
     }
 
 

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: IronOre
   m_EditorClassIdentifier: 
   name: Iron ore
-  icon: {fileID: 21300000, guid: a5b20985409c92f48b9bffe7e79d4937, type: 3}
+  icon: {fileID: 21300000, guid: 436f26b55d985c441bb9dc519a42bacb, type: 3}
   description: Rare component which have to be melted first
   stats: []
   statsValues: []
+  stationRequired: Furnance
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1

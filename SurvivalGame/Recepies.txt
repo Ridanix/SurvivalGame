@@ -1,3 +1,8 @@
 Stick|Stick|Stone|Pickaxe
-Red berry|Blue berry|Mushroom|Soup
 Stick|Stone|Stone|Lumber Axe
+Log|Iron ore|Iron ore|Iron boots
+Iron ingot|Iron ingot|Iron ingot|Iron chestplate
+Log|Iron ingot|Iron ore|Iron helmet
+Log|Iron ingot|Iron ingot|Iron legins
+Red berry|Blue berry|Mushroom|Soup
+Log|Log|Stick|Wooden boots

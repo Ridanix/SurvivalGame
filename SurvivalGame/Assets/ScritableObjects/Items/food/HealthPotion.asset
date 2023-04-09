@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   name: Health Potion
-  icon: {fileID: 21300000, guid: 11b9cb6ddb35ec14598be8f03601cdf7, type: 3}
+  icon: {fileID: 21300000, guid: c532e9c9690338f4ab138d68668c0ebb, type: 3}
   description: Gives you chance to survive another day.
   stats:
   - Health
@@ -24,3 +24,4 @@ MonoBehaviour:
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  equip: 0

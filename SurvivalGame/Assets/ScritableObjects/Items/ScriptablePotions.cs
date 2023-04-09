@@ -14,8 +14,16 @@ public class ScriptablePotions : ScriptableItem
 
     public void DrinkPotion(string whereFromDoYouUseIt)
     {
-        playerWhoUse.ManaManipulaton(statsValues[stats.IndexOf("Mana")]);
-        playerWhoUse.HealOrDamage(statsValues[stats.IndexOf("Health")]);
+        if (stats.Contains("Hunger"))
+        {
+            playerWhoUse.HungerManipulation(statsValues[stats.IndexOf("Hunger")]);
+            playerWhoUse.HealOrDamage(statsValues[stats.IndexOf("Health")]);
+        }
+        else
+        {
+            playerWhoUse.ManaManipulaton(statsValues[stats.IndexOf("Mana")]);
+            playerWhoUse.HealOrDamage(statsValues[stats.IndexOf("Health")]);
+        }
         RemoveItemFromInventory(whereFromDoYouUseIt);
     }
 }

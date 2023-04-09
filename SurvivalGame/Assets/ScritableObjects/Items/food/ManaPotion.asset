@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
   name: Mana potion
-  icon: {fileID: 21300000, guid: 52cc07a9a3ed8d549b8b06b4e4271a2d, type: 3}
+  icon: {fileID: 21300000, guid: 79d054765e48a0e4ca57e6c37b52c889, type: 3}
   description: Help you cast your spells all day
   stats:
   - Mana
@@ -24,3 +24,4 @@ MonoBehaviour:
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  equip: 0

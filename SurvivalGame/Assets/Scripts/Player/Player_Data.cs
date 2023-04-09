@@ -24,6 +24,8 @@ public class Player_Data : EntityInventory
     //Items
     public GameObject spathaGameObject;
     public GameObject lumberAxeGameObject;
+    public GameObject pickAxeGameObject;
+    public GameObject[] armor;
 
     void Start()
     {
@@ -41,28 +43,30 @@ public class Player_Data : EntityInventory
     {
         if (newItem != null)
         {
-            if (newItem.name == "Spatha")
+
+            lumberAxeGameObject.SetActive(false);
+            spathaGameObject.SetActive(false);
+            spathaGameObject.SetActive(false);
+
+            switch (newItem.name)
             {
-                
-                spathaGameObject.SetActive(true);
-                lumberAxeGameObject.SetActive(false);
-               
+                default:
+                case "Spatha":
+                    spathaGameObject.SetActive(true);
+                    break;
+                case "Lumber Axe":
+                    lumberAxeGameObject.SetActive(true);
+                    break;
+                case "Pickaxe":
+                    pickAxeGameObject.SetActive(true);
+                    break;
             }
         }
-        if (newItem != null)
-        {
-            if (newItem.name == "Lumber Axe")
-            {
-
-                spathaGameObject.SetActive(false);
-                lumberAxeGameObject.SetActive(true);
-
-            }
-        }
-        if (newItem == null)
+        else
         {
             spathaGameObject.SetActive(false);
             lumberAxeGameObject.SetActive(false);
+            pickAxeGameObject.SetActive(false);
         }
     }
 

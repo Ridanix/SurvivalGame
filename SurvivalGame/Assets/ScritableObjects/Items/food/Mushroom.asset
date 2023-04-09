@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   name: Mushroom
-  icon: {fileID: 21300000, guid: 1b3fd5700a586e84c903ec2f0254f834, type: 3}
+  icon: {fileID: 21300000, guid: 5a23a0156afa00d41bc233e41ea3ba18, type: 3}
   description: Even its not violet, still, its a little poisonous
   stats:
   - Health
@@ -24,3 +24,4 @@ MonoBehaviour:
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  equip: 0

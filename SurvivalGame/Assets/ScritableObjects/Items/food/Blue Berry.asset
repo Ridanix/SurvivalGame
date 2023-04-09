@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Blue Berry
   m_EditorClassIdentifier: 
   name: Blue berry
-  icon: {fileID: 21300000, guid: 85478b20ec392fd4faf0e1c13f35da30, type: 3}
+  icon: {fileID: 21300000, guid: 2fcf1c78e317c9247a45d05cb84bb378, type: 3}
   description: Beries from Winterbush. Usefull in cooking and mana regeneration
   stats:
   - Mana
@@ -24,3 +24,4 @@ MonoBehaviour:
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  equip: 0

@@ -8,10 +8,12 @@ using UnityEngine.SceneManagement;
 public class EntityInventory : MonoBehaviour
 {
     //Player Stats
-    public float health = 50f;
+    public float health = 100f;
     public float maxHealth = 100f;
     public float stamina = 100f;
     public float maxStamina = 100f;
+    public float hunger = 0f;
+    public float maxHunger = 100f;
     public float mana = 100f;
     public float maxMana = 100f;
     public PlayerAbilityShield playerAbilityShield;
@@ -65,5 +67,10 @@ public class EntityInventory : MonoBehaviour
     public void ManaManipulaton(float value)
     {
         mana += value;
+    }
+
+    public void HungerManipulation(float value)
+    {
+        hunger += value;
     }
 }

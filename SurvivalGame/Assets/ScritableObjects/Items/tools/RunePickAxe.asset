@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f2aae334ba7ef44b6da162451b444e, type: 3}
+  m_Name: RunePickAxe
+  m_EditorClassIdentifier: 
+  name: Rune Digger
+  icon: {fileID: 21300000, guid: 550efe3a9cd642345ad9e3a77204f67c, type: 3}
+  description: Mine faster with magic power!
+  stats:
+  - Damage
+  statsValues:
+  - 10
+  stationRequired: Anvil
+  upgradeMade: 0
+  playerWhoUse: {fileID: 0}
+  amount: 1
+  mesh: {fileID: 0}
+  equip: 4

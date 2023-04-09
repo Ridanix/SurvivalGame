@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: WoodenHelmet
   m_EditorClassIdentifier: 
   name: Wooden helmet
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 166f0429b74f21243a1e2270014d3d7a, type: 3}
   description: Protects your head from goblins
   stats:
   - Defense
   statsValues:
-  - 5
+  - 2
+  stationRequired: none
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
-  equip: 1
+  mesh:
+  - {fileID: 919132149155446097, guid: 04689442a10138a4d9f94c3d858551b8, type: 3}
+  equip: 0

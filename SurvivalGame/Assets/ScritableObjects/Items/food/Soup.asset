@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Soup
   m_EditorClassIdentifier: 
   name: Soup
-  icon: {fileID: 21300000, guid: ada693f3b3c477a4dba77a2345a2a971, type: 3}
+  icon: {fileID: 21300000, guid: c09d50a6802e31940a07564b9b492fd7, type: 3}
   description: Tastes like one made by your Grandma
   stats:
   - Mana
@@ -21,7 +21,7 @@ MonoBehaviour:
   statsValues:
   - 100
   - 100
+  stationRequired: Furnance
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
-  equip: 0

@@ -11,12 +11,12 @@ public class ScriptableItem : ScriptableObject
     public List<string> stats = new List<string>();
     public List<float> statsValues = new List<float>();
 
+    public string stationRequired = "none";
     public int upgradeMade = 0;
     public Player_Data playerWhoUse;
     
     public int amount = 1;
 
-    public EquipmentSlot equip;
     //public WeaponType damageType;
 
     public virtual void UseItem(string whereFromDoYouUseIt)
@@ -33,4 +33,3 @@ public class ScriptableItem : ScriptableObject
     }
 }
 
-public enum EquipmentSlot { Head, Chest, Legs, Feet, Weapon}

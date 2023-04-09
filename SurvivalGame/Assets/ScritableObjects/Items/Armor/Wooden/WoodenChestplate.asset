@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: WoodenChestplate
   m_EditorClassIdentifier: 
   name: Wooden chestplate
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8ab283126c16730478ab48be08b22d9a, type: 3}
   description: Protects your body from goblins
   stats:
   - Defense
   statsValues:
-  - 10
+  - 4
+  stationRequired: none
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
-  equip: 2
+  mesh:
+  - {fileID: 919132149155446097, guid: 3268fd700ab238347a39dd6cf6bd9c8c, type: 3}
+  equip: 1

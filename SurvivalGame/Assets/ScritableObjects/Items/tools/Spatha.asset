@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Spatha
   m_EditorClassIdentifier: 
   name: Spatha
-  icon: {fileID: 21300000, guid: 0fa5592658a6921419a03ac3d37a4d09, type: 3}
+  icon: {fileID: 21300000, guid: 71174c79900bd1b4584a8676716c490f, type: 3}
   description: Favorite weapon between goblin slayers.
   stats:
   - Damage
   statsValues:
   - 20
+  stationRequired: none
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  mesh: {fileID: 0}
   equip: 4
-  damageType: 2

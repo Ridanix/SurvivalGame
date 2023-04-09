@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   name: Stick
-  icon: {fileID: 21300000, guid: 6c232e27519e0574d8d61a5c9070ae22, type: 3}
+  icon: {fileID: 21300000, guid: 935b838fa3dd1a74080e08235e479d12, type: 3}
   description: Once was on tree, or a part of Log
   stats: []
   statsValues: []
+  stationRequired: none
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
-  equip: 4

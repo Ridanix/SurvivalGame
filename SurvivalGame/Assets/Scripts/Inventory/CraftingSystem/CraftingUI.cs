@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CraftingUI : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CraftingUI : MonoBehaviour
     public Transform itemsParentUpgradeSlots;
     public CraftingSlot[] craftingSlots;
     public CraftingSlot[] upgradeSlots;
+    public TMP_Text crafttingTip;
     
     public Crafting crafting;
     
@@ -41,6 +43,7 @@ public class CraftingUI : MonoBehaviour
             }
             if (craftingSlots[0].item != null && craftingSlots[1].item != null && craftingSlots[2].item != null)
             {
+                crafttingTip.text = string.Empty;
                 Crafting.Recepie recepie = new Crafting.Recepie(Crafting.instance.onCraftingTable[0].name, Crafting.instance.onCraftingTable[1].name, Crafting.instance.onCraftingTable[2].name);
 
                 for (int i = 0; i < Crafting.instance.recepies.Count; i++)
@@ -60,10 +63,29 @@ public class CraftingUI : MonoBehaviour
                                     {
                                         if (Crafting.instance.recepies[i].ingridientsAndOutput[3] == Crafting.instance.allItemsWeCanCraft[j].name)
                                         {
+                                            if(crafting.allItemsWeCanCraft[j].stationRequired == "none")
+                                            {
+
+                                            }
+                                            else if(crafting.allItemsWeCanCraft[j].stationRequired == "Crafting Table"  && crafting.gameObject.GetComponent<Player_Controller>().nearWorkStations[2] == true)
+                                            {
+                                                crafttingTip.text = "Requires crafting table";
+                                                break;
+                                            }
+                                            else if(crafting.allItemsWeCanCraft[j].stationRequired == "Furnance"  && crafting.gameObject.GetComponent<Player_Controller>().nearWorkStations[1] == true)
+                                            {
+                                                crafttingTip.text = "Requires furnance";
+                                                break;
+                                            }
+                                            else if(crafting.allItemsWeCanCraft[j].stationRequired == "Anvil"  && crafting.gameObject.GetComponent<Player_Controller>().nearWorkStations[0] == true)
+                                            {
+                                                crafttingTip.text = "Requires anvil";
+                                                break;
+                                            }
                                             crafting.AddItemToTable(crafting.allItemsWeCanCraft[j], true, true);
                                             craftingSlots[3].AddItem(crafting.onCraftingTable[3]);
                                             crafting.onCraftingTable[3].playerWhoUse = crafting.gameObject.GetComponent<Player_Data>();
-                                            break;
+
                                         }
                                     }
                                     break;
