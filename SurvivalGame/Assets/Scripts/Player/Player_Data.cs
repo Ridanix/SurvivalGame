@@ -26,16 +26,33 @@ public class Player_Data : EntityInventory
     public GameObject lumberAxeGameObject;
     public GameObject pickAxeGameObject;
     public GameObject[] armor;
-
+    
     void Start()
     {
+       
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 
     private void Awake()
     {
+        int playerClassInt = PlayerPrefs.GetInt("selectedClassInt");
+        switch (playerClassInt)
+        {
+            default:
+            case 0:
+                maxHealth = 200;
+                break;
+            case 1:
+                maxStamina = 400;
+                break;
+            case 2:
+                maxMana = 500;
+                break;
+
+        }
         health = maxHealth;
         stamina = maxStamina;
+        mana = maxMana;
         SetBars();
     }
 
