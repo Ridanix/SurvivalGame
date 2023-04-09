@@ -1,17 +1,20 @@
 fileFormatVersion: 2
-guid: 5e97f4a71b59623459bc8fa8ae8d1a6b
+guid: f599f5ca74b900a489c1fd2afcae01f5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -982115091633673366
-    second: Armature|Death
+      74: 3673095150341620287
+    second: Eating
   - first:
-      74: 2632420279731573750
-    second: Armature|GrassEatiing
+      74: -3100369314251171874
+    second: Idle
   - first:
-      74: -4274770991410265338
-    second: Armature|Walking
+      74: -1610863427237328480
+    second: Walking
+  - first:
+      74: 4348485665485846014
+    second: Death
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -42,11 +45,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Death
-      takeName: Armature|Death
+      name: Eating
+      takeName: Eating
       internalID: 0
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 118
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -71,11 +74,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|GrassEatiing
-      takeName: Armature|GrassEatiing
+      name: Idle
+      takeName: Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 297
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -100,11 +103,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Walking
-      takeName: Armature|Walking
+      name: Walking
+      takeName: Walking
       internalID: 0
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -112,6 +115,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Death
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 148
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

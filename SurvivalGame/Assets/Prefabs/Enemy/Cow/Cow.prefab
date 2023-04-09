@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 5933701190765157525}
-  spawnDrop: {fileID: 1765112805494728518, guid: 0a3e6b1f6fc08f441b0744cb0b689538, type: 3}
+  spawnDrop: {fileID: 6539479729771382236, guid: 4b2252a46ce5be1488dc8e74d675077b, type: 3}
 --- !u!114 &5933701190765157525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,6 +1592,7 @@ MonoBehaviour:
   health: 0
   dead: 0
   deathAnim: {fileID: -982115091633673366, guid: 5e97f4a71b59623459bc8fa8ae8d1a6b, type: 3}
+  hit: 0
 --- !u!1 &7127835124002936010
 GameObject:
   m_ObjectHideFlags: 0
