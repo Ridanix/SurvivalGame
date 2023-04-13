@@ -7,10 +7,14 @@ using TMPro;
 public class ClassSelectScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] GameObject model;
     [SerializeField] TMP_Text classText;
+    [SerializeField] Texture[] modelTexture;
+    private Renderer modelRenderer;
     // Start is called before the first frame update
     void Start()
     {
+        modelRenderer = model.GetComponent<Renderer>();
         int randomTextLineSelector = Random.Range(0, 8);
         StartCoroutine(DestroyText());
         int selectedCharacter = PlayerPrefs.GetInt("selectedClassInt");
@@ -19,6 +23,7 @@ public class ClassSelectScript : MonoBehaviour
             default:
             case 0:
                 player.transform.position = new Vector3(792, 11, 778);
+                modelRenderer.material.mainTexture = modelTexture[0];
                 switch (randomTextLineSelector)
                 {
                     default:
@@ -51,7 +56,7 @@ public class ClassSelectScript : MonoBehaviour
                 break;
             case 1:
                 player.transform.position = new Vector3(206, 11, 756);
-                
+                modelRenderer.material.mainTexture = modelTexture[1];
                 switch (randomTextLineSelector)
                 {
                     default:
@@ -84,6 +89,7 @@ public class ClassSelectScript : MonoBehaviour
                 break;
             case 2:
                 player.transform.position = new Vector3(636, 11, 1208);
+                modelRenderer.material.mainTexture = modelTexture[2];
                 switch (randomTextLineSelector)
                 {
                     default:
