@@ -19,14 +19,18 @@ public class PlayerStrenghtAbility : PlayerAbility
     }
     IEnumerator PlayerBuffed()
     {
-        playerController.strenghtModifier = 2;
         BuffActive = true;
-        playerData.mana = playerData.mana - 20;
-        yield return new WaitForSeconds(3f);
-        
-        playerController.strenghtModifier = 1;
-        yield return new WaitForSeconds(5f);
+        if(playerData.stamina>= 20f)
+        {
+            playerController.strenghtModifier = 2;
+            playerData.stamina -= 20;
+            yield return new WaitForSeconds(3f);
+
+            playerController.strenghtModifier = 1;
+            yield return new WaitForSeconds(5f);
+        }
         BuffActive = false;
+        
         
     }
    

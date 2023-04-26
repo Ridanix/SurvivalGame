@@ -11,21 +11,23 @@ public class PlayerDashAbility : PlayerAbility
     public float dashVelocity;
     public override void Activate()
     {
-        if (isActive == false)
+        if (isActive == false )
         {
             StartCoroutine("PlayerDashed");
-            Debug.Log("Dashed");
         }
         
     }
    IEnumerator PlayerDashed()
     {
-        playerController.speed = 40;
         isActive = true;
-        playerData.mana = playerData.mana - 20f;
-        yield return new WaitForSeconds(0.15f);
-        playerController.speed = 5;
-        yield return new WaitForSeconds(5.85f);
+        if(playerData.stamina>= 20f)
+        {
+            playerController.speed = 40;
+            playerData.stamina -= 20f;
+            yield return new WaitForSeconds(0.15f);
+            playerController.speed = 5;
+            yield return new WaitForSeconds(5.85f);
+        }
         isActive = false;
     }
 }

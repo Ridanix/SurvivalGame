@@ -171,6 +171,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &2099696255702903621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046623440551786644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.088234, y: 1.6364442, z: 3.840248}
+  m_Center: {x: -0.114780426, y: 0.7266864, z: 0.06174469}
 --- !u!23 &3917643579914952025 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3754163417599514780, guid: 254a1dadd38bc8646b4a8ad099e96f9d, type: 3}

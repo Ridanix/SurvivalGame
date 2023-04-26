@@ -19,7 +19,7 @@ public class Player_Data : EntityInventory
     public TMP_Text[] manaTexts;
 
     //Other Stats References
-    public TMP_Text wealthText;
+    public TMP_Text hungerText;
 
     //Items
     public GameObject spathaGameObject;
@@ -37,6 +37,7 @@ public class Player_Data : EntityInventory
 
     private void Awake()
     {
+        InvokeRepeating("hungerToStamina", 2f, 2f);
         int playerClassInt = PlayerPrefs.GetInt("selectedClassInt");
         switch (playerClassInt)
         {
@@ -129,11 +130,6 @@ public class Player_Data : EntityInventory
         }
     }
 
-    public void UpdateStats()
-    {
-        wealthText.text = wealth.ToString();
-    }
-
     public void SetBars()
     {
         foreach (Slider s in healthBars)
@@ -153,11 +149,31 @@ public class Player_Data : EntityInventory
         }
     }
 
+    public void hungerToStamina()
+    {
+        if (stamina<=98)
+        {
+            stamina+= 2f;
+            if (hunger> 2f&&stamina<=97)
+            {
+                stamina+= 3f;
+                hunger -= 2f;
+            }
+        }
+    }
+
+
+    public void UpdateStats()
+    {
+        hungerText.text = hunger.ToString();
+    }
+
     private void Update()
     {
         CheckStats();
         UpateBars();
         UpdateStats();
+
         if (gameObject.transform.position.y > 11.3)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, 11, gameObject.transform.position.z);
