@@ -25,7 +25,9 @@ public class Player_Data : EntityInventory
     public GameObject spathaGameObject;
     public GameObject lumberAxeGameObject;
     public GameObject pickAxeGameObject;
-    public GameObject[] armor;
+    public GameObject longAxeGameObject;
+    public GameObject[] dualKnightsGameObject;
+    public GameObject bastardGameObject;
     
     void Start()
     {
@@ -58,13 +60,18 @@ public class Player_Data : EntityInventory
 
     void OnEquipmentChanged(ScriptableEquipment newItem, ScriptableEquipment oldItem)
     {
+
+
+        lumberAxeGameObject.SetActive(false);
+        spathaGameObject.SetActive(false);
+        spathaGameObject.SetActive(false);
+        longAxeGameObject.SetActive(false);
+        dualKnightsGameObject[0].SetActive(false);
+        dualKnightsGameObject[1].SetActive(false);
+        bastardGameObject.SetActive(false);
+
         if (newItem != null)
         {
-
-            lumberAxeGameObject.SetActive(false);
-            spathaGameObject.SetActive(false);
-            spathaGameObject.SetActive(false);
-
             switch (newItem.name)
             {
                 default:
@@ -77,13 +84,17 @@ public class Player_Data : EntityInventory
                 case "Pickaxe":
                     pickAxeGameObject.SetActive(true);
                     break;
+                case "Batle Axe":
+                    longAxeGameObject.SetActive(true);
+                    break;
+                case "Rogue's comrades":
+                    dualKnightsGameObject[0].SetActive(true);
+                    dualKnightsGameObject[1].SetActive(true);
+                    break;
+                case "Bastard's sword":
+                    bastardGameObject.SetActive(true);
+                    break;
             }
-        }
-        else
-        {
-            spathaGameObject.SetActive(false);
-            lumberAxeGameObject.SetActive(false);
-            pickAxeGameObject.SetActive(false);
         }
     }
 

@@ -21,8 +21,9 @@ MonoBehaviour:
   statsValues:
   - 50
   - 7
+  stationRequired: none
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
+  mesh: []
   equip: 4
-  mesh: {fileID: 0}

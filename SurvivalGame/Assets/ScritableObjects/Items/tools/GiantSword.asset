@@ -23,5 +23,5 @@ MonoBehaviour:
   upgradeMade: 0
   playerWhoUse: {fileID: 0}
   amount: 1
-  mesh: {fileID: 0}
+  mesh: []
   equip: 4
