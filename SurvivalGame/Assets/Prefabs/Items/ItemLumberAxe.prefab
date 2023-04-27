@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16403785, y: 0.027355127, z: 0.24527527}
-  m_Center: {x: 0.011510499, y: 0, z: 0.0482559}
+  m_Size: {x: 0.16403785, y: 0.17743193, z: 0.24527527}
+  m_Center: {x: 0.011510499, y: 0.075038426, z: 0.0482559}
 --- !u!114 &1401901301369563497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,4 +114,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44ca886d97c593b4a84e359373fe998d, type: 2}
   pickUpTime: 4
   pickUpText: To pick up Axe
+  itemRequired: {fileID: 0}
   isNearPlayer: 0

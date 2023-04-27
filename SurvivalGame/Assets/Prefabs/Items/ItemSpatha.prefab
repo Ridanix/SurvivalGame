@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.051565006, y: 0.017506829, z: 0.32050452}
-  m_Center: {x: -0.00082338287, y: -0.0000000015886099, z: 0.06330201}
+  m_Size: {x: 0.051565006, y: 0.10951246, z: 0.32050452}
+  m_Center: {x: -0.00082338287, y: 0.046002813, z: 0.06330201}
 --- !u!114 &1495082303709548907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,4 +114,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e84fdf14161a18949a39dabe613740de, type: 2}
   pickUpTime: 4
   pickUpText: To pick up Spatha
+  itemRequired: {fileID: 0}
   isNearPlayer: 0

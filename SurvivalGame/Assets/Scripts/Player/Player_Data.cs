@@ -174,9 +174,9 @@ public class Player_Data : EntityInventory
         UpateBars();
         UpdateStats();
 
-        if (gameObject.transform.position.y > 11.3)
+        if (gameObject.transform.position.y > 11f)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 11, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 11f, gameObject.transform.position.z);
         }
         //Teleport Back to ground
         if (Input.GetKeyDown(KeyCode.LeftControl))
